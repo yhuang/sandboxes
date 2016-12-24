@@ -1,0 +1,14 @@
+{
+  "service": {
+    "name": "zookeeper",
+    "ID": "%MYID%",
+    "port": 2181,
+    "checks": [
+      {
+        "script": "/usr/local/bin/report-zookeeper-mode.sh",
+        "interval": "10s",
+        "name": "mode"
+      }
+    ]
+  }
+}

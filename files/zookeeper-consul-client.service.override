@@ -1,0 +1,2 @@
+[Service]
+ExecStartPre=/usr/local/bin/replace-with-zookeeper-id.sh

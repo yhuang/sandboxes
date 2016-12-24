@@ -1,0 +1,1 @@
+zk://{{range service "zookeeper" "any"}}{{.Address}}{{":2181" | join ","}}{{end}}/mesos

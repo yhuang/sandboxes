@@ -1,0 +1,8 @@
+[Unit]
+Description=Mesos Master Daemon
+Requires=consul-template.service
+After=consul-template.service
+
+[Service]
+EnvironmentFile=/etc/profile.d/consul.sh
+ExecStartPre=/usr/local/bin/set-mesos-master-quorum.sh

@@ -1,0 +1,24 @@
+# The number of milliseconds of each tick
+tickTime=2000
+
+# The number of ticks that the initial synchronization phase can take
+initLimit=10
+
+# The number of ticks that can pass between
+# sending a request and getting an acknowledgement
+syncLimit=5
+
+# the directory where the snapshot is stored.
+dataDir=/var/zookeeper/data
+
+# the port at which the clients will connect
+clientPort=2181
+
+# Directory where transaction log is stored
+dataLogDir=/var/zookeeper/log
+
+# Limits the number of concurrent connections (at the socket level) that a single client, identified by IP address, may make to a single member of the ZooKeeper ensemble. This is used to prevent certain classes of DoS attacks, including file descriptor exhaustion. Setting this to 0 or omitting it entirely removes the limit on concurrent connections.
+maxClientCnxns=50
+
+{{range service "zookeeper" "any"}}
+server.{{.ID}}={{.Address}}:2888:3888{{end}}

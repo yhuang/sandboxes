@@ -1,0 +1,146 @@
+[
+  {
+    "target": [
+      "*.kafka2.brokertopicmetrics.BytesInPerSec.OneMinuteRate",
+      "*.kafka1.brokertopicmetrics.BytesInPerSec.OneMinuteRate",
+      "*.kafka0.brokertopicmetrics.BytesInPerSec.OneMinuteRate"
+    ],
+    "title": "BytesInPerSec"
+  },
+  {
+    "target": [
+      "*.kafka2.brokertopicmetrics.MessagesInPerSec.OneMinuteRate",
+      "*.kafka1.brokertopicmetrics.MessagesInPerSec.OneMinuteRate",
+      "*.kafka0.brokertopicmetrics.MessagesInPerSec.OneMinuteRate"
+    ],
+    "title": "MessagesInPerSec"
+  },
+  {
+    "target": [
+      "*.kafka2.brokertopicmetrics.BytesOutPerSec.OneMinuteRate",
+      "*.kafka1.brokertopicmetrics.BytesOutPerSec.OneMinuteRate",
+      "*.kafka0.brokertopicmetrics.BytesOutPerSec.OneMinuteRate"
+    ],
+    "title": "BytesOutPerSec"
+  },
+  {
+    "target": [
+      "*.kafka2.controller.ActiveControllerCount.Value",
+      "*.kafka1.controller.ActiveControllerCount.Value",
+      "*.kafka0.controller.ActiveControllerCount.Value"
+    ],
+    "title": "ActiveControllerCount"
+  },
+  {
+    "target": [
+      "*.kafka2.controller.OfflinePartitionsCount.Value",
+      "*.kafka1.controller.OfflinePartitionsCount.Value",
+      "*.kafka0.controller.OfflinePartitionsCount.Value"
+    ],
+    "title": "OfflinePartitionsCount"
+  },
+  {
+    "target": [
+      "*.kafka2.replicaManager.LeaderCount.Value",
+      "*.kafka1.replicaManager.LeaderCount.Value",
+      "*.kafka0.replicaManager.LeaderCount.Value"
+    ],
+    "title": "LeaderCount"
+  },
+  {
+    "target": [
+      "*.kafka2.replicaManager.PartitionCount.Value",
+      "*.kafka1.replicaManager.PartitionCount.Value",
+      "*.kafka0.replicaManager.PartitionCount.Value"
+    ],
+    "title": "PartitionCount"
+  },
+  {
+    "target": [
+      "*.kafka2.replicaManager.UnderReplicatedPartitions.Value",
+      "*.kafka1.replicaManager.UnderReplicatedPartitions.Value",
+      "*.kafka0.replicaManager.UnderReplicatedPartitions.Value"
+    ],
+    "title": "UnderReplicatedPartitionCount"
+  },
+  {
+    "target": [
+      "*.kafka2.requestTotalTime.FetchFollower.75thPercentile",
+      "*.kafka1.requestTotalTime.FetchFollower.75thPercentile",
+      "*.kafka0.requestTotalTime.FetchFollower.75thPercentile"
+    ],
+    "title": "FetchFollowerTime"
+  },
+  {
+    "target": [
+      "*.kafka2.requestTotalTime.FetchConsumer.75thPercentile",
+      "*.kafka1.requestTotalTime.FetchConsumer.75thPercentile",
+      "*.kafka0.requestTotalTime.FetchConsumer.75thPercentile"
+    ],
+    "title": "FetchConsumerTime"
+  },
+  {
+    "target": [
+      "*.kafka2.requestTotalTime.Produce.75thPercentile",
+      "*.kafka1.requestTotalTime.Produce.75thPercentile",
+      "*.kafka0.requestTotalTime.Produce.75thPercentile"
+    ],
+    "title": "ProduceTime"
+  },
+  {
+    "target": [
+      "*.kafka2.requestsPerSec.Produce.OneMinuteRate",
+      "*.kafka1.requestsPerSec.Produce.OneMinuteRate",
+      "*.kafka0.requestsPerSec.Produce.OneMinuteRate"
+    ],
+    "title": "ProduceRequestPerSec"
+  },
+  {
+    "target": [
+      "*.kafka2.requestsPerSec.FetchConsumer.OneMinuteRate",
+      "*.kafka1.requestsPerSec.FetchConsumer.OneMinuteRate",
+      "*.kafka0.requestsPerSec.FetchConsumer.OneMinuteRate"
+    ],
+    "title": "FetchConsumerRequestPerSec"
+  },
+  {
+    "target": [
+      "*.kafka2.requestsPerSec.FetchFollower.OneMinuteRate",
+      "*.kafka1.requestsPerSec.FetchFollower.OneMinuteRate",
+      "*.kafka0.requestsPerSec.FetchFollower.OneMinuteRate"
+    ],
+    "title": "FetchFollowerRequestPerSec"
+  },
+  {
+    "target": [
+      "*.kafka2.leaderElection.LeaderElectionRateAndTimeMs.OneMinuteRate",
+      "*.kafka1.leaderElection.LeaderElectionRateAndTimeMs.OneMinuteRate",
+      "*.kafka0.leaderElection.LeaderElectionRateAndTimeMs.OneMinuteRate"
+    ],
+    "title": "LeaderElectionPerSec"
+  },
+  {
+    "target": [
+      "*.kafka2.leaderElection.UncleanLeaderElectionsPerSec.OneMinuteRate",
+      "*.kafka1.leaderElection.UncleanLeaderElectionsPerSec.OneMinuteRate",
+      "*.kafka0.leaderElection.UncleanLeaderElectionsPerSec.OneMinuteRate"
+    ],
+    "title": "UncleanLeaderElectionPerSec"
+  },
+  {
+    "target": [
+      "*.kafka2.replicaMaxLag.MaxLag.Value",
+      "*.kafka1.replicaMaxLag.MaxLag.Value",
+      "*.kafka0.replicaMaxLag.MaxLag.Value"
+    ],
+    "title": "ReplicaMaxLag"
+  },
+  {
+    "target": [
+      "*.kafka2.requestHandlerAvgIdlePercent.RequestHandlerAvgIdlePercent.OneMinuteRate",
+      "*.kafka1.requestHandlerAvgIdlePercent.RequestHandlerAvgIdlePercent.OneMinuteRate",
+      "*.kafka0.requestHandlerAvgIdlePercent.RequestHandlerAvgIdlePercent.OneMinuteRate"
+    ],
+    "title": "requestHandlerIdlePercent"
+  }
+]

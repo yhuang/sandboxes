@@ -1,0 +1,8 @@
+[Unit]
+Description=Zookeeper Daemon
+Requires=consul-template.service
+After=consul-template.service
+
+[Service]
+EnvironmentFile=/etc/profile.d/consul.sh
+ExecStartPre=/usr/local/bin/set-zookeeper-id.sh

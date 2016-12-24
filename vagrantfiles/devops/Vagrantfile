@@ -1,0 +1,100 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+name = 'devops'
+
+Vagrant.configure(2) do |config|
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.hostmanager.manage_guest = true
+
+  config.vm.hostname = name
+  config.vm.box = name
+
+  config.vm.define name
+
+  config.vm.provider "vmware_fusion" do |vmware|
+    vmware.gui = false
+    vmware.vmx["memsize"] = 2048
+    vmware.vmx["numvcpus"] = 1
+  end
+
+  config.vm.synced_folder "#{ENV['HOME']}", '/host-data'
+  config.ssh.insert_key = false
+
+  # http://blog.takanabe.tokyo/2015/11/26/1652/
+  # https://github.com/emyl/vagrant-triggers
+  config.vm.provision "trigger" do |trigger|
+    trigger.fire do
+      `docker-machine status #{@machine.name}`
+
+      if $?.exitstatus != 0
+        ip = @machine.ssh_info[:host]
+        port = @machine.ssh_info[:port]
+
+        run "docker-machine -D create -d generic \
+            --generic-ip-address #{ip} \
+            --generic-ssh-key #{@machine.ssh_info[:private_key_path][0]} \
+            --generic-ssh-port #{port} \
+            --generic-ssh-user #{@machine.ssh_info[:username]} \
+            #{@machine.name}"
+      end
+    end
+  end
+
+  config.trigger.after :resume do
+    run "docker-machine rm -f #{@machine.name}"
+
+    ip = @machine.ssh_info[:host]
+    port = @machine.ssh_info[:port]
+
+    run "docker-machine -D create -d generic \
+            --generic-ip-address #{ip} \
+            --generic-ssh-key #{@machine.ssh_info[:private_key_path][0]} \
+            --generic-ssh-port #{port} \
+            --generic-ssh-user #{@machine.ssh_info[:username]} \
+        #{@machine.name}"
+  end
+
+  config.trigger.before :destroy do
+    `docker-machine status #{@machine.name}`
+
+    if $?.exitstatus == 0
+      run "docker-machine rm -f #{@machine.name}"
+    end
+  end
+
+  # Disable automatic box update checking. If you disable this, then
+  # boxes will only be checked for updates when the user runs
+  # `vagrant box outdated`. This is not recommended.
+  # config.vm.box_check_update = false
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine. In the example below,
+  # accessing "localhost:8080" will access port 80 on the guest machine.
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  # Create a private network, which allows host-only access to the machine
+  # using a specific IP.
+  # config.vm.network "private_network", ip: "192.168.33.10"
+
+  # Create a public network, which generally matched to bridged network.
+  # Bridged networks make the machine appear as another physical device on
+  # your network.
+  # config.vm.network "public_network"
+
+  # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
+  # such as FTP and Heroku are also available. See the documentation at
+  # https://docs.vagrantup.com/v2/push/atlas.html for more information.
+  # config.push.define "atlas" do |push|
+  #   push.app = "YOUR_ATLAS_USERNAME/YOUR_APPLICATION_NAME"
+  # end
+
+  # Enable provisioning with a shell script. Additional provisioners such as
+  # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
+  # documentation for more information about their specific syntax and use.
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   sudo apt-get update
+  #   sudo apt-get install -y apache2
+  # SHELL
+end
