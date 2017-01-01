@@ -1,13 +1,13 @@
 {
   "variables": {
-    "box_basename": "hiccup",
+    "box_basename": "advanced",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "iso_checksum": "907e5755f824c5848b9c8efbb484f3cd945e93faa024bad6ba875226f9683b16",
     "iso_checksum_type": "sha256",
     "iso_name": "CentOS-7-x86_64-DVD-1511.iso",
-    "ks_path": "http/ks.cfg"
+    "ks_path": "http/advanced-ks.cfg"
   },
   "builders": [
     {
@@ -17,7 +17,7 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 8000,
+      "disk_size": 16384,
       "guest_os_type": "centos-64",
       "headless": true,
       "http_directory": ".",
@@ -54,14 +54,14 @@
       "destination": "/tmp/vmware-tools-linux.gz"
     },
     {
+      "type": "file",
+      "source": "files/tmp.mount",
+      "destination": "/tmp/tmp.mount"
+    },
+    {
       "type": "shell",
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "inline": [ "sleep 60" ]
-    },
-    {
-      "type": "file",
-      "source": "binaries/jq",
-      "destination": "/tmp/jq"
     },
     {
       "type": "shell",
@@ -74,12 +74,8 @@
         "provisioning-scripts/install-linux-tools.sh",
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
-        "provisioning-scripts/install-python3.sh",
-        "provisioning-scripts/install-pip.sh",
-        "provisioning-scripts/install-mysql.sh",
-        "provisioning-scripts/install-hiccup-python-modules.sh",
-        "provisioning-scripts/install-jq.sh",
         "provisioning-scripts/install-vmtools.sh",
+        "provisioning-scripts/harden-tmp.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }
