@@ -75,7 +75,14 @@
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
         "provisioning-scripts/install-vmtools.sh",
-        "provisioning-scripts/harden-tmp.sh",
+        "hardening-scripts/harden-tmp.sh",
+        "hardening-scripts/install-ntp.sh",
+        "hardening-scripts/install-aide.sh",
+        "hardening-scripts/configure-aide.sh",
+        "hardening-scripts/prevent-usb-mount.sh",
+        "hardening-scripts/enable-secure-password-policy.sh",
+        "hardening-scripts/bulk-remove-services.sh",
+        "hardening-scripts/bulk-configure-services.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }
