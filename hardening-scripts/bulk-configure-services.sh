@@ -4,70 +4,78 @@ systemctl enable crond
 systemctl enable irqbalance
 systemctl enable psacct
 
-#yum install at
-#systemctl disable atd
-systemctl disable certmonger
+# yum install -y at
+# systemctl disable atd
 
-#systemctl disable cgconfig
-systemctl disable cgred
-#systemctl disable cpuspeed
+# yum install -y certmonger
+# systemctl disable certmonger
 
-#yum install dovecot
-#systemctl disable dovecot
+# yum install -y libcgroup-tools
+# systemctl disable cgconfig
+# systemctl disable cgred
 
-#yum install httpd
-#systemctl disable httpd
+# yum install -y dovecot
+# systemctl disable dovecot
+
+# yum install -y httpd
+# systemctl disable httpd
+
 systemctl disable kdump
-#systemctl disable mdmonitor
+
+# yum install -y mdadm
+# systemctl disable mdmonitor
+
 systemctl disable messagebus
-#systemctl disable named
+
+# yum install -y bind bind-utils
+# systemctl disable named
+
 systemctl disable netconsole
+systemctl disable nfs
 systemctl disable nfslock
 systemctl disable ntpdate
-
-#yum instsall oddjob
-#systemctl disable oddjobd
-
-#yum install portreserve
-#systemctl disable portreserve
-
-#yum install boost
-#yum --disablerepo="*" --enablerepo="epel" install qpid-cpp-client
-#yum install cyrus-sasl
-#yum --disablerepo="*" --enablerepo="epel" install qpid-cpp-server
-
-#systemctl disable qpidd
-#systemctl disable quota_nld
 systemctl disable rdisc
-
-#yum -y install rsh rsh-server
-#systemctl disable rexec.socket
-
-#yum install rhnsd
-#systemctl disable rhnsd
-
-#systemctl disable rhsmcertd
-
-#yum -y install rsh rsh-server
-#systemctl disable rlogin.socket
-
-#yum -y install rsh rsh-server
-#systemctl disable rsh.socket
-
-#systemctl disable saslauthd
-#systemctl disable smartd
-#systemctl disable snmpd
-
-#yum install squid
-#systemctl disable squid
-
+systemctl disable rpcbind
+systemctl disable rsyncd
 systemctl disable sysstat
 
-#yum install tftp
-#systemctl disable tftp
+# yum install -y oddjob
+# systemctl disable oddjobd
 
-#yum install xinetd
-#systemctl disable xinetd
+# yum install -y portreserve
+# systemctl disable portreserve
 
-#yum install ypbind
-#systemctl disable ypbind
+# yum install -y boost
+# yum --disablerepo="*" --enablerepo="epel" install qpid-cpp-client
+# yum install -y cyrus-sasl
+# yum --disablerepo="*" --enablerepo="epel" install qpid-cpp-server
+# systemctl disable qpidd
+# systemctl disable saslauthd
+
+# yum install -y rsh rsh-server
+# systemctl disable rexec.socket
+
+# yum install -y rhnsd
+# systemctl disable rhnsd
+
+# yum -y install rsh rsh-server
+# systemctl disable rlogin.socket
+# systemctl disable rsh.socket
+
+# yum install -y smartmontools
+# systemctl disable smartd
+
+# yum install -y net-snmp
+# systemctl disable snmpd
+
+# yum install -y squid
+# systemctl disable squid
+
+# yum install -y tftp tftp-server
+# systemctl disable tftp
+
+# yum install -y xinetd
+# systemctl disable xinetd
+
+# yum install -y ypbind
+# systemctl disable ypbind
