@@ -1,0 +1,1010 @@
+CIS:
+  1 Install Updates, Patches and Additional Security Software:
+    1.1 Filesystem Configuration:
+      1.1.1.1 Ensure mounting of cramfs filesystems is disabled (Scored):
+        audit:
+          - "/sbin/modprobe -n -v cramfs | grep '/bin/true'"
+          - "/sbin/lsmod | grep cramfs"
+        expected:
+          - 0
+          - 1
+      1.1.1.2 Ensure mounting of freevxfs filesystems is disabled (Scored):
+        audit:
+          - "/sbin/modprobe -n -v freevxfs | grep '/bin/true'"
+          - "/sbin/lsmod | grep freexvfs"
+        expected:
+          - 0
+          - 1
+      1.1.1.3 Ensure mounting of jffs2 filesystems is disabled (Scored):
+        audit:
+          - "/sbin/modprobe -n -v jffs2 | grep '/bin/true'"
+          - "/sbin/lsmod | grep jffs2"
+        expected:
+          - 0
+          - 1
+      1.1.1.4 Ensure mounting of hfs filesystems is disabled (Scored):
+        audit:
+          - "/sbin/modprobe -n -v hfs | grep '/bin/true'"
+          - "/sbin/lsmod | grep hfs"
+        expected:
+          - 0
+          - 1
+      1.1.1.5 Ensure mounting of hfsplus filesystems is disabled (Scored):
+        audit:
+          - "/sbin/modprobe -n -v hfsplus | grep '/bin/true'"
+          - "/sbin/lsmod | grep hfsplus"
+        expected:
+          - 0
+          - 1
+      1.1.1.6 Ensure mounting of squashfs filesystems is disabled (Scored):
+        audit:
+          - "/sbin/modprobe -n -v squashfs | grep '/bin/true'"
+          - "/sbin/lsmod | grep squashfs"
+        expected:
+          - 0
+          - 1
+      1.1.1.7 Ensure mounting of udf filesystems is disabled (Scored):
+        audit:
+          - "/sbin/modprobe -n -v udf | grep '/bin/true'"
+          - "/sbin/lsmod | grep udf"
+        expected:
+          - 0
+          - 1
+      1.1.1.8 Ensure mounting of FAT filesystems is disabled (Scored):
+        audit:
+          - "/sbin/modprobe -n -v vfat | grep '/bin/true'"
+          - "/sbin/lsmod | grep vfat"
+        expected:
+          - 0
+          - 1
+      1.1.2 Ensure separate partition exists for /tmp (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/tmp[[:space:]]\""
+        expected:
+          - 0
+      1.1.3 Ensure nodev option set on /tmp partition (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/tmp[[:space:]]\" | grep nodev"
+        expected:
+          - 0
+      1.1.4 Ensure nosuid option set on /tmp partition (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/tmp[[:space:]]\" | grep nosuid"
+        expected:
+          - 0
+      1.1.5 Ensure noexec option set on /tmp partition (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/tmp[[:space:]]\" | grep noexec"
+        expected:
+          - 0
+      1.1.6 Ensure separate partition exists for /var (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/var[[:space:]]\""
+        expected:
+          - 0
+      1.1.7 Ensure separate partition exists for /var/tmp (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/var/tmp[[:space:]]\""
+        expected:
+          - 0
+      1.1.8 Ensure nodev option set on /var/tmp partition (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/var/tmp[[:space:]]\" | grep nodev"
+        expected:
+          - 0
+      1.1.9 Ensure nosuid option set on /var/tmp partition (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/var/tmp[[:space:]]\" | grep nosuid"
+        expected:
+          - 0
+      1.1.10 Ensure noexec option set on /var/tmp partition (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/var/tmp[[:space:]]\" | grep noexec"
+        expected:
+          - 0
+      1.1.11 Ensure separate partition exists for /var/log (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/var/log[[:space:]]\""
+        expected:
+          - 0
+      1.1.12 Ensure separate partition exists for /var/log/audit (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/var/log/audit[[:space:]]\""
+        expected:
+          - 0
+      1.1.13 Ensure separate partition exists for /home (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/home[[:space:]]\""
+        expected:
+          - 0
+      1.1.14 Ensure nodev option set on /home partition (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/home[[:space:]]\" | grep nodev"
+        expected:
+          - 0
+      1.1.15 Ensure nodev option set on /dev/shm partition (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/dev/shm[[:space:]]\" | grep nodev"
+        expected:
+          - 0
+      1.1.16 Ensure nosuid option set on /dev/shm partition (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/dev/shm[[:space:]]\" | grep nosuid"
+        expected:
+          - 0
+      1.1.17 Ensure noexec option set on /dev/shm partition (Scored):
+        audit:
+          - "mount | grep \"[[:space:]]/dev/shm[[:space:]]\" | grep noexec"
+        expected:
+          - 0
+      1.1.18 Ensure nodev option set on removable media partitions (Not Scored):
+        audit:
+          - skip
+        expected:
+          - 0
+      1.1.19 Ensure nosuid option set on removable media partitions (Not Scored):
+        audit:
+          - skip
+        expected:
+          - 0
+      1.1.20 Ensure noexec option set on removable media partitions (Not Scored):
+        audit:
+          - skip
+        expected:
+          - 0
+      1.1.21 Ensure sticky bit is set on all world-writable directories (Scored):
+        audit:
+          - "df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -type d \\( -perm -0002 -a ! -perm -1000 \\) 2>/dev/null"
+          #- df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -type d \( -perm -0002 -a ! -perm -1000 \) 2>/dev/null
+        expected:
+          - 0
+      1.1.22 Disable Automounting (Scored):
+        audit:
+          - "systemctl is-enabled autofs | grep enabled"
+        expected:
+          - 1
+    1.2 Configure Software Updates:
+      1.2.1 Ensure package manager repositories are configured (Not Scored):
+        audit:
+          - skip
+        expected:
+          - 0
+      1.2.2 Ensure GPG keys are configured (Not Scored):
+        audit:
+          - skip
+        expected:
+          - 0
+      1.2.3 Ensure gpgcheck is globally activated (Scored):
+        audit:
+          - "grep ^gpgcheck=1 /etc/yum.conf"
+          - "grep ^gpgcheck /etc/yum.repos.d/* | grep gpgcheck=0"
+        expected:
+          - 0
+          - 1
+    1.3 Filesystem Integrity Checking:
+      1.3.1 Ensure AIDE is installed (Scored):
+        audit:
+          - "rpm -q aide"
+        expected:
+          - 0
+      1.3.2 Ensure filesystem integrity is regularly checked (Scored):
+        audit:
+          - "grep -r aide /etc/cron.* /etc/crontab"
+        expected:
+          - 0
+    1.4 Secure Boot Settings:
+      1.4.1 Ensure permissions on bootloader config are configured (Scored):
+        audit:
+          - "stat /boot/grub2/grub.cfg | grep \"Access:[[:space:]](0600/-rw-------)\""
+          - "stat /boot/grub2/grub.cfg | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+          #- stat /boot/grub2/grub.cfg | grep "Uid:[[:space:]]([[:space:]]\{1,\}0/[[:space:]]\{1,\}root)"
+          - "stat /boot/grub2/grub.cfg | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+          #- stat /boot/grub2/grub.cfg | grep "Gid:[[:space:]]([[:space:]]\{1,\}0/[[:space:]]\{1,\}root)"
+        expected:
+          - 0
+          - 0
+          - 0
+      1.4.2 Ensure bootloader password is set (Scored):
+        audit:
+          - "grep \"^set superusers\" /boot/grub2/grub.cfg | grep 'set superusers'"
+          - "grep \"^password\" /boot/grub2/grub.cfg | grep 'password_pbkdf2'"
+        expected:
+          - 0
+          - 0
+      1.4.3 Ensure authentication required for single user mode (Not Scored):
+        audit:
+          - skip
+        expected:
+          - 0
+    1.5 Additional Process Hardening:
+      1.5.1 Ensure core dumps are restricted (Scored):
+        audit:
+          - "grep \"hard core\" /etc/security/limits.conf"
+          - "/sbin/sysctl fs.suid_dumpable"
+        expected:
+          - 0
+          - 0
+      1.5.2 Ensure XD/NX support is enabled (Not Scored):
+        audit:
+          - skip
+        expected:
+          - 0
+      1.5.3 Ensure address space layout randomization (ASLR) is enabled (Scored):
+        audit:
+          - "/sbin/sysctl kernel.randomize_va_space | grep \"kernel.randomize_va_space[[:space:]]\\{1,\\}=[[:space:]]\\{1,\\}2\""
+          #- /sbin/sysctl kernel.randomize_va_space | grep "kernel.randomize_va_space[[:space:]]\{1,\}=[[:space:]]\{1,\}2"
+        expected:
+          - 0
+      1.5.4 Ensure prelink is disabled (Scored):
+        audit:
+          - "rpm -q prelink"
+        expected:
+          - 1
+    1.6 Mandatory Access Control:
+      1.6.1.1 Ensure SELinux is not disabled in bootloader configuration (Scored):
+        audit:
+          - "grep \"^\\s*linux\" /boot/grub2/grub.cfg | grep selinux=0"
+          - "grep \"^\\s*linux\" /boot/grub2/grub.cfg | grep enforcing=0"
+        expected:
+          - 1
+          - 1
+      1.6.1.2 Ensure the SELinux state is enforcing (Scored):
+        audit:
+          - "grep SELINUX=enforcing /etc/selinux/config"
+        expected:
+          - 0
+      1.6.1.3 Ensure SELinux policy is configured (Scored):
+        audit:
+          - "grep SELINUXTYPE=targeted /etc/selinux/config"
+          - "sestatus | grep targeted"
+        expected:
+          - 0
+          - 0
+      1.6.1.4 Ensure SETroubleshoot is not installed (Scored):
+        audit:
+          - "rpm -q setroubleshoot"
+        expected:
+          - 1
+      1.6.1.5 Ensure the MCS Translation Service (mcstrans) is not installed (Scored):
+        audit:
+          - "rpm -q mcstrans"
+        expected:
+          - 1
+      1.6.1.6 Ensure no unconfined daemons exist (Scored):
+        audit:
+          - "ps -eZ | egrep \"initrc\" | egrep -vw \"tr|ps|egrep|bash|awk\" | tr ':' ' ' | awk '{ print $NF }' | wc -l | grep 0"
+        expected:
+          - 0
+      1.6.2 Ensure SELinux is installed (Scored):
+        audit:
+          - "rpm -q libselinux"
+        expected:
+          - 0
+    1.7 Warning Banners:
+      1.7.1 Command Line Warning Banners:
+        1.7.1.1 Ensure message of the day is configured properly (Scored):
+          audit:
+            - "egrep '(\\\\v|\\\\r|\\\\m|\\\\s)' /etc/motd"
+          expected:
+            - 1
+        1.7.1.2 Ensure local login warning banner is configured properly (Not Scored):
+          audit:
+            - skip
+          expected:
+            - 0
+        1.7.1.3 Ensure remote login warning banner is configured properly (Not Scored):
+          audit:
+            - skip
+          expected:
+            - 0
+        1.7.1.4 Ensure permissions on /etc/motd are configured (Not Scored):
+          audit:
+            - skip
+          expected:
+            - 0
+        1.7.1.5 Ensure permissions on /etc/issue are configured (Scored):
+          audit:
+            - "stat /etc/issue | grep \"Access:[[:space:]](0644/-rw-r--r--)\""
+            - "stat /etc/issue | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+            #- stat /etc/issue | grep "Uid:[[:space:]]([[:space:]]\{1,\}0/[[:space:]]\{1,\}root)"
+            - "stat /etc/issue | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+            #- stat /etc/issue | grep "Gid:[[:space:]]([[:space:]]\{1,\}0/[[:space:]]\{1,\}root)"
+          expected:
+            - 0
+            - 0
+            - 0
+        1.7.1.6 Ensure permissions on /etc/issue.net are configured (Not Scored):
+          audit:
+            - skip
+          expected:
+            - 0
+        1.7.2 Ensure GDM login banner is configured if installed (Scored):
+          # We will make sure gdm is not installed.
+          audit:
+            - "rpm -q gdm"
+          expected:
+            - 1
+    1.8 Ensure updates, patches, and additional security software are installed (Not Scored):
+      audit:
+        - skip
+      expected:
+        - 0
+  2 Services:
+    2.1 inetd Services:
+      2.1.1 Ensure chargen services are not enabled (Scored):
+        # We will make sure xinetd is not installed.
+        audit:
+          - "rpm -q xinetd"
+        expected:
+          - 1
+      2.1.2 Ensure daytime services are not enabled (Scored):
+        # We will make sure xinetd is not installed.
+        audit:
+          - "rpm -q xinetd"
+        expected:
+          - 1
+      2.1.3 Ensure discard services are not enabled (Scored):
+        # We will make sure xinetd is not installed.
+        audit:
+          - "rpm -q xinetd"
+        expected:
+          - 1
+      2.1.4 Ensure echo services are not enabled (Scored):
+        # We will make sure xinetd is not installed.
+        audit:
+          - "rpm -q xinetd"
+        expected:
+          - 1
+      2.1.5 Ensure time services are not enabled (Scored):
+        # We will make sure xinetd is not installed.
+        audit:
+          - "rpm -q xinetd"
+        expected:
+          - 1
+      2.1.6 Ensure tftp server is not enabled (Scored):
+        # We will make sure xinetd is not installed.
+        audit:
+          - "rpm -q xinetd"
+        expected:
+          - 1
+      2.1.7 Ensure xinetd is not enabled (Scored):
+        # We will make sure xinetd is not installed.
+        audit:
+          - "rpm -q xinetd"
+          - "systemctl is-enabled xinetd | grep enabled"
+        expected:
+          - 1
+          - 1
+    2.2 Special Purpose Services:
+      2.2.1 Time Synchronization:
+        2.2.1.1 Ensure time synchronization is in use (Not Scored):
+          audit:
+            - "rpm -q ntp"
+          expected:
+            - 0
+        2.2.1.2 Ensure ntp is configured (Scored):
+          audit:
+            - "grep \"^restrict\" /etc/ntp.conf | grep \"restrict -4 default kod nomodify notrap nopeer noquery\""
+            - "grep \"^restrict\" /etc/ntp.conf | grep \"restrict -6 default kod nomodify notrap nopeer noquery\""
+            - "grep \"^server\" /etc/ntp.conf | grep \"server 0.pool.ntp.org\""
+            - "grep \"^server\" /etc/ntp.conf | grep \"server 1.pool.ntp.org\""
+            - "grep \"^server\" /etc/ntp.conf | grep \"server 2.pool.ntp.org\""
+            - "grep \"^server\" /etc/ntp.conf | grep \"server 3.pool.ntp.org\""
+          expected:
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+        2.2.1.3 Ensure chrony is configured (Scored):
+          # We will make sure ntp is installed.
+          audit:
+            - "rpm -q ntp"
+          expected:
+            - 0
+      2.2.2 Ensure X Window System is not installed (Scored):
+        audit:
+          - "rpm -qa xorg-x11* | wc -l | grep ^0"
+        expected:
+          - 0
+      2.2.3 Ensure Avahi Server is not enabled (Scored):
+        # We will make sure avahi is not installed.
+        audit:
+          - "rpm -q avahi"
+          - "systemctl is-enabled avahi-daemon | grep enabled"
+        expected:
+          - 1
+          - 1
+      2.2.4 Ensure CUPS is not enabled (Scored):
+        # We will make sure CUPS is not installed.
+        audit:
+          - "rpm -q cups"
+          - "systemctl is-enabled cups | grep enabled"
+        expected:
+          - 1
+          - 1
+      2.2.5 Ensure DHCP Server is not enabled (Scored):
+        # We will make sure CUPS is not installed.
+        audit:
+          - "rpm -q dhcp"
+          - "systemctl is-enabled dhcpd | grep enabled"
+        expected:
+          - 1
+          - 1
+      2.2.6 Ensure LDAP server is not enabled (Scored):
+        audit:
+          - "systemctl is-enabled slapd | grep enabled"
+        expected:
+          - 1
+      2.2.7 Ensure NFS and RPC are not enabled (Scored):
+        audit:
+          - "systemctl is-enabled nfs | grep enabled"
+          - "systemctl is-enabled rpcbind | grep enabled"
+        expected:
+          - 1
+          - 1
+      2.2.8 Ensure DNS Server is not enabled (Scored):
+        # We will make sure bind and bind-utils are not installed.
+        audit:
+          - "rpm -q bind"
+          - "rpm -q bind-utils"
+          - "systemctl is-enabled named | grep enabled"
+        expected:
+          - 1
+          - 1
+          - 1
+      2.2.9 Ensure FTP Server is not enabled (Scored):
+        # We will make sure vsftpd is not installed.
+        audit:
+          - "rpm -q vsftpd"
+          - "systemctl is-enabled vsftpd | grep enabled"
+        expected:
+          - 1
+          - 1
+      2.2.10 Ensure HTTP server is not enabled (Scored):
+        # We will make sure httpd is not installed.
+        audit:
+          - "rpm -q httpd"
+          - "systemctl is-enabled httpd | grep enabled"
+        expected:
+          - 1
+          - 1
+      2.2.11 Ensure IMAP and POP3 server is not enabled (Scored):
+        # We will make sure dovecot is not installed.
+        audit:
+          - "rpm -q dovecot"
+          - "systemctl is-enabled dovecot | grep enabled"
+        expected:
+          - 1
+          - 1
+      2.2.12 Ensure Samba is not enabled (Scored):
+        # We will make sure samba is not installed.
+        audit:
+          - "rpm -q samba"
+          - "systemctl is-enabled smb | grep enabled"
+        expected:
+          - 1
+          - 1
+      2.2.13 Ensure HTTP Proxy Server is not enabled (Scored):
+        # We will make sure squid is not installed.
+        audit:
+          - "rpm -q squid"
+          - "systemctl is-enabled squid | grep enabled"
+        expected:
+          - 1
+          - 1
+      2.2.14 Ensure SNMP Server is not enabled (Scored):
+        # We will make sure net-snmp is not installed.
+        audit:
+          - "rpm -q net-snmp"
+          - "systemctl is-enabled snmpd | grep enabled"
+        expected:
+          - 1
+          - 1
+      2.2.15 Ensure mail transfer agent is configured for local-only mode (Scored):
+        # We will assume the mta on Centos 7.2 is sendmail.
+        audit:
+          - "netstat -an | grep LIST | grep \":25[[:space:]]\" | grep mail"
+        expected:
+          - 1
+      2.2.16 Ensure NIS Server is not enabled (Scored):
+        audit:
+          - "systemctl is-enabled ypserv | grep enabled"
+        expected:
+          - 1
+      2.2.17 Ensure rsh server is not enabled (Scored):
+        audit:
+          - "systemctl is-enabled rsh.socket | grep enabled"
+          - "systemctl is-enabled rlogin.socket | grep enabled"
+          - "systemctl is-enabled rexec.socket | grep enabled"
+        expected:
+          - 1
+          - 1
+          - 1
+      2.2.18 Ensure telnet server is not enabled (Scored):
+        audit:
+          - "systemctl is-enabled telnet.socket | grep enabled"
+        expected:
+          - 1
+      2.1.19 Ensure tftp server is not enabled (Scored):
+        # We will make sure tftp and tftp-server are not installed.
+        audit:
+          - "rpm -q tftp"
+          - "rpm -q tftp-server"
+          - "systemctl is-enabled tftp.socket | grep enabled"
+        expected:
+          - 1
+          - 1
+          - 1
+      2.2.20 Ensure rsync service is not enabled (Scored):
+        audit:
+          - "systemctl is-enabled rsyncd | grep enabled"
+        expected:
+          - 1
+      2.2.21 Ensure talk server is not enabled (Scored):
+        audit:
+          - "systemctl is-enabled ntalk | grep enabled"
+        expected:
+          - 1
+    2.3 Service Clients:
+      2.3.1 Ensure NIS Client is not installed (Scored):
+        audit:
+          - "rpm -q ypserv"
+        expected:
+          - 1
+      2.3.2 Ensure rsh client is not installed (Scored):
+        audit:
+          - "rpm -q rsh"
+          - "rpm -q rsh-server"
+        expected:
+          - 1
+          - 1
+      2.3.3 Ensure talk client is not installed (Scored):
+        audit:
+          - "rpm -q talk-server"
+        expected:
+          - 1
+      2.3.4 Ensure telnet client is not installed (Scored):
+        audit:
+          - "rpm -q telnet"
+          - "rpm -q telnet-server"
+        expected:
+          - 1
+          - 1
+      2.3.5 Ensure LDAP client is not installed (Scored):
+        audit:
+          - "rpm -q openldap"
+          - "rpm -q openldap-clients"
+          - "rpm -q openldap-servers"
+        expected:
+          - 1
+          - 1
+          - 1
+  3 Network Configuration:
+    3.1 Network Parameters (Host Only):
+      3.1.1 Ensure IP forwarding is disabled (Scored):
+        audit:
+          - "sysctl net.ipv4.ip_forward | grep 'net.ipv4.ip_forward = 0'"
+        expected:
+          - 0
+      3.1.2 Ensure packet redirect sending is disabled (Scored):
+        audit:
+          - "sysctl net.ipv4.conf.all.send_redirects | grep 'net.ipv4.conf.all.send_redirects = 0'"
+          - "sysctl net.ipv4.conf.default.send_redirects | grep 'net.ipv4.conf.default.send_redirects = 0'"
+        expected:
+          - 0
+          - 0
+    3.2 Network Parameters (Host and Router):
+      3.2.1 Ensure source routed packets are not accepted (Scored):
+        audit:
+          - "sysctl net.ipv4.conf.all.accept_source_route | grep 'net.ipv4.conf.all.accept_source_route = 0'"
+          - "sysctl net.ipv4.conf.default.accept_source_route | grep 'net.ipv4.conf.default.accept_source_route = 0'"
+        expected:
+          - 0
+          - 0
+      3.2.2 Ensure ICMP redirects are not accepted (Scored):
+        audit:
+          - "sysctl net.ipv4.conf.all.accept_redirects | grep 'net.ipv4.conf.all.accept_redirects = 0'"
+          - "sysctl net.ipv4.conf.default.accept_redirects | grep 'net.ipv4.conf.default.accept_redirects = 0'"
+        expected:
+          - 0
+          - 0
+      3.2.3 Ensure secure ICMP redirects are not accepted (Scored):
+        audit:
+          - "sysctl net.ipv4.conf.all.secure_redirects | grep 'net.ipv4.conf.all.secure_redirects = 0'"
+          - "sysctl net.ipv4.conf.default.secure_redirects | grep 'net.ipv4.conf.default.secure_redirects = 0'"
+        expected:
+          - 0
+          - 0
+      3.2.4 Ensure suspicious packets are logged (Scored):
+        audit:
+          - "sysctl net.ipv4.conf.all.log_martians | grep 'net.ipv4.conf.all.log_martians = 1'"
+          - "sysctl net.ipv4.conf.default.log_martians | grep 'net.ipv4.conf.default.log_martians = 1'"
+        expected:
+          - 0
+          - 0
+      3.2.5 Ensure broadcast ICMP requests are ignored (Scored):
+        audit:
+          - "sysctl net.ipv4.icmp_echo_ignore_broadcasts | grep 'net.ipv4.icmp_echo_ignore_broadcasts = 1'"
+        expected:
+          - 0
+      3.2.6 Ensure bogus ICMP responses are ignored (Scored):
+        audit:
+          - "sysctl net.ipv4.icmp_ignore_bogus_error_responses | grep 'net.ipv4.icmp_ignore_bogus_error_responses = 1'"
+        expected:
+          - 0
+      3.2.7 Ensure Reverse Path Filtering is enabled (Scored):
+        audit:
+          - "sysctl net.ipv4.conf.all.rp_filter | grep 'net.ipv4.conf.all.rp_filter = 1'"
+          - "sysctl net.ipv4.conf.default.rp_filter | grep 'net.ipv4.conf.default.rp_filter = 1'"
+        expected:
+          - 0
+          - 0
+      3.2.8 Ensure TCP SYN Cookies is enabled (Scored):
+        audit:
+          - "sysctl net.ipv4.tcp_syncookies | grep 'net.ipv4.tcp_syncookies = 1'"
+        expected:
+          - 0
+    3.3 IPv6:
+      3.3.1 Ensure IPv6 router advertisements are not accepted (Scored):
+        audit:
+          - "sysctl net.ipv6.conf.all.accept_ra | grep 'net.ipv6.conf.all.accept_ra = 0'"
+          - "sysctl net.ipv6.conf.default.accept_ra | grep 'net.ipv6.conf.default.accept_ra = 0'"
+        expected:
+          - 0
+          - 0
+      3.3.2 Ensure IPv6 redirects are not accepted (Scored):
+        audit:
+          - "sysctl net.ipv6.conf.all.accept_redirects | grep 'net.ipv6.conf.all.accept_redirect = 0'"
+          - "sysctl net.ipv6.conf.default.accept_redirects | grep 'net.ipv6.conf.default.accept_redirect = 0'"
+        expected:
+          - 0
+          - 0
+      3.3.3 Ensure IPv6 is disabled (Not Scored):
+        audit:
+          - skip
+        expected:
+          - 0
+    3.4 TCP Wrappers:
+      3.4.1 Ensure TCP Wrappers is installed (Scored):
+        audit:
+          - "rpm -q tcp_wrappers"
+          - "rpm -q tcp_wrappers-libs"
+        expected:
+          - 0
+          - 0
+      3.4.2 Ensure /etc/hosts.allow is configured (Scored):
+        audit:
+          - "cat /etc/hosts.allow"
+        expected:
+          - 0
+      3.4.3 Ensure /etc/hosts.deny is configured (Scored):
+        audit:
+          - "cat /etc/hosts.allow"
+        expected:
+          - 0
+      3.4.4 Ensure permissions on /etc/hosts.allow are configured (Scored):
+        audit:
+          - "stat /etc/hosts.allow | grep \"Access:[[:space:]](0644/-rw-r--r--)\""
+          - "stat /etc/hosts.allow | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+          #- stat /etc/hosts.allow | grep "Uid:[[:space:]]([[:space:]]\{1,\}0/[[:space:]]\{1,\}root)"
+          - "stat /etc/hosts.allow | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+          #- stat /etc/hosts.allow | grep "Gid:[[:space:]]([[:space:]]\{1,\}0/[[:space:]]\{1,\}root)"
+        expected:
+          - 0
+          - 0
+          - 0
+      3.4.4 Ensure permissions on /etc/hosts.deny are configured (Scored):
+        audit:
+          - "stat /etc/hosts.deny | grep \"Access:[[:space:]](0644/-rw-r--r--)\""
+          - "stat /etc/hosts.deny | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+          #- stat /etc/hosts.deny | grep "Uid:[[:space:]]([[:space:]]\{1,\}0/[[:space:]]\{1,\}root)"
+          - "stat /etc/hosts.deny | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+          #- stat /etc/hosts.deny | grep "Gid:[[:space:]]([[:space:]]\{1,\}0/[[:space:]]\{1,\}root)"
+        expected:
+          - 0
+          - 0
+          - 0
+    3.5 Uncommon Network Protocols:
+      3.5.1 Ensure DCCP is disabled (Not Scored):
+        audit:
+          - "modprobe -n -v dccp | grep '/bin/true'"
+          - "lsmod | grep dccp"
+        expected:
+          - 0
+          - 1
+      3.5.2 Ensure SCTP is disabled (Not Scored):
+        audit:
+          - "modprobe -n -v sctp | grep '/bin/true'"
+          - "lsmod | grep sctp"
+        expected:
+          - 0
+          - 1
+      3.5.3 Ensure RDS is disabled (Not Scored):
+        audit:
+          - "modprobe -n -v rds | grep '/bin/true'"
+          - "lsmod | grep rds"
+        expected:
+          - 0
+          - 1
+      3.5.4 Ensure TIPC is disabled (Not Scored):
+        audit:
+          - "modprobe -n -v tipc | grep '/bin/true'"
+          - "lsmod | grep tipc"
+        expected:
+          - 0
+          - 1
+    3.6 Firewall Configuration:
+      3.6.1 Ensure iptables is installed (Scored):
+        audit:
+          - "rpm -q iptables"
+        expected:
+          - 0
+      3.6.2 Ensure default deny firewall policy (Scored):
+        audit:
+          - "iptables -L | egrep 'Chain INPUT \\(policy DROP\\)|Chain INPUT \\(policy REJECT\\)'"
+        expected:
+          - 0
+      3.6.3 Ensure loopback traffic is configured (Scored):
+        audit:
+          - "iptables -L INPUT -v -n | egrep 'ACCEPT.+\\0\\.0\\.0\\.0/0'"
+          - "iptables -L INPUT -v -n | egrep 'DROP.+127\\.0\\.0\\.0/8'"
+        expected:
+          - 0
+          - 0
+      3.6.4 Ensure outbound and established connections are configured (Not Scored):
+        audit:
+          - skip
+        expected:
+          - 0
+      3.6.5 Ensure firewall rules exist for all open ports (Scored):
+        audit:
+          - "iptables -L INPUT -v -n"
+        expected:
+          - 1
+    3.7 Ensure wireless interfaces are disabled (Not Scored):
+      audit:
+        - skip
+      expected:
+        - 0
+  4 Logging and Auditing:
+    4.1 Configure System Accounting (auditd):
+      4.1.1 Configure Data Retention:
+        4.1.1.1 Ensure audit log storage size is configured (Not Scored):
+          audit:
+            - skip
+          expected:
+            - 0
+        4.1.1.2 Ensure system is disabled when audit logs are full (Scored):
+          audit:
+            - "grep \"^space_left_action =\" /etc/audit/auditd.conf | grep -i email"
+            - "grep \"^action_mail_acct =\" /etc/audit/auditd.conf | grep -i root"
+            - "grep \"^admin_space_left_action =\" /etc/audit/auditd.conf | grep -i halt"
+          expected:
+            - 0
+            - 0
+            - 0
+        4.1.1.3 Ensure audit logs are not automatically deleted (Scored):
+          audit:
+            - "grep \"^max_log_file_action =\" /etc/audit/auditd.conf | grep -i keep_logs"
+          expected:
+            - 0
+        4.1.2 Ensure auditd service is enabled (Scored):
+          audit:
+            - "systemctl is-enabled auditd | grep enabled"
+          expected:
+            - 0
+        4.1.3 Ensure auditing for processes that start prior to auditd is enabled (Scored):
+          audit:
+            - "grep \"^\\s*linux\" /boot/grub2/grub.cfg | grep audit=1"
+          expected:
+            - 0
+        4.1.4 Ensure events that modify date and time information are collected (Scored):
+          audit:
+            - "grep time-change /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change'"
+            - "grep time-change /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change'"
+            - "grep time-change /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S clock_settime -k time-change'"
+            - "grep time-change /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S clock_settime -k time-change'"
+            - "grep time-change /etc/audit/audit.rules | grep '-w /etc/localtime -p wa -k time-change'"
+          expected:
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+        4.1.5 Ensure events that modify user/group information are collected (Scored):
+          audit:
+            - "grep identity /etc/audit/audit.rules | grep '-w /etc/group -p wa -k identity'"
+            - "grep identity /etc/audit/audit.rules | grep '-w /etc/passwd -p wa -k identity'"
+            - "grep identity /etc/audit/audit.rules | grep '-w /etc/gshadow -p wa -k identity'"
+            - "grep identity /etc/audit/audit.rules | grep '-w /etc/shadow -p wa -k identity'"
+            - "grep identity /etc/audit/audit.rules | grep '-w /etc/security/opasswd -p wa -k identity'"
+          expected:
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+        4.1.6 Ensure events that modify the system's network environment are collected (Scored):
+          audit:
+            - "grep system-locale /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S sethostname -S setdomainname -k system-locale'"
+            - "grep system-locale /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S sethostname -S setdomainname -k system-locale'"
+            - "grep system-locale /etc/audit/audit.rules | grep '-w /etc/issue -p wa -k system-locale'"
+            - "grep system-locale /etc/audit/audit.rules | grep '-w /etc/issue.net -p wa -k system-locale'"
+            - "grep system-locale /etc/audit/audit.rules | grep '-w /etc/hosts -p wa -k system-locale'"
+            - "grep system-locale /etc/audit/audit.rules | grep '-w /etc/sysconfig/network -p wa -k system-locale'"
+          expected:
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+        4.1.7 Ensure events that modify the system's Mandatory Access Controls are collected (Scored):
+          audit:
+            - "grep MAC-policy /etc/audit/audit.rules | grep '-w /etc/selinux/ -p wa -k MAC-policy'"
+          expected:
+            - 0
+        4.1.8 Ensure login and logout events are collected (Scored):
+          audit:
+            - "grep logins /etc/audit/audit.rules | grep '-w /var/log/lastlog -p wa -k logins'"
+            - "grep logins /etc/audit/audit.rules | grep '-w /var/run/faillock/ -p wa -k logins'"
+          expected:
+            - 0
+            - 0
+        4.1.9 Ensure session initiation information is collected (Scored):
+          audit:
+            - "grep session /etc/audit/audit.rules | grep '-w /var/run/utmp -p wa -k session'"
+            - "grep session /etc/audit/audit.rules | grep '-w /var/log/wtmp -p wa -k session'"
+            - "grep session /etc/audit/audit.rules | grep '-w /var/log/btmp -p wa -k session'"
+          expected:
+            - 0
+            - 0
+            - 0
+        4.1.10 Ensure discretionary access control permission modification events are collected (Scored):
+          audit:
+            - "grep perm_mod /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S chmod -S fchmod -S fchmodat -F auid>=1000 -F auid!=4294967295 -k perm_mod'"
+            - "grep perm_mod /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S chmod -S fchmod -S fchmodat -F auid>=1000 -F auid!=4294967295 -k perm_mod'"
+            - "grep perm_mod /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S chown -S fchown -S fchownat -S lchown -F auid>=1000 -F auid!=4294967295 -k perm_mod'"
+            - "grep perm_mod /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S chown -S fchown -S fchownat -S lchown -F auid>=1000 -F auid!=4294967295 -k perm_mod'"
+          expected:
+            - 0
+            - 0
+            - 0
+            - 0
+        4.1.12 Ensure use of privileged commands is collected (Scored):
+          audit:
+            - "find / -xdev \\( -perm -4000 -o -perm -2000 \\) -type f | awk '{print \"-a always,exit -F path=\" $1 \" -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged\" }' | wc -l | grep 0"
+            #- find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk '{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged" }' | wc -l | grep 0
+          expected:
+            - 1
+        4.1.13 Ensure successful file system mounts are collected (Scored):
+          audit:
+            - "grep mounts /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=4294967295 -k mounts'"
+            - "grep mounts /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=4294967295 -k mounts'"
+          expected:
+            - 0
+            - 0
+        4.1.14 Ensure file deletion events by users are collected (Scored):
+          audit:
+            - "grep delete /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F auid>=1000 -F auid!=4294967295 -k delete'"
+            - "grep delete /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F auid>=1000 -F auid!=4294967295 -k delete'"
+          expected:
+            - 0
+            - 0
+        4.1.15 Ensure changes to system administration scope (sudoers) is collected (Scored):
+          audit:
+            - "grep scope /etc/audit/audit.rules | grep '-w /etc/sudoers -p wa -k scope'"
+            - "grep scope /etc/audit/audit.rules | grep '-w /etc/sudoers.d -p wa -k scope'"
+          expected:
+            - 0
+            - 0
+        4.1.16 Ensure system administrator actions (sudolog) are collected (Scored):
+          audit:
+            - "grep actions /etc/audit/audit.rules | grep '-w /var/log/sudo.log -p wa -k actions'"
+          expected:
+            - 0
+        4.1.17 Ensure kernel module loading and unloading is collected (Scored):
+          audit:
+            - "grep actions /etc/audit/audit.rules | grep '-w /sbin/insmod -p x -k modules'"
+            - "grep actions /etc/audit/audit.rules | grep '-w /sbin/rmmod -p x -k modules'"
+            - "grep actions /etc/audit/audit.rules | grep '-w /sbin/modprobe -p x -k modules'"
+            - "grep actions /etc/audit/audit.rules | grep '-a always,exit arch=b64 -S init_module -S delete_module -k modules'"
+          expected:
+            - 0
+            - 0
+            - 0
+            - 0
+        4.1.18 Ensure the audit configuration is immutable (Scored):
+          audit:
+            - "grep \"^\\s*[^#]\" /etc/audit/audit.rules | tail -1 | grep '-e 2'"
+          expected:
+            - 0
+      4.2.1 Configure rsyslog:
+        4.2.1.1 Ensure rsyslog Service is enabled (Scored):
+          audit:
+            - "systemctl is-enabled rsyslog | grep enabled"
+          expected:
+            - 0
+        4.2.1.2 Ensure logging is configured (Not Scored):
+          audit:
+            - skip
+          expected:
+            - 0
+        4.2.1.3 Ensure rsyslog default file permissions configured (Scored):
+          audit:
+            - "grep ^\\$FileCreateMode /etc/rsyslog.conf | grep 0640"
+          expected:
+            - 0
+        4.2.1.4 Ensure rsyslog is configured to send logs to a remote log host (Scored):
+          audit:
+            - "grep \"^*.*[^I][^I]*@\" /etc/rsyslog.conf | wc -l | grep 0"
+          expected:
+            - 1
+        4.2.1.5 Ensure remote rsyslog messages are only accepted on designated log hosts. (Not Scored):
+          audit:
+            - "grep ^\\$ModLoad imtcp.so /etc/rsyslog.conf"
+            - "grep ^\\$InputTCPServerRun /etc/rsyslog.conf | grep 514"
+          expected:
+            - 0
+            - 0
+      4.2.2 Configure syslog-ng:
+        4.2.2.1 Ensure syslog-ng service is enabled (Scored):
+          audit:
+            - "systemctl is-enabled syslog-ng | grep enabled"
+          expected:
+            - 0
+        4.2.2.2 Ensure logging is configured (Not Scored):
+          audit:
+            - skip
+          expected:
+            - 0
+        4.2.2.3 Ensure syslog-ng default file permissions configured (Scored):
+          audit:
+            - "grep 'chain_hostnames (off)' /etc/syslog-ng/syslog-ng.conf"
+            - "grep 'flush_lines (0)' /etc/syslog-ng/syslog-ng.conf"
+            - "grep 'perm (0640)' /etc/syslog-ng/syslog-ng.conf"
+            - "grep 'stats_freq (3600)' /etc/syslog-ng/syslog-ng.conf"
+            - "grep 'threaded (yes)' /etc/syslog-ng/syslog-ng.conf"
+          expected:
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+        4.2.2.4 Ensure syslog-ng is configured to send logs to a remote log host (Not Scored):
+          audit:
+            - skip
+          expected:
+            - 0
+        4.2.2.5 Ensure remote syslog-ng messages are only accepted on designated log hosts (Not Scored):
+          audit:
+            - skip
+          expected:
+            - 0
+      4.2.3 Ensure rsyslog or syslog-ng is installed (Scored):
+        audit:
+          - "rpm -q rsyslog"
+          - "rpm -q syslog-ng"
+        expected:
+          - 0
+          - 0
+      4.2.4 Ensure permissions on all logfiles are configured (Scored):
+        audit:
+          - "find /var/log -type f -ls | grep -e '-........x' | wc -l | grep 0"
+          - "find /var/log -type f -ls | grep -e '-.......w.' | wc -l | grep 0"
+          - "find /var/log -type f -ls | grep -e '-......r..' | wc -l | grep 0"
+          - "find /var/log -type f -ls | grep -e '-.....x...' | wc -l | grep 0"
+          - "find /var/log -type f -ls | grep -e '-....w....' | wc -l | grep 0"
+        expected:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+    4.3 Ensure logrotate is configured (Not Scored):
+      audit:
+        - skip
+      expected:
+        - 0

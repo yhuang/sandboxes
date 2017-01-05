@@ -75,6 +75,11 @@
     },
     {
       "type": "file",
+      "source": "files/issue",
+      "destination": "/tmp/issue"
+    },
+    {
+      "type": "file",
       "source": "files/ntp.conf",
       "destination": "/tmp/ntp.conf"
     },
@@ -82,6 +87,16 @@
       "type": "file",
       "source": "files/ntpd",
       "destination": "/tmp/ntpd"
+    },
+    {
+      "type": "file",
+      "source": "files/cis-benchmark-centos-7.yml",
+      "destination": "/tmp/cis-benchmark-centos-7.yml"
+    },
+    {
+      "type": "file",
+      "source": "scripts/system-audit.py",
+      "destination": "/tmp/system-audit.py"
     },
     {
       "type": "shell",
@@ -100,19 +115,23 @@
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
         "provisioning-scripts/install-vmtools.sh",
-        "hardening-scripts/harden-tmp.sh",
+        "hardening-scripts/configure-disk-partitions.sh",
         "hardening-scripts/configure-yum.sh",
         "hardening-scripts/configure-secure-boot.sh",
         "hardening-scripts/configure-kernel-parameters.sh",
         "hardening-scripts/install-issue.sh",
         "hardening-scripts/install-ntp.sh",
+        "hardening-scripts/configure-ntp.sh",
         "hardening-scripts/install-aide.sh",
         "hardening-scripts/configure-aide.sh",
         "hardening-scripts/prevent-usb-mount.sh",
         "hardening-scripts/enable-secure-password-policy.sh",
         "hardening-scripts/disable-unused-filesystems.sh",
+        "hardening-scripts/disable-uncommon-network-protocols.sh",
         "hardening-scripts/bulk-configure-services.sh",
         "hardening-scripts/bulk-remove-services.sh",
+        "hardening-scripts/install-system-audit-script.sh",
+        "hardening-scripts/install-syslog-ng.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }
