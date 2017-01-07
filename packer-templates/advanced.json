@@ -132,6 +132,7 @@
         "hardening-scripts/bulk-remove-services.sh",
         "hardening-scripts/install-system-audit-script.sh",
         "hardening-scripts/install-syslog-ng.sh",
+        "hardening-scripts/configure-logfile-permissions.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }
