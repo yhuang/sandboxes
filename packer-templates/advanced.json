@@ -49,6 +49,11 @@
       ]
     },
     {
+      "type": "shell",
+      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "inline": [ "sleep 60" ]
+    },
+    {
       "type": "file",
       "source": "files/vmware-tools-linux.gz",
       "destination": "/tmp/vmware-tools-linux.gz"

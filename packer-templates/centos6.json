@@ -1,12 +1,12 @@
 {
   "variables": {
-    "box_basename": "training",
+    "box_basename": "centos",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
-    "iso_checksum": "907e5755f824c5848b9c8efbb484f3cd945e93faa024bad6ba875226f9683b16",
+    "iso_checksum": "1dda55622614a8b43b448a72f87d6cb7f79de1eff49ee8c5881a7d9db28d4e35",
     "iso_checksum_type": "sha256",
-    "iso_name": "CentOS-7-x86_64-DVD-1511.iso",
+    "iso_name": "CentOS-6.8-x86_64-bin-DVD1.iso",
     "ks_path": "http/ks.cfg"
   },
   "builders": [
@@ -65,6 +65,10 @@
     },
     {
       "type": "shell",
+      "script": "provisioning-scripts/install-devops-rvm.sh"
+    },
+    {
+      "type": "shell",
       "environment_vars": [
         "HOME_DIR=/home/vagrant"
       ],
@@ -75,6 +79,7 @@
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
         "provisioning-scripts/install-python3.sh",
+        "provisioning-scripts/install-pip.sh",
         "provisioning-scripts/install-jq.sh",
         "provisioning-scripts/install-aws-cli.sh",
         "provisioning-scripts/create-hashicorp-directory.sh",
