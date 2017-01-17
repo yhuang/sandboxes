@@ -184,12 +184,12 @@ CIS:
       1.2.4 Ensure Red Hat Network or Subscription Manager connection is configured - Level 1 Server (Not Scored):
         audit:
           - skip
-        expectd:
+        expected:
           - 0
       1.2.5 Disable the rhnsd Daemon - Level 2 Server (Not Scored):
         audit:
           - systemctl is-enabled rhnsd | grep enabled
-        expectd:
+        expected:
           - 1
     1.3 Filesystem Integrity Checking:
       1.3.1 Ensure AIDE is installed - Level 1 Server (Scored):
@@ -812,11 +812,11 @@ CIS:
             - 0
         4.1.4 Ensure events that modify date and time information are collected - Level 2 Server (Scored):
           audit:
-            - "grep time-change /etc/audit/audit.rules | grep '\-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change'"
-            - "grep time-change /etc/audit/audit.rules | grep '\-a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change'"
-            - "grep time-change /etc/audit/audit.rules | grep '\-a always,exit -F arch=b64 -S clock_settime -k time-change'"
-            - "grep time-change /etc/audit/audit.rules | grep '\-a always,exit -F arch=b32 -S clock_settime -k time-change'"
-            - "grep time-change /etc/audit/audit.rules | grep '\-w /etc/localtime -p wa -k time-change'"
+            - "grep time-change /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change'"
+            - "grep time-change /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change'"
+            - "grep time-change /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S clock_settime -k time-change'"
+            - "grep time-change /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S clock_settime -k time-change'"
+            - "grep time-change /etc/audit/audit.rules | grep '-w /etc/localtime -p wa -k time-change'"
           expected:
             - 0
             - 0
@@ -825,11 +825,11 @@ CIS:
             - 0
         4.1.5 Ensure events that modify user/group information are collected - Level 2 Server (Scored):
           audit:
-            - "grep identity /etc/audit/audit.rules | grep '\-w /etc/group -p wa -k identity'"
-            - "grep identity /etc/audit/audit.rules | grep '\-w /etc/passwd -p wa -k identity'"
-            - "grep identity /etc/audit/audit.rules | grep '\-w /etc/gshadow -p wa -k identity'"
-            - "grep identity /etc/audit/audit.rules | grep '\-w /etc/shadow -p wa -k identity'"
-            - "grep identity /etc/audit/audit.rules | grep '\-w /etc/security/opasswd -p wa -k identity'"
+            - "grep identity /etc/audit/audit.rules | grep '-w /etc/group -p wa -k identity'"
+            - "grep identity /etc/audit/audit.rules | grep '-w /etc/passwd -p wa -k identity'"
+            - "grep identity /etc/audit/audit.rules | grep '-w /etc/gshadow -p wa -k identity'"
+            - "grep identity /etc/audit/audit.rules | grep '-w /etc/shadow -p wa -k identity'"
+            - "grep identity /etc/audit/audit.rules | grep '-w /etc/security/opasswd -p wa -k identity'"
           expected:
             - 0
             - 0
@@ -838,12 +838,12 @@ CIS:
             - 0
         4.1.6 Ensure events that modify the system's network environment are collected - Level 2 Server (Scored):
           audit:
-            - "grep system-locale /etc/audit/audit.rules | grep '\-a always,exit -F arch=b64 -S sethostname -S setdomainname -k system-locale'"
-            - "grep system-locale /etc/audit/audit.rules | grep '\-a always,exit -F arch=b32 -S sethostname -S setdomainname -k system-locale'"
-            - "grep system-locale /etc/audit/audit.rules | grep '\-w /etc/issue -p wa -k system-locale'"
-            - "grep system-locale /etc/audit/audit.rules | grep '\-w /etc/issue.net -p wa -k system-locale'"
-            - "grep system-locale /etc/audit/audit.rules | grep '\-w /etc/hosts -p wa -k system-locale'"
-            - "grep system-locale /etc/audit/audit.rules | grep '\-w /etc/sysconfig/network -p wa -k system-locale'"
+            - "grep system-locale /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S sethostname -S setdomainname -k system-locale'"
+            - "grep system-locale /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S sethostname -S setdomainname -k system-locale'"
+            - "grep system-locale /etc/audit/audit.rules | grep '-w /etc/issue -p wa -k system-locale'"
+            - "grep system-locale /etc/audit/audit.rules | grep '-w /etc/issue.net -p wa -k system-locale'"
+            - "grep system-locale /etc/audit/audit.rules | grep '-w /etc/hosts -p wa -k system-locale'"
+            - "grep system-locale /etc/audit/audit.rules | grep '-w /etc/sysconfig/network -p wa -k system-locale'"
           expected:
             - 0
             - 0
@@ -853,31 +853,31 @@ CIS:
             - 0
         4.1.7 Ensure events that modify the system's Mandatory Access Controls are collected - Level 2 Server (Scored):
           audit:
-            - "grep MAC-policy /etc/audit/audit.rules | grep '\-w /etc/selinux/ -p wa -k MAC-policy'"
+            - "grep MAC-policy /etc/audit/audit.rules | grep '-w /etc/selinux/ -p wa -k MAC-policy'"
           expected:
             - 0
         4.1.8 Ensure login and logout events are collected - Level 2 Server (Scored):
           audit:
-            - "grep logins /etc/audit/audit.rules | grep '\-w /var/log/lastlog -p wa -k logins'"
-            - "grep logins /etc/audit/audit.rules | grep '\-w /var/run/faillock/ -p wa -k logins'"
+            - "grep logins /etc/audit/audit.rules | grep '-w /var/log/lastlog -p wa -k logins'"
+            - "grep logins /etc/audit/audit.rules | grep '-w /var/run/faillock/ -p wa -k logins'"
           expected:
             - 0
             - 0
         4.1.9 Ensure session initiation information is collected - Level 2 Server (Scored):
           audit:
-            - "grep session /etc/audit/audit.rules | grep '\-w /var/run/utmp -p wa -k session'"
-            - "grep session /etc/audit/audit.rules | grep '\-w /var/log/wtmp -p wa -k session'"
-            - "grep session /etc/audit/audit.rules | grep '\-w /var/log/btmp -p wa -k session'"
+            - "grep session /etc/audit/audit.rules | grep '-w /var/run/utmp -p wa -k session'"
+            - "grep session /etc/audit/audit.rules | grep '-w /var/log/wtmp -p wa -k session'"
+            - "grep session /etc/audit/audit.rules | grep '-w /var/log/btmp -p wa -k session'"
           expected:
             - 0
             - 0
             - 0
         4.1.10 Ensure discretionary access control permission modification events are collected - Level 2 Server (Scored):
           audit:
-            - "grep perm_mod /etc/audit/audit.rules | grep '\-a always,exit -F arch=b64 -S chmod -S fchmod -S fchmodat -F auid>=1000 -F auid!=4294967295 -k perm_mod'"
-            - "grep perm_mod /etc/audit/audit.rules | grep '\-a always,exit -F arch=b32 -S chmod -S fchmod -S fchmodat -F auid>=1000 -F auid!=4294967295 -k perm_mod'"
-            - "grep perm_mod /etc/audit/audit.rules | grep '\-a always,exit -F arch=b64 -S chown -S fchown -S fchownat -S lchown -F auid>=1000 -F auid!=4294967295 -k perm_mod'"
-            - "grep perm_mod /etc/audit/audit.rules | grep '\-a always,exit -F arch=b32 -S chown -S fchown -S fchownat -S lchown -F auid>=1000 -F auid!=4294967295 -k perm_mod'"
+            - "grep perm_mod /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S chmod -S fchmod -S fchmodat -F auid>=1000 -F auid!=4294967295 -k perm_mod'"
+            - "grep perm_mod /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S chmod -S fchmod -S fchmodat -F auid>=1000 -F auid!=4294967295 -k perm_mod'"
+            - "grep perm_mod /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S chown -S fchown -S fchownat -S lchown -F auid>=1000 -F auid!=4294967295 -k perm_mod'"
+            - "grep perm_mod /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S chown -S fchown -S fchownat -S lchown -F auid>=1000 -F auid!=4294967295 -k perm_mod'"
           expected:
             - 0
             - 0
@@ -885,10 +885,10 @@ CIS:
             - 0
         4.1.11 Ensure unsuccessful unauthorized file access attempts are collected - Level 2 Server (Scored):
           audit:
-            - "grep access /etc/audit/audit.rules | grep '\-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=4294967295 -k access'"
-            - "grep access /etc/audit/audit.rules | grep '\-a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=4294967295 -k access'"
-            - "grep access /etc/audit/audit.rules | grep '\-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=4294967295 -k access'"
-            - "grep access /etc/audit/audit.rules | grep '\-a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=4294967295 -k access'"
+            - "grep access /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=4294967295 -k access'"
+            - "grep access /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=4294967295 -k access'"
+            - "grep access /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=4294967295 -k access'"
+            - "grep access /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=4294967295 -k access'"
           expected:
             - 0
             - 0
@@ -902,36 +902,36 @@ CIS:
             - 1
         4.1.13 Ensure successful file system mounts are collected - Level 2 Server (Scored):
           audit:
-            - "grep mounts /etc/audit/audit.rules | grep '\-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=4294967295 -k mounts'"
-            - "grep mounts /etc/audit/audit.rules | grep '\-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=4294967295 -k mounts'"
+            - "grep mounts /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=4294967295 -k mounts'"
+            - "grep mounts /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=4294967295 -k mounts'"
           expected:
             - 0
             - 0
         4.1.14 Ensure file deletion events by users are collected - Level 2 Server (Scored):
           audit:
-            - "grep delete /etc/audit/audit.rules | grep '\-a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F auid>=1000 -F auid!=4294967295 -k delete'"
-            - "grep delete /etc/audit/audit.rules | grep '\-a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F auid>=1000 -F auid!=4294967295 -k delete'"
+            - "grep delete /etc/audit/audit.rules | grep '-a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F auid>=1000 -F auid!=4294967295 -k delete'"
+            - "grep delete /etc/audit/audit.rules | grep '-a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F auid>=1000 -F auid!=4294967295 -k delete'"
           expected:
             - 0
             - 0
         4.1.15 Ensure changes to system administration scope (sudoers) is collected - Level 2 Server (Scored):
           audit:
-            - "grep scope /etc/audit/audit.rules | grep '\-w /etc/sudoers -p wa -k scope'"
-            - "grep scope /etc/audit/audit.rules | grep '\-w /etc/sudoers.d -p wa -k scope'"
+            - "grep scope /etc/audit/audit.rules | grep '-w /etc/sudoers -p wa -k scope'"
+            - "grep scope /etc/audit/audit.rules | grep '-w /etc/sudoers.d -p wa -k scope'"
           expected:
             - 0
             - 0
         4.1.16 Ensure system administrator actions (sudolog) are collected - Level 2 Server (Scored):
           audit:
-            - "grep actions /etc/audit/audit.rules | grep '\-w /var/log/sudo.log -p wa -k actions'"
+            - "grep actions /etc/audit/audit.rules | grep '-w /var/log/sudo.log -p wa -k actions'"
           expected:
             - 0
         4.1.17 Ensure kernel module loading and unloading is collected - Level 2 Server (Scored):
           audit:
-            - "grep actions /etc/audit/audit.rules | grep '\-w /sbin/insmod -p x -k modules'"
-            - "grep actions /etc/audit/audit.rules | grep '\-w /sbin/rmmod -p x -k modules'"
-            - "grep actions /etc/audit/audit.rules | grep '\-w /sbin/modprobe -p x -k modules'"
-            - "grep actions /etc/audit/audit.rules | grep '\-a always,exit arch=b64 -S init_module -S delete_module -k modules'"
+            - "grep actions /etc/audit/audit.rules | grep '-w /sbin/insmod -p x -k modules'"
+            - "grep actions /etc/audit/audit.rules | grep '-w /sbin/rmmod -p x -k modules'"
+            - "grep actions /etc/audit/audit.rules | grep '-w /sbin/modprobe -p x -k modules'"
+            - "grep actions /etc/audit/audit.rules | grep '-a always,exit arch=b64 -S init_module -S delete_module -k modules'"
           expected:
             - 0
             - 0
@@ -939,7 +939,7 @@ CIS:
             - 0
         4.1.18 Ensure the audit configuration is immutable - Level 2 Server (Scored):
           audit:
-            - "grep \"^\\s*[^#]\" /etc/audit/audit.rules | tail -1 | grep '\-e 2'"
+            - "grep \"^\\s*[^#]\" /etc/audit/audit.rules | tail -1 | grep '-e 2'"
           expected:
             - 0
       4.2.1 Configure rsyslog:
