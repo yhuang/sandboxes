@@ -1029,76 +1029,185 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
         - skip
       expected:
         - 0
-  5 Configure cron:
-    5.1.1 Ensure cron daemon is enabled - Level 1 (Scored):
-      audit:
-        - "systemctl is-enabled crond | grep enabled"
-      expected:
-        - 0
-    5.1.2 Ensure permissions on /etc/crontab are configured - Level 1 (Scored):
-      audit:
-        - "stat /etc/crontab | grep \"Access:[[:space:]](0600/-rw-------)\""
-        - "stat /etc/crontab | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
-        - "stat /etc/crontab | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
-      expected:
-        - 0
-        - 0
-        - 0
-    5.1.3 Ensure permissions on /etc/cron.hourly are configured - Level 1 (Scored):
-      audit:
-        - "stat /etc/cron.hourly | grep \"Access:[[:space:]](0600/-rw-------)\""
-        - "stat /etc/cron.hourly | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
-        - "stat /etc/cron.hourly | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
-      expected:
-        - 0
-        - 0
-        - 0
-    5.1.4 Ensure permissions on /etc/cron.daily are configured - Level 1 (Scored):
-      audit:
-        - "stat /etc/cron.daily | grep \"Access:[[:space:]](0600/-rw-------)\""
-        - "stat /etc/cron.daily | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
-        - "stat /etc/cron.daily | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
-      expected:
-        - 0
-        - 0
-        - 0
-    5.1.5 Ensure permissions on /etc/cron.weekly are configured - Level 1 (Scored):
-      audit:
-        - "stat /etc/cron.weekly | grep \"Access:[[:space:]](0600/-rw-------)\""
-        - "stat /etc/cron.weekly | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
-        - "stat /etc/cron.weekly | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
-      expected:
-        - 0
-        - 0
-        - 0
-    5.1.6 Ensure permissions on /etc/cron.monthly are configured - Level 1 (Scored):
-      audit:
-        - "stat /etc/cron.monthly | grep \"Access:[[:space:]](0600/-rw-------)\""
-        - "stat /etc/cron.monthly | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
-        - "stat /etc/cron.monthly | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
-      expected:
-        - 0
-        - 0
-        - 0
-    5.1.7 Ensure permissions on /etc/cron.d are configured - Level 1 (Scored):
-      audit:
-        - "stat /etc/cron.d | grep \"Access:[[:space:]](0600/-rw-------)\""
-        - "stat /etc/cron.d | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
-        - "stat /etc/cron.d | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
-      expected:
-        - 0
-        - 0
-        - 0
-    5.1.8 Ensure at/cron is restricted to authorized users - Level 1 (Scored):
-      audit:
-        - "stat /etc/cron.deny"
-        - "stat /etc/at.deny"
-        - "stat /etc/cron.allow | grep \"Access:[[:space:]](0600/-rw-------)\""
-        - "stat /etc/cron.allow | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
-        - "stat /etc/cron.allow| grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
-      expected:
-        - 1
-        - 1
-        - 0
-        - 0
-        - 0
+  5 Access, Authentication and Authorization:
+    5.1 Configure cron:
+      5.1.1 Ensure cron daemon is enabled - Level 1 (Scored):
+        audit:
+          - "systemctl is-enabled crond | grep enabled"
+        expected:
+          - 0
+      5.1.2 Ensure permissions on /etc/crontab are configured - Level 1 (Scored):
+        audit:
+          - "stat /etc/crontab | grep \"Access:[[:space:]](0600/-rw-------)\""
+          - "stat /etc/crontab | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+          - "stat /etc/crontab | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+        expected:
+          - 0
+          - 0
+          - 0
+      5.1.3 Ensure permissions on /etc/cron.hourly are configured - Level 1 (Scored):
+        audit:
+          - "stat /etc/cron.hourly | grep \"Access:[[:space:]](0600/-rw-------)\""
+          - "stat /etc/cron.hourly | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+          - "stat /etc/cron.hourly | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+        expected:
+          - 0
+          - 0
+          - 0
+      5.1.4 Ensure permissions on /etc/cron.daily are configured - Level 1 (Scored):
+        audit:
+          - "stat /etc/cron.daily | grep \"Access:[[:space:]](0600/-rw-------)\""
+          - "stat /etc/cron.daily | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+          - "stat /etc/cron.daily | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+        expected:
+          - 0
+          - 0
+          - 0
+      5.1.5 Ensure permissions on /etc/cron.weekly are configured - Level 1 (Scored):
+        audit:
+          - "stat /etc/cron.weekly | grep \"Access:[[:space:]](0600/-rw-------)\""
+          - "stat /etc/cron.weekly | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+          - "stat /etc/cron.weekly | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+        expected:
+          - 0
+          - 0
+          - 0
+      5.1.6 Ensure permissions on /etc/cron.monthly are configured - Level 1 (Scored):
+        audit:
+          - "stat /etc/cron.monthly | grep \"Access:[[:space:]](0600/-rw-------)\""
+          - "stat /etc/cron.monthly | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+          - "stat /etc/cron.monthly | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+        expected:
+          - 0
+          - 0
+          - 0
+      5.1.7 Ensure permissions on /etc/cron.d are configured - Level 1 (Scored):
+        audit:
+          - "stat /etc/cron.d | grep \"Access:[[:space:]](0600/-rw-------)\""
+          - "stat /etc/cron.d | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+          - "stat /etc/cron.d | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+        expected:
+          - 0
+          - 0
+          - 0
+      5.1.8 Ensure at/cron is restricted to authorized users - Level 1 (Scored):
+        audit:
+          - "stat /etc/cron.deny"
+          - "stat /etc/at.deny"
+          - "stat /etc/cron.allow | grep \"Access:[[:space:]](0600/-rw-------)\""
+          - "stat /etc/cron.allow | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+          - "stat /etc/cron.allow| grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+        expected:
+          - 1
+          - 1
+          - 0
+          - 0
+          - 0
+    5.2 SSH Server Configuration:
+      5.2.1 Ensure permissions on /etc/ssh/sshd_config are configured - Level 1 (Scored):
+        audit:
+          - "stat /etc/ssh/sshd_config | grep \"Access:[[:space:]](0600/-rw-------)\""
+          - "stat /etc/ssh/sshd_config | grep \"Uid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+          - "stat /etc/ssh/sshd_config | grep \"Gid:[[:space:]]([[:space:]]\\{1,\\}0/[[:space:]]\\{1,\\}root)\""
+        expected:
+          - 0
+          - 0
+          - 0
+      5.2.2 Ensure SSH Protocol is set to 2 - Level 1 (Scored):
+        audit:
+          - "grep \"^Protocol\" /etc/ssh/sshd_config | grep \"Protocol 2\""
+        expected:
+          - 0
+      5.2.3 Ensure SSH LogLevel is set to INFO - Level 1 (Scored):
+        audit:
+          - "grep \"^LogLevel\" /etc/ssh/sshd_config | grep \"LogLevel INFO\""
+        expected:
+          - 0
+      5.2.4 Ensure SSH X11 forwarding is disabled - Level 1 (Scored):
+        audit:
+          - "grep \"^X11Forwarding\" /etc/ssh/sshd_config | grep \"X11Forwarding no\""
+        expected:
+          - 0
+      5.2.5 Ensure SSH MaxAuthTries is set to 4 or less - Level 1 (Scored):
+        audit:
+          - "COUNT=$(grep \"^MaxAuthTries\" /etc/ssh/sshd_config | sed 's/MaxAuthTries \\([0-9][0-9]*\\)$/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -le 4 ]]"
+          #- COUNT=$(grep "^MaxAuthTries" /etc/ssh/sshd_config | sed 's/MaxAuthTries \([0-9][0-9]*\)$/\1/'); [[ ! -z "$COUNT" ]] && [[ $COUNT -le 4 ]]
+        expected:
+          - 0
+      5.2.6 Ensure SSH IgnoreRhosts is enabled - Level 1 (Scored):
+        audit:
+          - "grep \"^IgnoreRhosts\" /etc/ssh/sshd_config | grep \"IgnoreRhosts yes\""
+        expected:
+          - 0
+      5.2.7 Ensure SSH HostbasedAuthentication is disabled - Level 1 (Scored):
+        audit:
+          - "grep \"^HostbasedAuthentication\" /etc/ssh/sshd_config | grep \"HostbasedAuthentication no\""
+        expected:
+          - 0
+      5.2.8 Ensure SSH root login is disabled - Level 1 (Scored):
+        audit:
+          - "grep \"^PermitRootLogin\" /etc/ssh/sshd_config | grep \"PermitRootLogin no\""
+        expected:
+          - 0
+      5.2.9 Ensure SSH PermitEmptyPasswords is disabled - Level 1 (Scored):
+        audit:
+          - "grep \"^PermitEmptyPasswords\" /etc/ssh/sshd_config | grep \"PermitEmptyPasswords no\""
+        expected:
+          - 0
+      5.2.10 Ensure SSH PermitUserEnvironment is disabled - Level 1 (Scored):
+        audit:
+          - "grep \"^PermitUserEnvironment\" /etc/ssh/sshd_config | grep \"PermitUserEnvironment no\""
+        expected:
+          - 0
+      5.2.11 Ensure only approved ciphers are used - Level 1 (Scored):
+        audit:
+          - "grep \"^Ciphers\" /etc/ssh/sshd_config | grep \"aes256-ctr\""
+          - "grep \"^Ciphers\" /etc/ssh/sshd_config | grep \"aes192-ctr\""
+          - "grep \"^Ciphers\" /etc/ssh/sshd_config | grep \"aes128-ctr\""
+          - "grep \"^Ciphers\" /etc/ssh/sshd_config | grep \"cbc\""
+        expected:
+          - 0
+          - 0
+          - 0
+          - 1
+      5.2.12 Ensure only approved MAC algorithms are used - Level 1 (Scored):
+        audit:
+          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"hmac-sha2-512-etm@openssh.com\""
+          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"hmac-sha2-256-etm@openssh.com\""
+          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"umac-128-etm@openssh.com\""
+          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"hmac-sha2-512\""
+          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"hmac-sha2-256\""
+          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"umac-128@openssh.com\""
+          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"md5\""
+          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"sha1\""
+        expected:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 1
+          - 1
+      5.2.13 Ensure SSH Idle Timeout Interval is configured - Level 1 (Scored):
+        audit:
+          - "COUNT=$(grep \"^ClientAliveInterval\" /etc/ssh/sshd_config | sed 's/ClientAliveInterval \\([0-9][0-9]*\\)$/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -le 300 ]]"
+          - "COUNT=$(grep \"^ClientAliveCountMax\" /etc/ssh/sshd_config | sed 's/ClientAliveCountMax \\([0-9][0-9]*\\)$/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -le 3 ]]"
+        expected:
+          - 0
+          - 0
+      5.2.14 Ensure SSH LoginGraceTime is set to one minute or less - Level 1 (Scored):
+        audit:
+          - "COUNT=$(grep \"^LoginGraceTime\" /etc/ssh/sshd_config | sed 's/LoginGraceTime \\([0-9][0-9]*\\)$/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -le 60 ]]"
+        expected:
+          - 0
+      5.2.15 Ensure SSH access is limited - Level 1 (Scored):
+        audit:
+          - "grep \"^DenyGroups\" /etc/ssh/sshd_config | grep \"DenyGroups[[:space:]]\\{1,\\}[[:alnum:]]\\{1,\\}\""
+        expected:
+          - 0
+      5.2.16 Ensure SSH warning banner is configured - Level 1 (Scored):
+        audit:
+          - "grep \"^Banner\" /etc/ssh/sshd_config | grep \"Banner /etc/issue.net\""
+        expected:
+          - 0

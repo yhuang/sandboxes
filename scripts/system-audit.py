@@ -137,6 +137,9 @@ class Benchmark:
                 # Run the command and record the output and return code.
                 if result != 'fail':
                     result = 'pass'
+                else:
+                    result = 'fail'
+                    break
         return result, tuple(output)
 
     def __process_section_items(self, section):
