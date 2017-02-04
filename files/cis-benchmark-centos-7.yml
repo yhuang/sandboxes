@@ -217,7 +217,7 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
       1.4.2 Ensure bootloader password is set - Level 1 Server (Scored):
         audit:
           - "grep \"^set superusers\" /boot/grub2/grub.cfg | grep 'set superusers'"
-          - "grep \"^password\" /boot/grub2/grub.cfg | grep 'password_pbkdf2'"
+          - "grep ^password /boot/grub2/grub.cfg | grep password_pbkdf2"
         expected:
           - 0
           - 0
@@ -282,7 +282,7 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 1
       1.6.1.6 Ensure no unconfined daemons exist - Level 2 Server (Scored):
         audit:
-          - "ps -eZ | egrep \"initrc\" | egrep -vw \"tr|ps|egrep|bash|awk\" | tr ':' ' ' | awk '{ print $NF }' | wc -l | grep 0"
+          - "ps -eZ | egrep initrc | egrep -vw \"tr|ps|egrep|bash|awk\" | tr ':' ' ' | awk '{ print $NF }' | wc -l | grep 0"
         expected:
           - 0
       1.6.2 Ensure SELinux is installed - Level 2 Server (Scored):
@@ -394,12 +394,12 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
             - 0
         2.2.1.2 Ensure ntp is configured - Level 1 Server (Scored):
           audit:
-            - "grep \"^restrict\" /etc/ntp.conf | grep \"restrict -4 default kod nomodify notrap nopeer noquery\""
-            - "grep \"^restrict\" /etc/ntp.conf | grep \"restrict -6 default kod nomodify notrap nopeer noquery\""
-            - "grep \"^server\" /etc/ntp.conf | grep \"server 0.pool.ntp.org\""
-            - "grep \"^server\" /etc/ntp.conf | grep \"server 1.pool.ntp.org\""
-            - "grep \"^server\" /etc/ntp.conf | grep \"server 2.pool.ntp.org\""
-            - "grep \"^server\" /etc/ntp.conf | grep \"server 3.pool.ntp.org\""
+            - "grep ^restrict /etc/ntp.conf | grep \"restrict -4 default kod nomodify notrap nopeer noquery\""
+            - "grep ^restrict /etc/ntp.conf | grep \"restrict -6 default kod nomodify notrap nopeer noquery\""
+            - "grep ^server /etc/ntp.conf | grep \"server 0.pool.ntp.org\""
+            - "grep ^server /etc/ntp.conf | grep \"server 1.pool.ntp.org\""
+            - "grep ^server /etc/ntp.conf | grep \"server 2.pool.ntp.org\""
+            - "grep ^server /etc/ntp.conf | grep \"server 3.pool.ntp.org\""
           expected:
             - 0
             - 0
@@ -1115,56 +1115,56 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 0
       5.2.2 Ensure SSH Protocol is set to 2 - Level 1 (Scored):
         audit:
-          - "grep \"^Protocol\" /etc/ssh/sshd_config | grep \"Protocol 2\""
+          - "grep ^Protocol /etc/ssh/sshd_config | grep \"Protocol 2\""
         expected:
           - 0
       5.2.3 Ensure SSH LogLevel is set to INFO - Level 1 (Scored):
         audit:
-          - "grep \"^LogLevel\" /etc/ssh/sshd_config | grep \"LogLevel INFO\""
+          - "grep ^LogLevel /etc/ssh/sshd_config | grep \"LogLevel INFO\""
         expected:
           - 0
       5.2.4 Ensure SSH X11 forwarding is disabled - Level 1 (Scored):
         audit:
-          - "grep \"^X11Forwarding\" /etc/ssh/sshd_config | grep \"X11Forwarding no\""
+          - "grep ^X11Forwarding /etc/ssh/sshd_config | grep \"X11Forwarding no\""
         expected:
           - 0
       5.2.5 Ensure SSH MaxAuthTries is set to 4 or less - Level 1 (Scored):
         audit:
-          - "COUNT=$(grep \"^MaxAuthTries\" /etc/ssh/sshd_config | sed 's/MaxAuthTries \\([0-9][0-9]*\\)$/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -le 4 ]]"
-          #- COUNT=$(grep "^MaxAuthTries" /etc/ssh/sshd_config | sed 's/MaxAuthTries \([0-9][0-9]*\)$/\1/'); [[ ! -z "$COUNT" ]] && [[ $COUNT -le 4 ]]
+          - "COUNT=$(grep ^MaxAuthTries /etc/ssh/sshd_config | sed 's/MaxAuthTries\\s*\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -le 4 ]]"
+          #- COUNT=$(grep "^MaxAuthTries" /etc/ssh/sshd_config | sed 's/MaxAuthTries\s*\([0-9][0-9]*\).*/\1/'); [[ ! -z "$COUNT" ]] && [[ $COUNT -le 4 ]]
         expected:
           - 0
       5.2.6 Ensure SSH IgnoreRhosts is enabled - Level 1 (Scored):
         audit:
-          - "grep \"^IgnoreRhosts\" /etc/ssh/sshd_config | grep \"IgnoreRhosts yes\""
+          - "grep ^IgnoreRhosts /etc/ssh/sshd_config | grep \"IgnoreRhosts yes\""
         expected:
           - 0
       5.2.7 Ensure SSH HostbasedAuthentication is disabled - Level 1 (Scored):
         audit:
-          - "grep \"^HostbasedAuthentication\" /etc/ssh/sshd_config | grep \"HostbasedAuthentication no\""
+          - "grep ^HostbasedAuthentication /etc/ssh/sshd_config | grep \"HostbasedAuthentication no\""
         expected:
           - 0
       5.2.8 Ensure SSH root login is disabled - Level 1 (Scored):
         audit:
-          - "grep \"^PermitRootLogin\" /etc/ssh/sshd_config | grep \"PermitRootLogin no\""
+          - "grep ^PermitRootLogin /etc/ssh/sshd_config | grep \"PermitRootLogin no\""
         expected:
           - 0
       5.2.9 Ensure SSH PermitEmptyPasswords is disabled - Level 1 (Scored):
         audit:
-          - "grep \"^PermitEmptyPasswords\" /etc/ssh/sshd_config | grep \"PermitEmptyPasswords no\""
+          - "grep ^PermitEmptyPasswords /etc/ssh/sshd_config | grep \"PermitEmptyPasswords no\""
         expected:
           - 0
       5.2.10 Ensure SSH PermitUserEnvironment is disabled - Level 1 (Scored):
         audit:
-          - "grep \"^PermitUserEnvironment\" /etc/ssh/sshd_config | grep \"PermitUserEnvironment no\""
+          - "grep ^PermitUserEnvironment /etc/ssh/sshd_config | grep \"PermitUserEnvironment no\""
         expected:
           - 0
       5.2.11 Ensure only approved ciphers are used - Level 1 (Scored):
         audit:
-          - "grep \"^Ciphers\" /etc/ssh/sshd_config | grep \"aes256-ctr\""
-          - "grep \"^Ciphers\" /etc/ssh/sshd_config | grep \"aes192-ctr\""
-          - "grep \"^Ciphers\" /etc/ssh/sshd_config | grep \"aes128-ctr\""
-          - "grep \"^Ciphers\" /etc/ssh/sshd_config | grep \"cbc\""
+          - "grep ^Ciphers /etc/ssh/sshd_config | grep aes256-ctr"
+          - "grep ^Ciphers /etc/ssh/sshd_config | grep aes192-ctr"
+          - "grep ^Ciphers /etc/ssh/sshd_config | grep aes128-ctr"
+          - "grep ^Ciphers /etc/ssh/sshd_config | grep cbc"
         expected:
           - 0
           - 0
@@ -1172,14 +1172,14 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 1
       5.2.12 Ensure only approved MAC algorithms are used - Level 1 (Scored):
         audit:
-          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"hmac-sha2-512-etm@openssh.com\""
-          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"hmac-sha2-256-etm@openssh.com\""
-          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"umac-128-etm@openssh.com\""
-          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"hmac-sha2-512\""
-          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"hmac-sha2-256\""
-          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"umac-128@openssh.com\""
-          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"md5\""
-          - "grep \"^MACs\" /etc/ssh/sshd_config | grep \"sha1\""
+          - "grep ^MACs /etc/ssh/sshd_config | grep hmac-sha2-512-etm@openssh.com"
+          - "grep ^MACs /etc/ssh/sshd_config | grep hmac-sha2-256-etm@openssh.com"
+          - "grep ^MACs /etc/ssh/sshd_config | grep umac-128-etm@openssh.com"
+          - "grep ^MACs /etc/ssh/sshd_config | grep hmac-sha2-512"
+          - "grep ^MACs /etc/ssh/sshd_config | grep hmac-sha2-256"
+          - "grep ^MACs /etc/ssh/sshd_config | grep umac-128@openssh.com"
+          - "grep ^MACs /etc/ssh/sshd_config | grep md5"
+          - "grep ^MACs /etc/ssh/sshd_config | grep sha1"
         expected:
           - 0
           - 0
@@ -1191,23 +1191,126 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 1
       5.2.13 Ensure SSH Idle Timeout Interval is configured - Level 1 (Scored):
         audit:
-          - "COUNT=$(grep \"^ClientAliveInterval\" /etc/ssh/sshd_config | sed 's/ClientAliveInterval \\([0-9][0-9]*\\)$/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -le 300 ]]"
-          - "COUNT=$(grep \"^ClientAliveCountMax\" /etc/ssh/sshd_config | sed 's/ClientAliveCountMax \\([0-9][0-9]*\\)$/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -le 3 ]]"
+          - "COUNT=$(grep ^ClientAliveInterval /etc/ssh/sshd_config | sed 's/ClientAliveInterval\\s*\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -le 300 ]]"
+          - "COUNT=$(grep ^ClientAliveCountMax /etc/ssh/sshd_config | sed 's/ClientAliveCountMax\\s*\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -le 3 ]]"
         expected:
           - 0
           - 0
       5.2.14 Ensure SSH LoginGraceTime is set to one minute or less - Level 1 (Scored):
         audit:
-          - "COUNT=$(grep \"^LoginGraceTime\" /etc/ssh/sshd_config | sed 's/LoginGraceTime \\([0-9][0-9]*\\)$/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -le 60 ]]"
+          - "COUNT=$(grep ^LoginGraceTime /etc/ssh/sshd_config | sed 's/LoginGraceTime\\s*\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -le 60 ]]"
         expected:
           - 0
       5.2.15 Ensure SSH access is limited - Level 1 (Scored):
         audit:
-          - "grep \"^DenyGroups\" /etc/ssh/sshd_config | grep \"DenyGroups[[:space:]]\\{1,\\}[[:alnum:]]\\{1,\\}\""
+          - "grep ^DenyGroups /etc/ssh/sshd_config | grep \"DenyGroups[[:space:]]\\{1,\\}[[:alnum:]]\\{1,\\}\""
         expected:
           - 0
       5.2.16 Ensure SSH warning banner is configured - Level 1 (Scored):
         audit:
-          - "grep \"^Banner\" /etc/ssh/sshd_config | grep \"Banner /etc/issue.net\""
+          - "grep ^Banner /etc/ssh/sshd_config | grep \"Banner /etc/issue.net\""
         expected:
+          - 0
+    5.3 Configure PAM:
+      5.3.1 Ensure password creation requirements are configured - Level 1 (Scored):
+        audit:
+          - "grep pam_pwquality.so /etc/pam.d/password-auth | grep password"
+          - "grep pam_pwquality.so /etc/pam.d/password-auth | grep requisite"
+          - "grep pam_pwquality.so /etc/pam.d/password-auth | grep pam_pwquality.so"
+          - "grep pam_pwquality.so /etc/pam.d/password-auth | grep try_first_pass"
+          - "grep pam_pwquality.so /etc/pam.d/password-auth | grep retry=3"
+          - "grep pam_pwquality.so /etc/pam.d/system-auth | grep password"
+          - "grep pam_pwquality.so /etc/pam.d/system-auth | grep requisite"
+          - "grep pam_pwquality.so /etc/pam.d/system-auth | grep pam_pwquality.so"
+          - "grep pam_pwquality.so /etc/pam.d/system-auth | grep try_first_pass"
+          - "grep pam_pwquality.so /etc/pam.d/system-auth | grep retry=3"
+          - "COUNT=$(grep ^minlen /etc/security/pwquality.conf | sed 's/minlen\\s*=\\s*\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 14 ]]"
+          - "COUNT=$(grep ^dcredit /etc/security/pwquality.conf | sed 's/dcredit\\s*=\\s*\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -lt 0 ]]"
+          - "COUNT=$(grep ^lcredit /etc/security/pwquality.conf | sed 's/lcredit\\s*=\\s*\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -lt 0 ]]"
+          - "COUNT=$(grep ^ocredit /etc/security/pwquality.conf | sed 's/ocredit\\s*=\\s*\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -lt 0 ]]"
+          - "COUNT=$(grep ^ucredit /etc/security/pwquality.conf | sed 's/ucredit\\s*=\\s*\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -lt 0 ]]"
+        expected:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+      5.3.2 Ensure lockout for failed password attempts is configured - Level 1 (Scored):
+        audit:
+          - "grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/password-auth | grep preauth"
+          - "grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/password-auth | grep silent"
+          - "grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/password-auth | grep audit"
+          - "COUNT=$(grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/password-auth | sed 's/.*deny=\\([0-9]\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 3 ]]"
+          - "COUNT=$(grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/password-auth | sed 's/.*unlock_time=\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 600 ]]"
+          - "grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/password-auth | grep authfail"
+          - "grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/password-auth | grep audit"
+          - "COUNT=$(grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/password-auth | sed 's/.*deny=\\([0-9]\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 3 ]]"
+          - "COUNT=$(grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/password-auth | sed 's/.*unlock_time=\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 600 ]]"
+          - "grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/system-auth | grep preauth"
+          - "grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/system-auth | grep silent"
+          - "grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/system-auth | grep audit"
+          - "COUNT=$(grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/system-auth | sed 's/.*deny=\\([0-9]\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 3 ]]"
+          - "COUNT=$(grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/system-auth | sed 's/.*unlock_time=\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 600 ]]"
+          - "grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/system-auth | grep authfail"
+          - "grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/system-auth | grep audit"
+          - "COUNT=$(grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/system-auth | sed 's/.*deny=\\([0-9]\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 3 ]]"
+          - "COUNT=$(grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/system-auth | sed 's/.*unlock_time=\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 600 ]]"
+        expected:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+      5.3.3 Ensure password reuse is limited - Level 1 (Scored):
+        audit:
+          - "COUNT=$(grep \"^password\\s*sufficient\\s*pam_unix.so\" /etc/pam.d/password-auth | sed 's/.*remember=\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 5 ]]"
+          - "COUNT=$(grep \"^password\\s*sufficient\\s*pam_unix.so\" /etc/pam.d/system-auth | sed 's/.*remember=\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 5 ]]"
+        expected:
+          - 0
+          - 0
+      5.3.4 Ensure password hashing algorithm is SHA-512 - Level 1 (Scored):
+        audit:
+          - "grep \"^password\\s*sufficient\\s*pam_unix.so\" /etc/pam.d/password-auth | grep sha512"
+          - "grep \"^password\\s*sufficient\\s*pam_unix.so\" /etc/pam.d/system-auth | grep sha512"
+        expected:
+          - 0
+          - 0
+  5.4 User Accounts and Environment:
+    5.4.1 Set Shadow Password Suite Parameters:
+      5.4.1.1 Ensure password expiration is 90 days or less - Level 1 (Scored):
+        audit:
+          - "COUNT=$(grep PASS_MAX_DAYS /etc/login.defs | sed 's/.*PASS_MAX_DAYS\\s*\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -le 90 ]]"
+          - "USERS=$(egrep ^[^:]+:[^\\!*] /etc/shadow | cut -d: -f1); for i in $USERS; do COUNT=$(chage --list $i | grep 'Maximum number of days between password change' | sed 's/^Maximum number of days between password change\\s*:\\s*\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -le 90 ]] || exit 1; done"
+        expected:
+          - 0
+          - 0
+      5.4.1.2 Ensure minimum days between password changes is 7 or more - Level 1 (Scored):
+        audit:
+          - "COUNT=$(grep PASS_MIN_DAYS /etc/login.defs | sed 's/.*PASS_MIN_DAYS\\s*\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 7 ]]"
+          - "USERS=$(egrep ^[^:]+:[^\\!*] /etc/shadow | cut -d: -f1); for i in $USERS; do COUNT=$(chage --list $i | grep 'Minimum number of days between password change' | sed 's/^Minimum number of days between password change\\s*:\\s*\\([0-9][0-9]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 7 ]] || exit 1; done"
+        expected:
+          - 0
           - 0
