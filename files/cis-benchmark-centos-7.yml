@@ -60,82 +60,82 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
             - 1
       1.1.2 Ensure separate partition exists for /tmp - Level 2 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/tmp[[:space:]]\""
+          - "mount | grep '[[:space:]]/tmp[[:space:]]'"
         expected:
           - 0
       1.1.3 Ensure nodev option set on /tmp partition - Level 1 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/tmp[[:space:]]\" | grep nodev"
+          - "mount | grep '[[:space:]]/tmp[[:space:]]' | grep nodev"
         expected:
           - 0
       1.1.4 Ensure nosuid option set on /tmp partition - Level 1 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/tmp[[:space:]]\" | grep nosuid"
+          - "mount | grep '[[:space:]]/tmp[[:space:]]' | grep nosuid"
         expected:
           - 0
       1.1.5 Ensure noexec option set on /tmp partition - Level 1 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/tmp[[:space:]]\" | grep noexec"
+          - "mount | grep '[[:space:]]/tmp[[:space:]]' | grep noexec"
         expected:
           - 0
       1.1.6 Ensure separate partition exists for /var - Level 2 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/var[[:space:]]\""
+          - "mount | grep '[[:space:]]/var[[:space:]]'"
         expected:
           - 0
       1.1.7 Ensure separate partition exists for /var/tmp - Level 2 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/var/tmp[[:space:]]\""
+          - "mount | grep '[[:space:]]/var/tmp[[:space:]]'"
         expected:
           - 0
       1.1.8 Ensure nodev option set on /var/tmp partition - Level 1 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/var/tmp[[:space:]]\" | grep nodev"
+          - "mount | grep '[[:space:]]/var/tmp[[:space:]]' | grep nodev"
         expected:
           - 0
       1.1.9 Ensure nosuid option set on /var/tmp partition - Level 1 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/var/tmp[[:space:]]\" | grep nosuid"
+          - "mount | grep '[[:space:]]/var/tmp[[:space:]]' | grep nosuid"
         expected:
           - 0
       1.1.10 Ensure noexec option set on /var/tmp partition - Level 1 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/var/tmp[[:space:]]\" | grep noexec"
+          - "mount | grep '[[:space:]]/var/tmp[[:space:]]' | grep noexec"
         expected:
           - 0
       1.1.11 Ensure separate partition exists for /var/log - Level 2 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/var/log[[:space:]]\""
+          - "mount | grep '[[:space:]]/var/log[[:space:]]'"
         expected:
           - 0
       1.1.12 Ensure separate partition exists for /var/log/audit - Level 2 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/var/log/audit[[:space:]]\""
+          - "mount | grep '[[:space:]]/var/log/audit[[:space:]]'"
         expected:
           - 0
       1.1.13 Ensure separate partition exists for /home - Level 2 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/home[[:space:]]\""
+          - "mount | grep '[[:space:]]/home[[:space:]]'"
         expected:
           - 0
       1.1.14 Ensure nodev option set on /home partition - Level 1 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/home[[:space:]]\" | grep nodev"
+          - "mount | grep '[[:space:]]/home[[:space:]]' | grep nodev"
         expected:
           - 0
       1.1.15 Ensure nodev option set on /dev/shm partition - Level 1 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/dev/shm[[:space:]]\" | grep nodev"
+          - "mount | grep '[[:space:]]/dev/shm[[:space:]]' | grep nodev"
         expected:
           - 0
       1.1.16 Ensure nosuid option set on /dev/shm partition - Level 1 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/dev/shm[[:space:]]\" | grep nosuid"
+          - "mount | grep '[[:space:]]/dev/shm[[:space:]]' | grep nosuid"
         expected:
           - 0
       1.1.17 Ensure noexec option set on /dev/shm partition - Level 1 Server (Scored):
         audit:
-          - "mount | grep \"[[:space:]]/dev/shm[[:space:]]\" | grep noexec"
+          - "mount | grep '[[:space:]]/dev/shm[[:space:]]' | grep noexec"
         expected:
           - 0
       1.1.18 Ensure nodev option set on removable media partitions - Level 1 Server (Not Scored):
@@ -156,7 +156,6 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
       1.1.21 Ensure sticky bit is set on all world-writable directories - Level 1 Server (Scored):
         audit:
           - "df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -type d \\( -perm -0002 -a ! -perm -1000 \\) 2>/dev/null"
-          #- df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -type d \( -perm -0002 -a ! -perm -1000 \) 2>/dev/null
         expected:
           - 0
       1.1.22 Disable Automounting - Level 1 Server (Scored):
@@ -206,16 +205,16 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
     1.4 Secure Boot Settings:
       1.4.1 Ensure permissions on bootloader config are configured - Level 1 Server (Scored):
         audit:
-          - "stat /boot/grub2/grub.cfg | grep \"Access:\\s(0600/-rw-------)\""
-          - "stat /boot/grub2/grub.cfg | grep \"Uid:\\s(\\s*0/\\s*root)\""
-          - "stat /boot/grub2/grub.cfg | grep \"Gid:\\s(\\s*0/\\s*root)\""
+          - "stat /boot/grub2/grub.cfg | grep 'Access:\\s(0600/-rw-------)'"
+          - "stat /boot/grub2/grub.cfg | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /boot/grub2/grub.cfg | grep 'Gid:\\s(\\s*0/\\s*root)'"
         expected:
           - 0
           - 0
           - 0
       1.4.2 Ensure bootloader password is set - Level 1 Server (Scored):
         audit:
-          - "grep \"^set superusers\" /boot/grub2/grub.cfg | grep 'set superusers'"
+          - "grep '^set superusers' /boot/grub2/grub.cfg | grep 'set superusers'"
           - "grep ^password /boot/grub2/grub.cfg | grep password_pbkdf2"
         expected:
           - 0
@@ -228,7 +227,7 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
     1.5 Additional Process Hardening:
       1.5.1 Ensure core dumps are restricted - Level 1 Server (Scored):
         audit:
-          - "grep \"hard core\" /etc/security/limits.conf"
+          - "grep 'hard core' /etc/security/limits.conf"
           - "/sbin/sysctl fs.suid_dumpable"
         expected:
           - 0
@@ -240,7 +239,7 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 0
       1.5.3 Ensure address space layout randomization (ASLR) is enabled - Level 1 Server (Scored):
         audit:
-          - "/sbin/sysctl kernel.randomize_va_space | grep \"kernel.randomize_va_space\\s*=\\s*2\""
+          - "/sbin/sysctl kernel.randomize_va_space | grep 'kernel.randomize_va_space\\s*=\\s*2'"
         expected:
           - 0
       1.5.4 Ensure prelink is disabled - Level 1 Server (Scored):
@@ -251,8 +250,8 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
     1.6 Mandatory Access Control:
       1.6.1.1 Ensure SELinux is not disabled in bootloader configuration - Level 1 Server - Level 2 Server (Scored):
         audit:
-          - "grep \"^\\s*linux\" /boot/grub2/grub.cfg | grep selinux=0"
-          - "grep \"^\\s*linux\" /boot/grub2/grub.cfg | grep enforcing=0"
+          - "grep '^\\s*linux' /boot/grub2/grub.cfg | grep selinux=0"
+          - "grep '^\\s*linux' /boot/grub2/grub.cfg | grep enforcing=0"
         expected:
           - 1
           - 1
@@ -280,7 +279,7 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 1
       1.6.1.6 Ensure no unconfined daemons exist - Level 2 Server (Scored):
         audit:
-          - "ps -eZ | egrep initrc | egrep -vw \"tr|ps|egrep|bash|awk\" | tr ':' ' ' | awk '{ print $NF }' | wc -l | grep 0"
+          - "ps -eZ | egrep initrc | egrep -vw 'tr|ps|egrep|bash|awk' | tr ':' ' ' | awk '{ print $NF }' | wc -l | grep 0"
         expected:
           - 0
       1.6.2 Ensure SELinux is installed - Level 2 Server (Scored):
@@ -312,9 +311,9 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
             - 0
         1.7.1.5 Ensure permissions on /etc/issue are configured - Level 1 Server (Scored):
           audit:
-            - "stat /etc/issue | grep \"Access:\\s*(0644/-rw-r--r--)\""
-            - "stat /etc/issue | grep \"Uid:\\s*(\\s*0/\\s*root)\""
-            - "stat /etc/issue | grep \"Gid:\\s*(\\s*0/\\s*root)\""
+            - "stat /etc/issue | grep 'Access:\\s*(0644/-rw-r--r--)'"
+            - "stat /etc/issue | grep 'Uid:\\s*(\\s*0/\\s*root)'"
+            - "stat /etc/issue | grep 'Gid:\\s*(\\s*0/\\s*root)'"
           expected:
             - 0
             - 0
@@ -390,12 +389,12 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
             - 0
         2.2.1.2 Ensure ntp is configured - Level 1 Server (Scored):
           audit:
-            - "grep ^restrict /etc/ntp.conf | grep \"restrict -4 default kod nomodify notrap nopeer noquery\""
-            - "grep ^restrict /etc/ntp.conf | grep \"restrict -6 default kod nomodify notrap nopeer noquery\""
-            - "grep ^server /etc/ntp.conf | grep \"server 0.pool.ntp.org\""
-            - "grep ^server /etc/ntp.conf | grep \"server 1.pool.ntp.org\""
-            - "grep ^server /etc/ntp.conf | grep \"server 2.pool.ntp.org\""
-            - "grep ^server /etc/ntp.conf | grep \"server 3.pool.ntp.org\""
+            - "grep ^restrict /etc/ntp.conf | grep 'restrict -4 default kod nomodify notrap nopeer noquery'"
+            - "grep ^restrict /etc/ntp.conf | grep 'restrict -6 default kod nomodify notrap nopeer noquery'"
+            - "grep ^server /etc/ntp.conf | grep 'server 0.pool.ntp.org'"
+            - "grep ^server /etc/ntp.conf | grep 'server 1.pool.ntp.org'"
+            - "grep ^server /etc/ntp.conf | grep 'server 2.pool.ntp.org'"
+            - "grep ^server /etc/ntp.conf | grep 'server 3.pool.ntp.org'"
           expected:
             - 0
             - 0
@@ -511,7 +510,7 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
       2.2.15 Ensure mail transfer agent is configured for local-only mode - Level 1 Server (Scored):
         # We will assume the mta on Centos 7.2 is sendmail.
         audit:
-          - "netstat -an | grep LIST | grep \":25\\s\" | grep mail"
+          - "netstat -an | grep LIST | grep ':25\\s' | grep mail"
         expected:
           - 1
       2.2.16 Ensure NIS Server is not enabled - Level 1 Server (Scored):
@@ -692,18 +691,18 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 0
       3.4.4 Ensure permissions on /etc/hosts.allow are 644 - Level 1 Server (Scored):
         audit:
-          - "stat /etc/hosts.allow | grep \"Access:\\s(0644/-rw-r--r--)\""
-          - "stat /etc/hosts.allow | grep \"Uid:\\s(\\s*0/[\\s*root)\""
-          - "stat /etc/hosts.allow | grep \"Gid:\\s(\\s*0/\\s*root)\""
+          - "stat /etc/hosts.allow | grep 'Access:\\s(0644/-rw-r--r--)'"
+          - "stat /etc/hosts.allow | grep 'Uid:\\s(\\s*0/[\\s*root)'"
+          - "stat /etc/hosts.allow | grep 'Gid:\\s(\\s*0/\\s*root)'"
         expected:
           - 0
           - 0
           - 0
       3.4.5 Ensure permissions on /etc/hosts.deny are 644 - Level 1 Server (Scored):
         audit:
-          - "stat /etc/hosts.deny | grep \"Access:\\s(0644/-rw-r--r--)\""
-          - "stat /etc/hosts.deny | grep \"Uid:\\s(\\s*0/\\s*root)\""
-          - "stat /etc/hosts.deny | grep \"Gid:\\s(\\s*0/\\s*root)\""
+          - "stat /etc/hosts.deny | grep 'Access:\\s(0644/-rw-r--r--)'"
+          - "stat /etc/hosts.deny | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/hosts.deny | grep 'Gid:\\s(\\s*0/\\s*root)'"
         expected:
           - 0
           - 0
@@ -780,16 +779,16 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
             - 0
         4.1.1.2 Ensure system is disabled when audit logs are full - Level 2 Server (Scored):
           audit:
-            - "grep \"^space_left_action =\" /etc/audit/auditd.conf | grep -i email"
-            - "grep \"^action_mail_acct =\" /etc/audit/auditd.conf | grep -i root"
-            - "grep \"^admin_space_left_action =\" /etc/audit/auditd.conf | grep -i halt"
+            - "grep '^space_left_action =' /etc/audit/auditd.conf | grep -i email"
+            - "grep '^action_mail_acct =' /etc/audit/auditd.conf | grep -i root"
+            - "grep '^admin_space_left_action =' /etc/audit/auditd.conf | grep -i halt"
           expected:
             - 0
             - 0
             - 0
         4.1.1.3 Ensure audit logs are not automatically deleted - Level 2 Server (Scored):
           audit:
-            - "grep \"^max_log_file_action =\" /etc/audit/auditd.conf | grep -i keep_logs"
+            - "grep '^max_log_file_action =' /etc/audit/auditd.conf | grep -i keep_logs"
           expected:
             - 0
         4.1.2 Ensure auditd service is enabled - Level 2 Server (Scored):
@@ -799,7 +798,7 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
             - 0
         4.1.3 Ensure auditing for processes that start prior to auditd is enabled - Level 2 Server (Scored):
           audit:
-            - "grep \"^\\s*linux\" /boot/grub2/grub.cfg | grep audit=1"
+            - "grep '^\\s*linux' /boot/grub2/grub.cfg | grep audit=1"
           expected:
             - 0
         4.1.4 Ensure events that modify date and time information are collected - Level 2 Server (Scored):
@@ -889,7 +888,6 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
         4.1.12 Ensure use of privileged commands is collected - Level 2 Server (Scored):
           audit:
             - "find / -xdev \\( -perm -4000 -o -perm -2000 \\) -type f | awk '{print \"-a always,exit -F path=\" $1 \" -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged\" }' | wc -l | grep 0"
-            #- find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk '{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged" }' | wc -l | grep 0
           expected:
             - 1
         4.1.13 Ensure successful file system mounts are collected - Level 2 Server (Scored):
@@ -931,7 +929,7 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
             - 0
         4.1.18 Ensure the audit configuration is immutable - Level 2 Server (Scored):
           audit:
-            - "grep \"^\\s*[^#]\" /etc/audit/audit.rules | tail -1 | grep '-e 2'"
+            - "grep '^\\s*[^#]' /etc/audit/audit.rules | tail -1 | grep '-e 2'"
           expected:
             - 0
       4.2.1 Configure rsyslog:
@@ -952,7 +950,7 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
             - 0
         4.2.1.4 Ensure rsyslog is configured to send logs to a remote log host - Level 1 Server (Scored):
           audit:
-            - "grep \"^*.*[^I][^I]*@\" /etc/rsyslog.conf | wc -l | grep 0"
+            - "grep '^*.*[^I][^I]*@' /etc/rsyslog.conf | wc -l | grep 0"
           expected:
             - 1
         4.2.1.5 Ensure remote rsyslog messages are only accepted on designated log hosts - Level 1 Server (Not Scored):
@@ -1030,54 +1028,54 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 0
       5.1.2 Ensure permissions on /etc/crontab are configured - Level 1 Server (Scored):
         audit:
-          - "stat /etc/crontab | grep \"Access:\\s(0600/-rw-------)\""
-          - "stat /etc/crontab | grep \"Uid:\\s(\\s*0/\\s*root)\""
-          - "stat /etc/crontab | grep \"Gid:\\s(\\s*0/\\s*root)\""
+          - "stat /etc/crontab | grep 'Access:\\s(0600/-rw-------)'"
+          - "stat /etc/crontab | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/crontab | grep 'Gid:\\s(\\s*0/\\s*root)'"
         expected:
           - 0
           - 0
           - 0
       5.1.3 Ensure permissions on /etc/cron.hourly are configured - Level 1 Server (Scored):
         audit:
-          - "stat /etc/cron.hourly | grep \"Access:\\s(0600/-rw-------)\""
-          - "stat /etc/cron.hourly | grep \"Uid:\\s(\\s*0/\\s*root)\""
-          - "stat /etc/cron.hourly | grep \"Gid:\\s(\\s*0/\\s*root)\""
+          - "stat /etc/cron.hourly | grep 'Access:\\s(0600/-rw-------)'"
+          - "stat /etc/cron.hourly | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/cron.hourly | grep 'Gid:\\s(\\s*0/\\s*root)'"
         expected:
           - 0
           - 0
           - 0
       5.1.4 Ensure permissions on /etc/cron.daily are configured - Level 1 Server (Scored):
         audit:
-          - "stat /etc/cron.daily | grep \"Access:\\s(0600/-rw-------)\""
-          - "stat /etc/cron.daily | grep \"Uid:\\s(\\s*0/\\s*root)\""
-          - "stat /etc/cron.daily | grep \"Gid:\\s([\\s*0/\\s*root)\""
+          - "stat /etc/cron.daily | grep 'Access:\\s(0600/-rw-------)'"
+          - "stat /etc/cron.daily | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/cron.daily | grep 'Gid:\\s([\\s*0/\\s*root)'"
         expected:
           - 0
           - 0
           - 0
       5.1.5 Ensure permissions on /etc/cron.weekly are configured - Level 1 Server (Scored):
         audit:
-          - "stat /etc/cron.weekly | grep \"Access:\\s(0600/-rw-------)\""
-          - "stat /etc/cron.weekly | grep \"Uid:\\s(\\s*0/\\s*root)\""
-          - "stat /etc/cron.weekly | grep \"Gid:\\s(\\s*0/\\s*root)\""
+          - "stat /etc/cron.weekly | grep 'Access:\\s(0600/-rw-------)'"
+          - "stat /etc/cron.weekly | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/cron.weekly | grep 'Gid:\\s(\\s*0/\\s*root)'"
         expected:
           - 0
           - 0
           - 0
       5.1.6 Ensure permissions on /etc/cron.monthly are configured - Level 1 Server (Scored):
         audit:
-          - "stat /etc/cron.monthly | grep \"Access:\\s(0600/-rw-------)\""
-          - "stat /etc/cron.monthly | grep \"Uid:\\s(\\s*0/\\s*root)\""
-          - "stat /etc/cron.monthly | grep \"Gid:\\s(\\s*0/\\s*root)\""
+          - "stat /etc/cron.monthly | grep 'Access:\\s(0600/-rw-------)'"
+          - "stat /etc/cron.monthly | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/cron.monthly | grep 'Gid:\\s(\\s*0/\\s*root)'"
         expected:
           - 0
           - 0
           - 0
       5.1.7 Ensure permissions on /etc/cron.d are configured - Level 1 Server (Scored):
         audit:
-          - "stat /etc/cron.d | grep \"Access:\\s(0600/-rw-------)\""
-          - "stat /etc/cron.d | grep \"Uid:\\s(\\s*0/\\s*root)\""
-          - "stat /etc/cron.d | grep \"Gid:\\s(\\s*0/\\s*root)\""
+          - "stat /etc/cron.d | grep 'Access:\\s(0600/-rw-------)'"
+          - "stat /etc/cron.d | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/cron.d | grep 'Gid:\\s(\\s*0/\\s*root)'"
         expected:
           - 0
           - 0
@@ -1086,9 +1084,9 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
         audit:
           - "stat /etc/cron.deny"
           - "stat /etc/at.deny"
-          - "stat /etc/cron.allow | grep \"Access:\\s(0600/-rw-------)\""
-          - "stat /etc/cron.allow | grep \"Uid:\\s(\\s*0/\\s*root)\""
-          - "stat /etc/cron.allow| grep \"Gid:\\s(\\s*0/\\s*root)\""
+          - "stat /etc/cron.allow | grep 'Access:\\s(0600/-rw-------)'"
+          - "stat /etc/cron.allow | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/cron.allow | grep 'Gid:\\s(\\s*0/\\s*root)'"
         expected:
           - 1
           - 1
@@ -1098,26 +1096,26 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
     5.2 SSH Server Configuration:
       5.2.1 Ensure permissions on /etc/ssh/sshd_config are configured - Level 1 Server (Scored):
         audit:
-          - "stat /etc/ssh/sshd_config | grep \"Access:\\s(0600/-rw-------)\""
-          - "stat /etc/ssh/sshd_config | grep \"Uid:\\s(\\s*0/\\s*root)\""
-          - "stat /etc/ssh/sshd_config | grep \"Gid:\\s(\\s*0/\\s*root)\""
+          - "stat /etc/ssh/sshd_config | grep 'Access:\\s(0600/-rw-------)'"
+          - "stat /etc/ssh/sshd_config | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/ssh/sshd_config | grep 'Gid:\\s(\\s*0/\\s*root)'"
         expected:
           - 0
           - 0
           - 0
       5.2.2 Ensure SSH Protocol is set to 2 - Level 1 Server (Scored):
         audit:
-          - "grep ^Protocol /etc/ssh/sshd_config | grep \"Protocol 2\""
+          - "grep ^Protocol /etc/ssh/sshd_config | grep 'Protocol 2'"
         expected:
           - 0
       5.2.3 Ensure SSH LogLevel is set to INFO - Level 1 Server (Scored):
         audit:
-          - "grep ^LogLevel /etc/ssh/sshd_config | grep \"LogLevel INFO\""
+          - "grep ^LogLevel /etc/ssh/sshd_config | grep 'LogLevel INFO'"
         expected:
           - 0
       5.2.4 Ensure SSH X11 forwarding is disabled - Level 1 Server (Scored):
         audit:
-          - "grep ^X11Forwarding /etc/ssh/sshd_config | grep \"X11Forwarding no\""
+          - "grep ^X11Forwarding /etc/ssh/sshd_config | grep 'X11Forwarding no'"
         expected:
           - 0
       5.2.5 Ensure SSH MaxAuthTries is set to 4 or less - Level 1 Server (Scored):
@@ -1127,27 +1125,27 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 0
       5.2.6 Ensure SSH IgnoreRhosts is enabled - Level 1 Server (Scored):
         audit:
-          - "grep ^IgnoreRhosts /etc/ssh/sshd_config | grep \"IgnoreRhosts yes\""
+          - "grep ^IgnoreRhosts /etc/ssh/sshd_config | grep 'IgnoreRhosts yes'"
         expected:
           - 0
       5.2.7 Ensure SSH HostbasedAuthentication is disabled - Level 1 Server (Scored):
         audit:
-          - "grep ^HostbasedAuthentication /etc/ssh/sshd_config | grep \"HostbasedAuthentication no\""
+          - "grep ^HostbasedAuthentication /etc/ssh/sshd_config | grep 'HostbasedAuthentication no'"
         expected:
           - 0
       5.2.8 Ensure SSH root login is disabled - Level 1 Server (Scored):
         audit:
-          - "grep ^PermitRootLogin /etc/ssh/sshd_config | grep \"PermitRootLogin no\""
+          - "grep ^PermitRootLogin /etc/ssh/sshd_config | grep 'PermitRootLogin no'"
         expected:
           - 0
       5.2.9 Ensure SSH PermitEmptyPasswords is disabled - Level 1 Server (Scored):
         audit:
-          - "grep ^PermitEmptyPasswords /etc/ssh/sshd_config | grep \"PermitEmptyPasswords no\""
+          - "grep ^PermitEmptyPasswords /etc/ssh/sshd_config | grep 'PermitEmptyPasswords no'"
         expected:
           - 0
       5.2.10 Ensure SSH PermitUserEnvironment is disabled - Level 1 Server (Scored):
         audit:
-          - "grep ^PermitUserEnvironment /etc/ssh/sshd_config | grep \"PermitUserEnvironment no\""
+          - "grep ^PermitUserEnvironment /etc/ssh/sshd_config | grep 'PermitUserEnvironment no'"
         expected:
           - 0
       5.2.11 Ensure only approved ciphers are used - Level 1 Server (Scored):
@@ -1199,7 +1197,7 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 0
       5.2.16 Ensure SSH warning banner is configured - Level 1 Server (Scored):
         audit:
-          - "grep ^Banner /etc/ssh/sshd_config | grep \"Banner /etc/issue.net\""
+          - "grep ^Banner /etc/ssh/sshd_config | grep 'Banner /etc/issue.net'"
         expected:
           - 0
     5.3 Configure PAM:
@@ -1238,24 +1236,24 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 0
       5.3.2 Ensure lockout for failed password attempts is configured - Level 1 Server (Scored):
         audit:
-          - "grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/password-auth | grep preauth"
-          - "grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/password-auth | grep silent"
-          - "grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/password-auth | grep audit"
-          - "COUNT=$(grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/password-auth | sed 's/.*deny=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 3 ]]"
-          - "COUNT=$(grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/password-auth | sed 's/.*unlock_time=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 600 ]]"
-          - "grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/password-auth | grep authfail"
-          - "grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/password-auth | grep audit"
-          - "COUNT=$(grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/password-auth | sed 's/.*deny=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 3 ]]"
-          - "COUNT=$(grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/password-auth | sed 's/.*unlock_time=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 600 ]]"
-          - "grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/system-auth | grep preauth"
-          - "grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/system-auth | grep silent"
-          - "grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/system-auth | grep audit"
-          - "COUNT=$(grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/system-auth | sed 's/.*deny=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 3 ]]"
-          - "COUNT=$(grep \"^auth\\s*required\\s*pam_faillock.so\" /etc/pam.d/system-auth | sed 's/.*unlock_time=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 600 ]]"
-          - "grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/system-auth | grep authfail"
-          - "grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/system-auth | grep audit"
-          - "COUNT=$(grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/system-auth | sed 's/.*deny=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 3 ]]"
-          - "COUNT=$(grep \"^auth\\s*\\[default=die\\]\\s*pam_faillock.so\" /etc/pam.d/system-auth | sed 's/.*unlock_time=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 600 ]]"
+          - "grep '^auth\\s*required\\s*pam_faillock.so' /etc/pam.d/password-auth | grep preauth"
+          - "grep '^auth\\s*required\\s*pam_faillock.so' /etc/pam.d/password-auth | grep silent"
+          - "grep '^auth\\s*required\\s*pam_faillock.so' /etc/pam.d/password-auth | grep audit"
+          - "COUNT=$(grep '^auth\\s*required\\s*pam_faillock.so' /etc/pam.d/password-auth | sed 's/.*deny=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 3 ]]"
+          - "COUNT=$(grep '^auth\\s*required\\s*pam_faillock.so' /etc/pam.d/password-auth | sed 's/.*unlock_time=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 600 ]]"
+          - "grep '^auth\\s*\\[default=die\\]\\s*pam_faillock.so' /etc/pam.d/password-auth | grep authfail"
+          - "grep '^auth\\s*\\[default=die\\]\\s*pam_faillock.so' /etc/pam.d/password-auth | grep audit"
+          - "COUNT=$(grep '^auth\\s*\\[default=die\\]\\s*pam_faillock.so' /etc/pam.d/password-auth | sed 's/.*deny=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 3 ]]"
+          - "COUNT=$(grep '^auth\\s*\\[default=die\\]\\s*pam_faillock.so' /etc/pam.d/password-auth | sed 's/.*unlock_time=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 600 ]]"
+          - "grep '^auth\\s*required\\s*pam_faillock.so' /etc/pam.d/system-auth | grep preauth"
+          - "grep '^auth\\s*required\\s*pam_faillock.so' /etc/pam.d/system-auth | grep silent"
+          - "grep '^auth\\s*required\\s*pam_faillock.so' /etc/pam.d/system-auth | grep audit"
+          - "COUNT=$(grep '^auth\\s*required\\s*pam_faillock.so' /etc/pam.d/system-auth | sed 's/.*deny=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 3 ]]"
+          - "COUNT=$(grep '^auth\\s*required\\s*pam_faillock.so' /etc/pam.d/system-auth | sed 's/.*unlock_time=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 600 ]]"
+          - "grep '^auth\\s*\\[default=die\\]\\s*pam_faillock.so' /etc/pam.d/system-auth | grep authfail"
+          - "grep '^auth\\s*\\[default=die\\]\\s*pam_faillock.so' /etc/pam.d/system-auth | grep audit"
+          - "COUNT=$(grep '^auth\\s*\\[default=die\\]\\s*pam_faillock.so' /etc/pam.d/system-auth | sed 's/.*deny=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 3 ]]"
+          - "COUNT=$(grep '^auth\\s*\\[default=die\\]\\s*pam_faillock.so' /etc/pam.d/system-auth | sed 's/.*unlock_time=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 600 ]]"
         expected:
           - 0
           - 0
@@ -1277,15 +1275,15 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 0
       5.3.3 Ensure password reuse is limited - Level 1 Server (Scored):
         audit:
-          - "COUNT=$(grep \"^password\\s*sufficient\\s*pam_unix.so\" /etc/pam.d/password-auth | sed 's/.*remember=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 5 ]]"
-          - "COUNT=$(grep \"^password\\s*sufficient\\s*pam_unix.so\" /etc/pam.d/system-auth | sed 's/.*remember=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 5 ]]"
+          - "COUNT=$(grep '^password\\s*sufficient\\s*pam_unix.so' /etc/pam.d/password-auth | sed 's/.*remember=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 5 ]]"
+          - "COUNT=$(grep '^password\\s*sufficient\\s*pam_unix.so' /etc/pam.d/system-auth | sed 's/.*remember=\\([0-9-]*\\).*/\\1/'); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -ge 5 ]]"
         expected:
           - 0
           - 0
       5.3.4 Ensure password hashing algorithm is SHA-512 - Level 1 Server (Scored):
         audit:
-          - "grep \"^password\\s*sufficient\\s*pam_unix.so\" /etc/pam.d/password-auth | grep sha512"
-          - "grep \"^password\\s*sufficient\\s*pam_unix.so\" /etc/pam.d/system-auth | grep sha512"
+          - "grep '^password\\s*sufficient\\s*pam_unix.so' /etc/pam.d/password-auth | grep sha512"
+          - "grep '^password\\s*sufficient\\s*pam_unix.so' /etc/pam.d/system-auth | grep sha512"
         expected:
           - 0
           - 0
@@ -1319,7 +1317,7 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
             - 0
       5.4.2 Ensure system accounts are non-login - Level 1 Server (Scored):
         audit:
-          - "egrep -v \"^\\+\" /etc/passwd | awk -F: '($1!=\"root\" && $1!=\"sync\" && $1!=\"shutdown\" && $1!=\"halt\" && $3<1000 && $7!=\"/sbin/nologin\" && $7!=\"/bin/false\") {print}' | wc -l | grep 0"
+          - "egrep -v '^\\+' /etc/passwd | awk -F: '($1!=\"root\" && $1!=\"sync\" && $1!=\"shutdown\" && $1!=\"halt\" && $3<1000 && $7!=\"/sbin/nologin\" && $7!=\"/bin/false\") {print}' | wc -l | grep 0"
         expected:
           - 0
       5.4.3 Ensure default group for the root account is GID 0 - Level 1 Server (Scored):
@@ -1354,4 +1352,13 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
         audit:
           - skip
         expected:
+          - 0
+      6.1.2 Ensure permissions on /etc/passwd are configured - Level 1 Server (Scored):
+        audit:
+          - "stat /etc/passwd | grep 'Access:\\s(0644/-rw-r--r--)'"
+          - "stat /etc/passwd | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/passwd | grep 'Gid:\\s(\\s*0/\\s*root)'"
+        expected:
+          - 0
+          - 0
           - 0
