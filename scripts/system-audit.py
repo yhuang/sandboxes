@@ -11,7 +11,7 @@ import subprocess
 import argparse
 
 __author__ = 'Juan Segovia'
-__version__ = '1.2'
+__version__ = '1.3'
 
 class bcolors:
     HEADER = '\033[95m'
@@ -237,7 +237,7 @@ class Benchmark:
                 value = bcolors.OKGREEN + value.upper() + bcolors.ENDC
             else:
                 value = value.upper()
-            print "{0:.<100}: {1}".format(item, value)
+            print "{0:.<115}: {1}".format(item, value)
 
 
 def process_arguments():

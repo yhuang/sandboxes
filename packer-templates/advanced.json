@@ -104,6 +104,11 @@
       "destination": "/tmp/system-audit.py"
     },
     {
+      "type": "file",
+      "source": "scripts/cis-benchmark-checks/6.2.6.sh",
+      "destination": "/tmp/"
+    },
+    {
       "type": "shell",
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "inline": [ "sleep 60" ]
@@ -136,6 +141,7 @@
         "hardening-scripts/bulk-configure-services.sh",
         "hardening-scripts/bulk-remove-services.sh",
         "hardening-scripts/install-system-audit-script.sh",
+        "hardening-scripts/install-cis-benchmark-checks.sh",
         "hardening-scripts/install-syslog-ng.sh",
         "hardening-scripts/configure-logfile-permissions.sh",
         "provisioning-scripts/clean-up.sh"

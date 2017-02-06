@@ -1484,7 +1484,7 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 0
       6.2.6 Ensure root PATH Integrity - Level 1 Server (Scored):
         audit:
-          - skip
+          - "/etc/system-audit/cis-benchmark-checks/6.2.6.sh | wc -l | grep 0"
         expected:
           - 0
       6.2.7 Ensure all users' home directories exist - Level 1 Server (Scored):
