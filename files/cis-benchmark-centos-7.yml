@@ -1362,3 +1362,73 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 0
           - 0
           - 0
+      6.1.3 Ensure permissions on /etc/shadow are configured - Level 1 Server (Scored):
+        audit:
+          - "stat /etc/shadow | grep 'Access:\\s(0000/----------)'"
+          - "stat /etc/shadow | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/shadow | grep 'Gid:\\s(\\s*0/\\s*root)'"
+        expected:
+          - 0
+          - 0
+          - 0
+      6.1.4 Ensure permissions on /etc/group are configured - Level 1 Server (Scored):
+        audit:
+          - "stat /etc/group | grep 'Access:\\s(0644/-rw-r--r--)'"
+          - "stat /etc/group | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/group | grep 'Gid:\\s(\\s*0/\\s*root)'"
+        expected:
+          - 0
+          - 0
+          - 0
+      6.1.5 Ensure permissions on /etc/gshadow are configured - Level 1 Server (Scored):
+        audit:
+          - "stat /etc/gshadow | grep 'Access:\\s(0600/-rw-------)'"
+          - "stat /etc/gshadow | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/gshadow | grep 'Gid:\\s(\\s*0/\\s*root)'"
+        expected:
+          - 0
+          - 0
+          - 0
+      6.1.6 Ensure permissions on /etc/passwd- are configured - Level 1 Server (Scored):
+        audit:
+          - "stat /etc/passwd- | grep 'Access:\\s(0600/-rw-------)'"
+          - "stat /etc/passwd- | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/passwd- | grep 'Gid:\\s(\\s*0/\\s*root)'"
+        expected:
+          - 0
+          - 0
+          - 0
+      6.1.7 Ensure permissions on /etc/shadow- are configured - Level 1 Server (Scored):
+        audit:
+          - "stat /etc/shadow- | grep 'Access:\\s(0600/-rw-------)'"
+          - "stat /etc/shadow- | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/shadow- | grep 'Gid:\\s(\\s*0/\\s*root)'"
+        expected:
+          - 0
+          - 0
+          - 0
+      6.1.8 Ensure permissions on /etc/group- are configured - Level 1 Server (Scored):
+        audit:
+          - "stat /etc/group- | grep 'Access:\\s(0600/-rw-------)'"
+          - "stat /etc/group- | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/group- | grep 'Gid:\\s(\\s*0/\\s*root)'"
+        expected:
+          - 0
+          - 0
+          - 0
+      6.1.9 Ensure permissions on /etc/gshadow- are configured - Level 1 Server (Scored):
+        audit:
+          - "stat /etc/gshadow- | grep 'Access:\\s(0600/-rw-------)'"
+          - "stat /etc/gshadow- | grep 'Uid:\\s(\\s*0/\\s*root)'"
+          - "stat /etc/gshadow- | grep 'Gid:\\s(\\s*0/\\s*root)'"
+        expected:
+          - 0
+          - 0
+          - 0
+      6.1.10 Ensure no world writable files exist - Level 1 Server (Scored):
+        audit:
+          - "df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -type f -perm -0002 | wc -l | grep 0"
+          - "PART=$(df -H | awk '{$1=$2=$3=$4=$5=\"\"}1' | sed s/^\\s*\\(.*\\)/\\1/); for i in $PART; do [[ $i = '/mnt/hgfs' ]] || [[ $i = '/host-data' ]] && continue; COUNT=$(find $i -xdev -type f -perm -0002 2> /dev/null | wc -l); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -eq 0 ]] || exit 1; done"
+        expected:
+          - 0
+          - 0
