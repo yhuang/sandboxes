@@ -1489,66 +1489,66 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 0
       6.2.7 Ensure all users' home directories exist - Level 1 Server (Scored):
         audit:
-          - skip
+          - "/etc/system-audit/cis-benchmark-checks/6.2.7.sh | wc -l | grep 0"
         expected:
           - 0
       6.2.8 Ensure users' home directories permissions are 750 or more restrictive - Level 1 Server (Scored):
         audit:
-          - skip
+          - "/etc/system-audit/cis-benchmark-checks/6.2.8.sh | wc -l | grep 0"
         expected:
           - 0
       6.2.9 Ensure users own their home directories - Level 1 Server (Scored):
         audit:
-          - skip
+          - "/etc/system-audit/cis-benchmark-checks/6.2.9.sh | wc -l | grep 0"
         expected:
           - 0
       6.2.10 Ensure users' dot files are not group or world writable - Level 1 Server (Scored):
         audit:
-          - skip
+          - "/etc/system-audit/cis-benchmark-checks/6.2.10.sh | wc -l | grep 0"
         expected:
           - 0
       6.2.11 Ensure no users have .forward files - Level 1 Server (Scored):
         audit:
-          - skip
+          - "/etc/system-audit/cis-benchmark-checks/6.2.11.sh | wc -l | grep 0"
         expected:
           - 0
       6.2.12 Ensure no users have .netrc files - Level 1 Server (Scored):
         audit:
-          - skip
+          - "/etc/system-audit/cis-benchmark-checks/6.2.12.sh | wc -l | grep 0"
         expected:
           - 0
       6.2.13 Ensure users' .netrc Files are not group or world accessible - Level 1 Server (Scored):
         audit:
-          - skip
+          - "/etc/system-audit/cis-benchmark-checks/6.2.12.sh | wc -l | grep 0"
         expected:
           - 0
       6.2.14 Ensure no users have .rhosts files - Level 1 Server (Scored):
         audit:
-          - skip
+          - "/etc/system-audit/cis-benchmark-checks/6.2.14.sh | wc -l | grep 0"
         expected:
           - 0
       6.2.15 Ensure all groups in /etc/passwd exist in /etc/group - Level 1 Server (Scored):
         audit:
-          - skip
+          - "/etc/system-audit/cis-benchmark-checks/6.2.15.sh | wc -l | grep 0"
         expected:
           - 0
       6.2.16 Ensure no duplicate UIDs exist - Level 1 Server (Scored):
         audit:
-          - skip
+          - "/etc/system-audit/cis-benchmark-checks/6.2.16.sh | wc -l | grep 0"
         expected:
           - 0
       6.2.17 Ensure no duplicate GIDs exist - Level 1 Server (Scored):
         audit:
-          - skip
+          - "/etc/system-audit/cis-benchmark-checks/6.2.17.sh | wc -l | grep 0"
         expected:
           - 0
       6.2.18 Ensure no duplicate user names exist - Level 1 Server (Scored):
         audit:
-          - skip
+          - "/etc/system-audit/cis-benchmark-checks/6.2.18.sh | wc -l | grep 0"
         expected:
           - 0
       6.2.19 Ensure no duplicate group names exist - Level 1 Server (Scored):
         audit:
-          - skip
+          - "/etc/system-audit/cis-benchmark-checks/6.2.19.sh | wc -l | grep 0"
         expected:
           - 0
