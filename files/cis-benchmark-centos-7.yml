@@ -1432,3 +1432,27 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
         expected:
           - 0
           - 0
+      6.1.11 Ensure no unowned files or directories exist - Level 1 Server (Scored):
+        audit:
+          - "df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -nouser | wc -l | grep 0"
+          - "PART=$(df -H | awk '{$1=$2=$3=$4=$5=\"\"}1' | sed s/^\\s*\\(.*\\)/\\1/); for i in $PART; do [[ $i = '/mnt/hgfs' ]] || [[ $i = '/host-data' ]] && continue; COUNT=$(find $i -xdev -nouser 2> /dev/null | wc -l); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -eq 0 ]] || exit 1; done"
+        expected:
+          - 0
+          - 0
+      6.1.12 Ensure no ungrouped files or directories exist - Level 1 Server (Scored):
+        audit:
+          - "df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -nogroup | wc -l | grep 0"
+          - "PART=$(df -H | awk '{$1=$2=$3=$4=$5=\"\"}1' | sed s/^\\s*\\(.*\\)/\\1/); for i in $PART; do [[ $i = '/mnt/hgfs' ]] || [[ $i = '/host-data' ]] && continue; COUNT=$(find $i -xdev -nogroup 2> /dev/null | wc -l); [[ ! -z \"$COUNT\" ]] && [[ $COUNT -eq 0 ]] || exit 1; done"
+        expected:
+          - 0
+          - 0
+      6.1.13 Audit SUID executables - Level 1 Server (Not Scored):
+        audit:
+          - skip
+        expected:
+          - 0
+      6.1.14 Audit SGID executables - Level 1 (Not Scored):
+        audit:
+          - skip
+        expected:
+          - 0
