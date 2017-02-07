@@ -761,7 +761,7 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 0
       3.6.3 Ensure loopback traffic is configured - Level 1 Server (Scored):
         audit:
-          - "iptables -L INPUT -v -n | egrep 'ACCEPT.+\\0\\.0\\.0\\.0/0'"
+          - "iptables -L INPUT -v -n | egrep 'ACCEPT.+lo.+0\\.0\\.0\\.0/0'"
           - "iptables -L INPUT -v -n | egrep 'DROP.+127\\.0\\.0\\.0/8'"
         expected:
           - 0
@@ -773,7 +773,8 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 0
       3.6.5 Ensure firewall rules exist for all open ports - Level 1 Server (Scored):
         audit:
-          - "iptables -L INPUT -v -n"
+          # Intentional Failure - Firewall rules will be captured as security group rules.
+          - skip
         expected:
           - 1
     3.7 Ensure wireless interfaces are disabled - Level 1 Server (Not Scored):
