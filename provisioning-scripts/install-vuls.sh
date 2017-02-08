@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+yum install -y yum-plugin-changelog
+
+mv /tmp/config.toml 
+
 source /etc/profile.d/goenv.sh
 
 mkdir /var/log/vuls
