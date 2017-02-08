@@ -60,16 +60,6 @@
     },
     {
       "type": "file",
-      "source": "files/config.toml",
-      "destination": "/tmp/config.toml"
-    },
-    {
-      "type": "file",
-      "source": "files/goenv.sh",
-      "destination": "/tmp/goenv.sh"
-    },
-    {
-      "type": "file",
       "source": "scripts/system-audit.py",
       "destination": "/tmp/system-audit.py"
     },
