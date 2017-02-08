@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 APPLICATION=consul
-VERSION=0.7.3
+VERSION=0.7.4
 ARCHIVE=${APPLICATION}_${VERSION}_linux_amd64.zip
 
 wget https://releases.hashicorp.com/$APPLICATION/$VERSION/$ARCHIVE
