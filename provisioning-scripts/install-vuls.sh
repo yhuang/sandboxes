@@ -26,5 +26,5 @@ mkdir -p /etc/opt/vuls
 mv /tmp/config.toml /etc/opt/vuls
 
 OLD_PATH="Defaults\s*secure_path\s*=\s*.*"
-NEW_PATH='Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/etc/opt/go'
-sed "s|$OLD_PATH|$NEW_PATH|" /etc/sudoers
+NEW_PATH='Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/etc/opt/go/bin'
+sed -i "s|$OLD_PATH|$NEW_PATH|" /etc/sudoers
