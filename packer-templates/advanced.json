@@ -60,6 +60,16 @@
     },
     {
       "type": "file",
+      "source": "files/config.toml",
+      "destination": "/tmp/config.toml"
+    },
+    {
+      "type": "file",
+      "source": "files/goenv.sh",
+      "destination": "/tmp/goenv.sh"
+    },
+    {
+      "type": "file",
       "source": "scripts/system-audit.py",
       "destination": "/tmp/system-audit.py"
     },
@@ -95,6 +105,8 @@
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
         "provisioning-scripts/install-vmtools.sh",
+        "provisioning-scripts/install-go.sh",
+        "provisioning-scripts/install-vuls.sh",
         "provisioning-scripts/harden-centos.sh",
         "provisioning-scripts/clean-up.sh"
       ]
