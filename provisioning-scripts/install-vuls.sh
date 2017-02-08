@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
-UP_TO_YEAR=2016
-
 yum install -y yum-plugin-changelog
 
 source /etc/profile.d/goenv.sh
 
-mkdir /var/log/vuls
+mkdir -p /var/log/vuls
 mkdir -p $GOPATH/src/github.com/kotakanbe
 cd $GOPATH/src/github.com/kotakanbe
 git clone https://github.com/kotakanbe/go-cve-dictionary.git
@@ -14,7 +12,7 @@ cd go-cve-dictionary
 make install
 
 mkdir -p /etc/opt/cve
-for i in {2002..$UP_TO_YEAR}; do
+for i in {2002..2016}; do
   go-cve-dictionary fetchnvd -years $i;
 done
 
