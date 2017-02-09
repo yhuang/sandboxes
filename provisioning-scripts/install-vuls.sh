@@ -11,7 +11,9 @@ git clone https://github.com/kotakanbe/go-cve-dictionary.git
 cd go-cve-dictionary
 make install
 
-mkdir -p /etc/opt/cve
+CVE_DIR=/etc/opt/cve
+mkdir -p $CVE_DIR
+cd $CVE_DIR
 for i in {2002..2016}; do
   go-cve-dictionary fetchnvd -years $i;
 done

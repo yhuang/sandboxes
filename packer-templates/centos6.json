@@ -87,6 +87,7 @@
         "provisioning-scripts/install-terraform.sh",
         "provisioning-scripts/install-vault.sh",
         "provisioning-scripts/install-vmtools.sh",
+        "provisioning-scripts/install-asciinema.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }

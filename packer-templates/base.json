@@ -70,6 +70,7 @@
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
         "provisioning-scripts/install-vmtools.sh",
+        "provisioning-scripts/install-asciinema.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }

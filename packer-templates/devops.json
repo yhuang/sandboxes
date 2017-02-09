@@ -89,6 +89,7 @@
         "provisioning-scripts/install-vmtools.sh",
         "provisioning-scripts/install-go.sh",
         "provisioning-scripts/install-vuls.sh",
+        "provisioning-scripts/install-asciinema.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }
