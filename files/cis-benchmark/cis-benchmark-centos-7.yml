@@ -311,6 +311,7 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           expected:
             - 0
         1.7.1.4 Ensure permissions on /etc/motd are configured - Level 1 Server (Not Scored):
+          audit:
             - "stat /etc/motd | grep 'Access:\\s*(0644/-rw-r--r--)'"
             - "stat /etc/motd | grep 'Uid:\\s*(\\s*0/\\s*root)'"
             - "stat /etc/motd | grep 'Gid:\\s*(\\s*0/\\s*root)'"
