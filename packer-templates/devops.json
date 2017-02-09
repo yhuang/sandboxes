@@ -87,6 +87,8 @@
         "provisioning-scripts/install-terraform.sh",
         "provisioning-scripts/install-vault.sh",
         "provisioning-scripts/install-vmtools.sh",
+        "provisioning-scripts/install-go.sh",
+        "provisioning-scripts/install-vuls.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }
