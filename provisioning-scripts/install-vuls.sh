@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+START=1999
+END=$(date +"%Y")
+
 yum install -y yum-plugin-changelog
 
 source /etc/profile.d/goenv.sh
@@ -14,7 +17,7 @@ make install
 CVE_DIR=/etc/opt/cve
 mkdir -p $CVE_DIR
 cd $CVE_DIR
-for i in {2002..2016}; do
+for i in $(seq $START $END); do
   go-cve-dictionary fetchnvd -years $i;
 done
 
