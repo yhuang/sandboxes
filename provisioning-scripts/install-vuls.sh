@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-START=1999
+START=2002
 END=$(date +"%Y")
 
 yum install -y yum-plugin-changelog
