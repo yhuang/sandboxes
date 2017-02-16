@@ -1,6 +1,6 @@
 {
   "variables": {
-    "box_basename": "consul-server",
+    "box_basename": "ansible",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
@@ -65,13 +65,13 @@
     },
     {
       "type": "file",
-      "source": "scripts/start-consul-server.sh",
-      "destination": "/tmp/start-consul-server.sh"
+      "source": "files/vagrant",
+      "destination": "/tmp/vagrant"
     },
     {
       "type": "file",
-      "source": "files/consul-server.service",
-      "destination": "/tmp/consul-server.service"
+      "source": "files/ansible.cfg",
+      "destination": "/tmp/ansible.cfg"
     },
     {
       "type": "shell",
@@ -84,11 +84,8 @@
         "provisioning-scripts/install-linux-tools.sh",
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
-        "provisioning-scripts/create-hashicorp-directory.sh",
-        "provisioning-scripts/install-consul.sh",
-        "provisioning-scripts/configure-consul-server.sh",
-        "provisioning-scripts/enable-consul-service.sh",
         "provisioning-scripts/install-vmtools.sh",
+        "provisioning-scripts/install-ansible.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }

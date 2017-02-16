@@ -60,6 +60,11 @@
     },
     {
       "type": "file",
+      "source": "files/vagrant.pub",
+      "destination": "/tmp/authorized_keys"
+    },
+    {
+      "type": "file",
       "source": "binaries/jq",
       "destination": "/tmp/jq"
     },

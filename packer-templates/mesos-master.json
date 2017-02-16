@@ -60,6 +60,11 @@
     },
     {
       "type": "file",
+      "source": "files/vagrant.pub",
+      "destination": "/tmp/authorized_keys"
+    },
+    {
+      "type": "file",
       "source": "scripts/start-consul-client.sh",
       "destination": "/tmp/start-consul-client.sh"
     },
