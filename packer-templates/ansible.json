@@ -1,6 +1,6 @@
 {
   "variables": {
-    "box_basename": "salt-minion",
+    "box_basename": "ansible",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
@@ -17,7 +17,7 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 64000,
+      "disk_size": 8000,
       "guest_os_type": "centos-64",
       "headless": true,
       "http_directory": ".",
@@ -60,8 +60,18 @@
     },
     {
       "type": "file",
-      "source": "binaries/jq",
-      "destination": "/tmp/jq"
+      "source": "files/vagrant.pub",
+      "destination": "/tmp/authorized_keys"
+    },
+    {
+      "type": "file",
+      "source": "files/vagrant",
+      "destination": "/tmp/vagrant"
+    },
+    {
+      "type": "file",
+      "source": "files/ansible.cfg",
+      "destination": "/tmp/ansible.cfg"
     },
     {
       "type": "shell",
@@ -74,12 +84,8 @@
         "provisioning-scripts/install-linux-tools.sh",
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
-        "provisioning-scripts/enable-firewalld.sh",
-        "provisioning-scripts/install-salt.sh",
-        "provisioning-scripts/enable-salt-minion.sh",
-        "provisioning-scripts/install-jq.sh",
-        "provisioning-scripts/install-aws-cli.sh",
         "provisioning-scripts/install-vmtools.sh",
+        "provisioning-scripts/install-ansible.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }

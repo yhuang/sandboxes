@@ -60,6 +60,11 @@
     },
     {
       "type": "file",
+      "source": "files/vagrant.pub",
+      "destination": "/tmp/authorized_keys"
+    },
+    {
+      "type": "file",
       "source": "files/zookeeper-health-check.json",
       "destination": "/tmp/zookeeper-health-check.json"
     },

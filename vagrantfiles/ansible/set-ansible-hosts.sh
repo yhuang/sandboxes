@@ -5,8 +5,8 @@ do
     ARG=$1
     shift
     case $ARG in
-    --ip)
-        IP=$1
+    -n)
+        TARGET_SERVERS=$1
         shift
         ;;
     *)
@@ -16,7 +16,10 @@ do
     esac
 done
 
-sed -i "s/#master: salt/master: $IP/" /etc/salt/minion
-sed -i "s/#id:/id: salt-minion/" /etc/salt/minion
+if [[ $TARGET_SERVERS -ge 10 ]]; then
+  $TARGET_SERVERS=9
+fi
 
-systemctl restart salt-minion.service
+for i in $(seq 1 $TARGET_SERVERS); do
+  echo "base-0$i" >> /etc/ansible/hosts
+done

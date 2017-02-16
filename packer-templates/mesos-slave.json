@@ -59,6 +59,11 @@
       "destination": "/tmp/vmware-tools-linux.gz"
     },
     {
+      "type": "file",
+      "source": "files/vagrant.pub",
+      "destination": "/tmp/authorized_keys"
+    },
+    {
       "type": "shell",
       "environment_vars": [
         "HOME_DIR=/home/vagrant"

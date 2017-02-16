@@ -60,6 +60,11 @@
     },
     {
       "type": "file",
+      "source": "files/vagrant.pub",
+      "destination": "/tmp/authorized_keys"
+    },
+    {
+      "type": "file",
       "source": "files/web-server-health-check.json",
       "destination": "/tmp/web-server-health-check.json"
     },
