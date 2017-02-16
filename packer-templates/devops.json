@@ -82,6 +82,7 @@
         "provisioning-scripts/install-pip.sh",
         "provisioning-scripts/install-jq.sh",
         "provisioning-scripts/install-aws-cli.sh",
+        "provisioning-scripts/install-gcloud-cli.sh",
         "provisioning-scripts/create-hashicorp-directory.sh",
         "provisioning-scripts/install-packer.sh",
         "provisioning-scripts/install-terraform.sh",
