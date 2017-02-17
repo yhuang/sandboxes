@@ -65,6 +65,10 @@
     },
     {
       "type": "shell",
+      "script": "provisioning-scripts/install-devops-rvm.sh"
+    },
+    {
+      "type": "shell",
       "environment_vars": [
         "HOME_DIR=/home/vagrant"
       ],
