@@ -135,11 +135,10 @@
     },
     {
       "type": "shell",
-      "environment_vars": [
-        "HOME_DIR=/home/vagrant"
-      ],
-      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
-      "script": "provisioning-scripts/configure-vagrant-user.sh"
+      "scripts": [
+        "provisioning-scripts/install-vagrant-user-bash-profile.sh",
+        "provisioning-scripts/configure-vagrant-user.sh"
+      ]
     },
     {
       "type": "shell",

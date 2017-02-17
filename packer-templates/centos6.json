@@ -70,7 +70,10 @@
     },
     {
       "type": "shell",
-      "script": "provisioning-scripts/install-devops-rvm.sh"
+      "scripts": [
+        "provisioning-scripts/install-vagrant-user-bash-profile.sh",
+        "provisioning-scripts/install-devops-rvm.sh"
+      ]
     },
     {
       "type": "shell",

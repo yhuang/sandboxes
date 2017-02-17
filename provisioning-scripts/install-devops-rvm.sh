@@ -8,13 +8,14 @@ RUBY_VERSION=2.4.0
 RVM_SCRIPT=$HOME/.rvm/scripts/rvm
 
 source $RVM_SCRIPT
-echo "\nsource $RVM_SCRIPT" >> $HOME/.bash_profile
+
+echo "gem: --no-rdoc --no-ri" > $HOME/.gemrc
 
 rvm install $RUBY_VERSION
 rvm use $RUBY_VERSION --default
 
 rvm gemset create devops
-rvm gemset use devops
+rvm use ${RUBY_VERSION}@devops --default
 
 gem install \
 aws-sdk \
