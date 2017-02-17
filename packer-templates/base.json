@@ -65,13 +65,6 @@
     },
     {
       "type": "shell",
-      "scripts": [
-        "provisioning-scripts/install-vagrant-user-bash-profile.sh",
-        "provisioning-scripts/install-devops-rvm.sh"
-      ]
-    },
-    {
-      "type": "shell",
       "environment_vars": [
         "HOME_DIR=/home/vagrant"
       ],
@@ -79,6 +72,7 @@
       "scripts": [
         "provisioning-scripts/install-extra-packages-for-enterprise-linux.sh",
         "provisioning-scripts/install-linux-tools.sh",
+        "provisioning-scripts/install-vagrant-user-bash-profile.sh",
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
         "provisioning-scripts/install-vmtools.sh",
