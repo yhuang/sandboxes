@@ -20,4 +20,5 @@ rvm use ${RUBY_VERSION}@devops --default
 gem install \
 aws-sdk \
 bundler \
-inspec
+inspec \
+kitchen-inspec
