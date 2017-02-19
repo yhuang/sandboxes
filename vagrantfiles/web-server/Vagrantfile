@@ -7,7 +7,7 @@ atlas_envrionment = "--atlas-environment #{ENV['ATLAS_ENVIRONMENT']}"
 atlas_token = "--atlas-token #{ENV['ATLAS_TOKEN']}"
 
 Vagrant.configure(2) do |config|
-  config.vm.provider "vmware_fusion" do |vmware|
+  config.vm.provider 'vmware_fusion' do |vmware|
     vmware.gui = false
     vmware.vmx['memsize'] = 256
     vmware.vmx['numvcpus'] = 1
@@ -23,8 +23,8 @@ Vagrant.configure(2) do |config|
     node_name = "--node-name #{name}-0#{n}"
 
     config.vm.define "#{name}-0#{n}" do |m|
-      m.vm.provision "shell" do |script|
-        script.path = "set-environment-variables.sh"
+      m.vm.provision 'shell' do |script|
+        script.path = 'set-environment-variables.sh'
         script.args = "#{atlas_envrionment} #{atlas_token} #{node_name}"
       end
     end
