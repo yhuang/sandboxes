@@ -65,6 +65,11 @@
     },
     {
       "type": "file",
+      "source": "files/vagrant",
+      "destination": "/tmp/vagrant"
+    },
+    {
+      "type": "file",
       "source": "binaries/jq",
       "destination": "/tmp/jq"
     },
@@ -85,7 +90,9 @@
         "provisioning-scripts/install-extra-packages-for-enterprise-linux.sh",
         "provisioning-scripts/install-linux-tools.sh",
         "provisioning-scripts/configure-vagrant-user.sh",
+        "provisioning-scripts/install-vagrant-private-ssh-key.sh",
         "provisioning-scripts/configure-sshd-options.sh",
+        "provisioning-scripts/install-vmtools.sh",
         "provisioning-scripts/install-python3.sh",
         "provisioning-scripts/install-pip.sh",
         "provisioning-scripts/install-jq.sh",
@@ -95,7 +102,6 @@
         "provisioning-scripts/install-packer.sh",
         "provisioning-scripts/install-terraform.sh",
         "provisioning-scripts/install-vault.sh",
-        "provisioning-scripts/install-vmtools.sh",
         "provisioning-scripts/install-go.sh",
         "provisioning-scripts/install-vuls.sh",
         "provisioning-scripts/install-asciinema.sh",
