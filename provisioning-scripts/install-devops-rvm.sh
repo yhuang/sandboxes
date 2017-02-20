@@ -20,4 +20,7 @@ rvm use ${RUBY_VERSION}@devops --default
 gem install \
 aws-sdk \
 bundler \
-inspec
+rake \
+specific_install
+
+gem specific_install https://github.com/chef/inspec.git
