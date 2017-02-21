@@ -86,6 +86,7 @@
         "provisioning-scripts/install-linux-tools.sh",
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
+        "provisioning-scripts/configure-boot-grub2-directory.sh",
         "provisioning-scripts/install-python3.sh",
         "provisioning-scripts/install-pip.sh",
         "provisioning-scripts/install-jq.sh",

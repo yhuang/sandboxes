@@ -100,6 +100,7 @@
         "provisioning-scripts/install-vagrant-user-bash-profile.sh",
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
+        "provisioning-scripts/configure-boot-grub2-directory.sh",
         "provisioning-scripts/install-vmtools.sh",
         "provisioning-scripts/install-go.sh",
         "provisioning-scripts/install-vuls.sh",

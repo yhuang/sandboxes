@@ -85,6 +85,7 @@
         "provisioning-scripts/install-vagrant-user-bash-profile.sh",
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
+        "provisioning-scripts/configure-boot-grub2-directory.sh",
         "provisioning-scripts/create-hashicorp-directory.sh",
         "provisioning-scripts/install-consul.sh",
         "provisioning-scripts/configure-consul-server.sh",

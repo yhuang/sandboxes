@@ -92,6 +92,7 @@
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/install-vagrant-private-ssh-key.sh",
         "provisioning-scripts/configure-sshd-options.sh",
+        "provisioning-scripts/configure-boot-grub2-directory.sh",
         "provisioning-scripts/install-vmtools.sh",
         "provisioning-scripts/install-python3.sh",
         "provisioning-scripts/install-pip.sh",
