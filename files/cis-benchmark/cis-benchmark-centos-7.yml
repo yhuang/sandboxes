@@ -302,9 +302,9 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
             - 1
         1.7.1.2 Ensure local login warning banner is configured properly - Level 1 Server (Not Scored):
           audit:
-            - skip
+            - "egrep '(\\\\v|\\\\r|\\\\m|\\\\s)' /etc/issue"
           expected:
-            - 0
+            - 1
         1.7.1.3 Ensure remote login warning banner is configured properly - Level 1 Server (Not Scored):
           audit:
             - skip
