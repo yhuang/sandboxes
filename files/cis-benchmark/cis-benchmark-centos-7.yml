@@ -1,4 +1,4 @@
-CIS Red Hat Enterprise Linux Benchmark v2.1.0:
+CIS Red Hat Enterprise Linux Benchmark v2.1.1:
   1 Install Updates, Patches and Additional Security Software:
     1.1 Filesystem Configuration:
       1.1.1 Disable unused filesystems:
@@ -169,27 +169,17 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - skip
         expected:
           - 0
-      1.2.2 Ensure gpgcheck is globally activated - Level 1 Server (Scored):
+      1.2.2 Ensure GPG keys are configured - Level 1 Server (Not Scored):
+        audit:
+          - skip
+        expected:
+          - 0
+      1.2.3 Ensure gpgcheck is globally activated - Level 1 Server (Scored):
         audit:
           - "grep ^gpgcheck=1 /etc/yum.conf | grep gpgcheck=1"
           - "grep ^gpgcheck /etc/yum.repos.d/* | grep gpgcheck=0"
         expected:
           - 0
-          - 1
-      1.2.3 Ensure GPG keys are configured - Level 1 Server (Not Scored):
-        audit:
-          - skip
-        expected:
-          - 0
-      1.2.4 Ensure Red Hat Network or Subscription Manager connection is configured - Level 1 Server (Not Scored):
-        audit:
-          - skip
-        expected:
-          - 0
-      1.2.5 Disable the rhnsd Daemon - Level 2 Server (Not Scored):
-        audit:
-          - systemctl is-enabled rhnsd | grep enabled
-        expected:
           - 1
     1.3 Filesystem Integrity Checking:
       1.3.1 Ensure AIDE is installed - Level 1 Server (Scored):
@@ -544,17 +534,12 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 1
           - 1
           - 1
-      2.2.18 Ensure talk server is not enabled - Level 1 Server (Scored):
-        audit:
-          - "systemctl is-enabled ntalk | grep enabled"
-        expected:
-          - 1
-      2.2.19 Ensure telnet server is not enabled - Level 1 Server (Scored):
+      2.2.18 Ensure telnet server is not enabled - Level 1 Server (Scored):
         audit:
           - "systemctl is-enabled telnet.socket | grep enabled"
         expected:
           - 1
-      2.2.20 Ensure tftp server is not enabled - Level 1 Server (Scored):
+      2.2.19 Ensure tftp server is not enabled - Level 1 Server (Scored):
         # We will make sure tftp and tftp-server are not installed.
         audit:
           - "rpm -q tftp"
@@ -564,9 +549,14 @@ CIS Red Hat Enterprise Linux Benchmark v2.1.0:
           - 1
           - 1
           - 1
-      2.2.21 Ensure rsync service is not enabled - Level 1 Server (Scored):
+      2.2.20 Ensure rsync service is not enabled - Level 1 Server (Scored):
         audit:
           - "systemctl is-enabled rsyncd | grep enabled"
+        expected:
+          - 1
+      2.2.21 Ensure talk server is not enabled - Level 1 Server (Scored):
+        audit:
+          - "systemctl is-enabled ntalk | grep enabled"
         expected:
           - 1
     2.3 Service Clients:
