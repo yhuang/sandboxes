@@ -4,7 +4,7 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB8
 
 curl -sSL https://get.rvm.io | bash -s stable
 
-RUBY_VERSION=2.4.0
+RUBY_VERSION=2.4.1
 RVM_SCRIPT=$HOME/.rvm/scripts/rvm
 
 source $RVM_SCRIPT
