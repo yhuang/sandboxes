@@ -38,7 +38,7 @@
   macOS$ cd sandboxes
   ```
 
-  2. Download `CentOS-7-x86_64-DVD-1511.iso` from a trusted source.  Create the `iso` directory under the `sandboxes` top-level directory, and put the ISO file under the `iso` directory.
+  2. Download `CentOS-7-x86_64-DVD-1611.iso` from a trusted source.  Create the `iso` directory under the `sandboxes` top-level directory, and put the ISO file under the `iso` directory.
 
   3. Build the `devops` Vagrant box.
 
