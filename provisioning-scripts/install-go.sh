@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION=1.7.5
+VERSION=1.8.3
 
 cat > /etc/profile.d/goenv.sh << GOENV_SH
 export GOROOT=/opt/go
