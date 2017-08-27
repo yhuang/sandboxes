@@ -15,16 +15,16 @@ rm -rf /dev/.udev/
 if [ -f /etc/sysconfig/network-scripts/ifcfg-eth0 ] ; then
     sed -i "/^HWADDR/d" /etc/sysconfig/network-scripts/ifcfg-eth0
     sed -i "/^UUID/d" /etc/sysconfig/network-scripts/ifcfg-eth0
-fi
 
-# Fix for https://github.com/CentOS/sig-cloud-instance-build/issues/38
-cat > /etc/sysconfig/network-scripts/ifcfg-eth0 << EOF
+    # Fix for https://github.com/CentOS/sig-cloud-instance-build/issues/38
+    cat > /etc/sysconfig/network-scripts/ifcfg-eth0 << EOF
 DEVICE="eth0"
 BOOTPROTO="dhcp"
 ONBOOT="yes"
 TYPE="Ethernet"
 PERSISTENT_DHCLIENT="yes"
 EOF
+fi
 
 DISK_USAGE_BEFORE_CLEANUP=$(df -h)
 
