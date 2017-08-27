@@ -16,6 +16,7 @@ Vagrant.configure(2) do |config|
     vmware.gui = false
     vmware.vmx['memsize'] = 256
     vmware.vmx['numvcpus'] = 1
+    vmware.whitelist_verified = true
   end
 
   config.vm.box = name
