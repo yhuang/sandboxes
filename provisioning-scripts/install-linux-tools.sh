@@ -4,7 +4,6 @@
 # https://github.com/chef/bento/blob/master/http/centos-7.2/ks.cfg
 yum install -y \
 bind-utils \
-cloud-init \
 dstat \
 iftop \
 iotop \

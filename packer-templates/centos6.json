@@ -1,12 +1,12 @@
 {
   "variables": {
-    "box_basename": "centos",
+    "box_basename": "centos6",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
-    "iso_checksum": "1dda55622614a8b43b448a72f87d6cb7f79de1eff49ee8c5881a7d9db28d4e35",
+    "iso_checksum": "d27cf37a40509c17ad70f37bc743f038c1feba00476fe6b69682aa424c399ea6",
     "iso_checksum_type": "sha256",
-    "iso_name": "CentOS-6.8-x86_64-bin-DVD1.iso",
+    "iso_name": "CentOS-6.9-x86_64-bin-DVD1.iso",
     "ks_path": "http/ks.cfg"
   },
   "builders": [
@@ -17,7 +17,7 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 64000,
+      "disk_size": 8000,
       "guest_os_type": "centos-64",
       "headless": true,
       "http_directory": ".",
@@ -64,18 +64,6 @@
       "destination": "/tmp/authorized_keys"
     },
     {
-      "type": "file",
-      "source": "binaries/jq",
-      "destination": "/tmp/jq"
-    },
-    {
-      "type": "shell",
-      "scripts": [
-        "provisioning-scripts/install-vagrant-user-bash-profile.sh",
-        "provisioning-scripts/install-devops-rvm.sh"
-      ]
-    },
-    {
       "type": "shell",
       "environment_vars": [
         "HOME_DIR=/home/vagrant"
@@ -84,16 +72,9 @@
       "scripts": [
         "provisioning-scripts/install-extra-packages-for-enterprise-linux.sh",
         "provisioning-scripts/install-linux-tools.sh",
+        "provisioning-scripts/install-vagrant-user-bash-profile.sh",
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
-        "provisioning-scripts/install-python3.sh",
-        "provisioning-scripts/install-pip.sh",
-        "provisioning-scripts/install-jq.sh",
-        "provisioning-scripts/install-aws-cli.sh",
-        "provisioning-scripts/create-hashicorp-directory.sh",
-        "provisioning-scripts/install-packer.sh",
-        "provisioning-scripts/install-terraform.sh",
-        "provisioning-scripts/install-vault.sh",
         "provisioning-scripts/install-vmtools.sh",
         "provisioning-scripts/install-asciinema.sh",
         "provisioning-scripts/clean-up.sh"
