@@ -106,6 +106,7 @@
         "provisioning-scripts/install-vuls.sh",
         "provisioning-scripts/harden-centos.sh",
         "provisioning-scripts/install-asciinema.sh",
+        "provisioning-scripts/install-parallel.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }
