@@ -12,6 +12,7 @@ lsof \
 nmap \
 nmap-ncat \
 patch \
+python-setuptools \
 sysstat \
 tcpdump \
 telnet \
