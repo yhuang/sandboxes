@@ -12,6 +12,7 @@ lsof \
 nmap \
 nmap-ncat \
 patch \
+python-requests \
 python-setuptools \
 sysstat \
 tcpdump \
