@@ -3,12 +3,10 @@
 #### Required Software
 - [Git Large File Storage](https://git-lfs.github.com/)
 - [VMware Fusion](https://www.vmware.com/products/fusion/fusion-evaluation)
-- [Docker Toolbox](https://github.com/docker/toolbox/releases/)
 - [Packer](https://www.packer.io/downloads.html)
 - [Vagrant](https://www.vagrantup.com/downloads.html)
 - [Vagrant VMware Provider Plugin](https://www.vagrantup.com/docs/vmware/installation.html)
 - [Vagrant Hostmanager Plugin](https://github.com/devopsgroup-io/vagrant-hostmanager)
-- [Vagrant Triggers Plugin](https://github.com/emyl/vagrant-triggers)
 
 #### Add the personal private key and Vagrant's private key to OS X Keychain
 
@@ -63,12 +61,6 @@ Once up, the `devops` Vagrant machine may be accessed via either `vagrant ssh`
 ```
 macOS$ cd vagrantfiles/devops; vagrant ssh
 ```
-or `docker-machine ssh`:
-```
-macOS$ docker-machine ssh devops
-```
-
-`vagrant ssh` must be invoked where the `devops` Vagrantfile resides, but `docker-machine ssh devops` can be invoked anywhere.
 
 #### Set up the `devops` Vagrant Machine
 These steps assume the following about the host Mac OS X machine:
