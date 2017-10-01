@@ -88,6 +88,7 @@
         "provisioning-scripts/install-vagrant-private-ssh-key.sh",
         "provisioning-scripts/configure-sshd-options.sh",
         "provisioning-scripts/install-vmtools.sh",
+        "provisioning-scripts/install-pip.sh",
         "provisioning-scripts/install-ansible.sh",
         "provisioning-scripts/clean-up.sh"
       ]
