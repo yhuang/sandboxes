@@ -41,6 +41,7 @@
   "provisioners": [
     {
       "type": "shell",
+      "expect_disconnect": true,
       "pause_before": "10s",
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "inline": [
