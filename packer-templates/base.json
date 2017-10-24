@@ -24,7 +24,7 @@
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_url": "iso/{{user `iso_name`}}",
-      "output_directory": "packer-{{user `build_timestamp`}}-vmware",
+      "output_directory": "builds/base",
       "shutdown_command": "echo {{user `ssh_password`}} | sudo -S /sbin/halt -h -p",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
@@ -87,6 +87,7 @@
   "post-processors": [
     {
       "type": "vagrant",
+      "keep_input_artifact": true,
       "output": "builds/{{user `box_basename`}}.{{.Provider}}.box"
     }
   ]
