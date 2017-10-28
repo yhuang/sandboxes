@@ -51,6 +51,7 @@
     },
     {
       "type": "shell",
+      "expect_disconnect": true,
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "inline": [ "sleep 60" ]
     },
