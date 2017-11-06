@@ -70,11 +70,6 @@
       "destination": "/tmp/vagrant"
     },
     {
-      "type": "file",
-      "source": "binaries/jq",
-      "destination": "/tmp/jq"
-    },
-    {
       "type": "shell",
       "scripts": [
         "provisioning-scripts/install-vagrant-user-bash-profile.sh",
@@ -97,7 +92,6 @@
         "provisioning-scripts/install-vmtools.sh",
         "provisioning-scripts/install-python3.sh",
         "provisioning-scripts/install-pip.sh",
-        "provisioning-scripts/install-jq.sh",
         "provisioning-scripts/install-aws-cli.sh",
         "provisioning-scripts/install-google-cloud-sdk.sh",
         "provisioning-scripts/create-hashicorp-directory.sh",
@@ -105,6 +99,8 @@
         "provisioning-scripts/install-terraform.sh",
         "provisioning-scripts/install-vault.sh",
         "provisioning-scripts/install-docker-ce.sh",
+        "provisioning-scripts/install-nodejs.sh",
+        "provisioning-scripts/install-xml2json-cli.sh",
         "provisioning-scripts/install-parallel.sh",
         "provisioning-scripts/install-asciinema.sh",
         "provisioning-scripts/clean-up.sh"

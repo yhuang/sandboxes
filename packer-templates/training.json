@@ -49,19 +49,15 @@
       "inline": [ "sleep 60" ]
     },
     {
-      "type": "file",
-      "source": "binaries/jq",
-      "destination": "/tmp/jq"
-    },
-    {
       "type": "shell",
       "environment_vars": [
         "HOME_DIR=/home/vagrant"
       ],
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
+        "provisioning-scripts/install-extra-packages-for-enterprise-linux.sh",
+        "provisioning-scripts/install-linux-tools.sh",
         "provisioning-scripts/install-python3.sh",
-        "provisioning-scripts/install-jq.sh",
         "provisioning-scripts/install-aws-cli.sh",
         "provisioning-scripts/create-hashicorp-directory.sh",
         "provisioning-scripts/install-packer.sh",

@@ -67,11 +67,6 @@
     },
     {
       "type": "file",
-      "source": "binaries/jq",
-      "destination": "/tmp/jq"
-    },
-    {
-      "type": "file",
       "source": "files/confluent.repo",
       "destination": "/tmp/confluent.repo"
     },
@@ -153,7 +148,6 @@
         "provisioning-scripts/install-linux-tools.sh",
         "provisioning-scripts/configure-sshd-options.sh",
         "provisioning-scripts/configure-boot-grub2-directory.sh",
-        "provisioning-scripts/install-jq.sh",
         "provisioning-scripts/install-iptables-services.sh",
         "provisioning-scripts/install-confluent-platform.sh",
         "provisioning-scripts/install-zookeeper.sh",

@@ -19,4 +19,6 @@ tcpdump \
 telnet \
 traceroute
 
-yum --disablerepo="*" --enablerepo="epel" install -y htop
+yum --disablerepo="*" --enablerepo="epel" install -y \
+htop \
+jq
