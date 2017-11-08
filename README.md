@@ -2,7 +2,7 @@
 
 #### Required Software
 - [Git Large File Storage](https://git-lfs.github.com/)
-- [VMware Fusion](https://www.vmware.com/products/fusion/fusion-evaluation)
+- [VMware Fusion Pro](http://store.vmware.com/store?SiteID=vmware&Action=DisplayProductDetailsPage&productID=5124967100)
 - [Packer](https://www.packer.io/downloads.html)
 - [Vagrant](https://www.vagrantup.com/downloads.html)
 - [Vagrant VMware Provider Plugin](https://www.vagrantup.com/docs/vmware/installation.html)
