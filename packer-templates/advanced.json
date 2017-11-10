@@ -16,7 +16,7 @@
       "headless": true,
       "http_directory": ".",
       "source_path": "builds/base/base.vmx",
-      "output_directory": "{{ user `box_basename` }}-{{user `build_timestamp`}}-vmware",
+      "output_directory": "builds/{{ user `box_basename` }}-{{user `build_timestamp`}}-vmware",
       "shutdown_command": "echo {{user `ssh_password`}} | sudo -S /sbin/halt -h -p",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
@@ -66,11 +66,6 @@
       "type": "file",
       "source": "hardening-scripts",
       "destination": "/tmp"
-    },
-    {
-      "type": "shell",
-      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
-      "inline": [ "sleep 60" ]
     },
     {
       "type": "shell",

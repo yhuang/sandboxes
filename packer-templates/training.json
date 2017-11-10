@@ -16,7 +16,7 @@
       "headless": true,
       "http_directory": ".",
       "source_path": "builds/base/base.vmx",
-      "output_directory": "{{ user `box_basename` }}-{{user `build_timestamp`}}-vmware",
+      "output_directory": "builds/{{ user `box_basename` }}-{{user `build_timestamp`}}-vmware",
       "shutdown_command": "echo {{user `ssh_password`}} | sudo -S /sbin/halt -h -p",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
