@@ -3,8 +3,7 @@
     "box_basename": "training",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
-    "build_timestamp": "{{isotime \"20060102150405\"}}",
-    "ks_path": "http/ks.cfg"
+    "build_timestamp": "{{isotime \"20060102150405\"}}"
   },
   "builders": [
     {
@@ -14,10 +13,12 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
+      "disk_size": 8000,
+      "guest_os_type": "centos-64",
       "headless": true,
       "http_directory": ".",
       "source_path": "builds/base/base.vmx",
-      "output_directory": "packer-{{user `build_timestamp`}}-vmware",
+      "output_directory": "{{ user `box_basename` }}-{{user `build_timestamp`}}-vmware",
       "shutdown_command": "echo {{user `ssh_password`}} | sudo -S /sbin/halt -h -p",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
