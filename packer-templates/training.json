@@ -22,7 +22,6 @@
       "ssh_password": "{{user `ssh_password`}}",
       "ssh_port": 22,
       "ssh_wait_timeout": "1800s",
-      "tools_upload_flavor": "linux",
       "vmx_data": {
         "cpuid.coresPerSocket": 1,
         "memsize": 512,
