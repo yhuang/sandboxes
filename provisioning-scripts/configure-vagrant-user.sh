@@ -8,5 +8,6 @@ chmod 600 $VAGRANT_USER_HOME/.ssh/authorized_keys
 chown -R vagrant:vagrant $VAGRANT_USER_HOME
 
 getent group docker || groupadd docker
+getent group wheel || groupadd wheel
 
-usermod -aG docker vagrant
+usermod -aG docker,wheel vagrant

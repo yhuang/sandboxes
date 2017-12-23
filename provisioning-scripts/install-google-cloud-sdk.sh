@@ -6,7 +6,7 @@ ARCHIVE=${APPLICATION}-${VERSION}-linux-x86_64.tar.gz
 
 wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/$ARCHIVE
 
-tar xzvf $ARCHIVE -C /usr/local
+tar xzf $ARCHIVE -C /usr/local
 
 rm -f $ARCHIVE
 
