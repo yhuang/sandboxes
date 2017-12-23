@@ -16,5 +16,4 @@ chmod a+x /etc/profile.d/goenv.sh
 source /etc/profile.d/goenv.sh
 
 go get -u golang.org/x/tools/cmd/...
-go get -u github.com/golang/lint
-go get -u github.com/nsf/gocode
+go get -u github.com/golang/lint/golint
