@@ -15,8 +15,14 @@ $GOOGLE_CLOUD_SDK_DIR/install.sh --disable-installation-options --quiet
 
 GCLOUD_PATH=$GOOGLE_CLOUD_SDK_DIR/bin
 $GCLOUD_PATH/gcloud components update alpha --quiet
+$GCLOUD_PATH/gcloud components update beta --quiet
 
 echo "pathmunge $GCLOUD_PATH" > /etc/profile.d/google-cloud-sdk.sh
 
-SECURE_PATH="/sbin:/bin:/usr/sbin:/usr/bin:$GCLOUD_PATH"
-echo "Defaults    secure_path = $SECURE_PATH" > /etc/sudoers.d/gcloud
+OLD_PATH=$(grep 'Defaults\s*secure_path\s*=\s*\(.*\)' /etc/sudoers |
+awk -F'=' '{print $2}' |
+sed -e 's/^[ \t]*//')
+OLD_SECURE_PATH="Defaults    secure_path = $OLD_PATH"
+NEW_SECURE_PATH="Defaults    secure_path = $OLD_PATH:$GCLOUD_PATH"
+
+sed -i "s|$OLD_SECURE_PATH|$NEW_SECURE_PATH|" /etc/sudoers
