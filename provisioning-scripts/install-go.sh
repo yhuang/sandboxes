@@ -28,6 +28,8 @@ NEW_SECURE_PATH="Defaults    secure_path = $OLD_PATH:$GOROOT/bin:$GOPATH/bin"
 
 sed -i "s|$OLD_SECURE_PATH|$NEW_SECURE_PATH|" /etc/sudoers
 
+echo 'Defaults    env_keep += "GOPATH"' >> /etc/sudoers.d/go
+
 mkdir -p $GOPATH/{src,bin,pkg}
 
 go get -u golang.org/x/tools/cmd/...
