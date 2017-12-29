@@ -16,9 +16,7 @@ $GOOGLE_CLOUD_SDK_DIR/install.sh --disable-installation-options --quiet
 GCLOUD_PATH=$GOOGLE_CLOUD_SDK_DIR/bin
 
 for i in alpha beta; do
-    $GCLOUD_PATH/gcloud components update $i --quiet
-done
-
+    $GCLOUD_PATH/gcloud components update $i
 echo "pathmunge $GCLOUD_PATH" > /etc/profile.d/google-cloud-sdk.sh
 
 SECURE_PATH="/sbin:/bin:/usr/sbin:/usr/bin:$GCLOUD_PATH"

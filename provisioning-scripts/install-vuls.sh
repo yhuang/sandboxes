@@ -35,7 +35,3 @@ cat > /etc/opt/vuls/config.toml << CONFIG_TOML
 host         = "localhost" # or "127.0.0.1"
 port         = "local"
 CONFIG_TOML
-
-OLD_PATH="Defaults\s*secure_path\s*=\s*.*"
-NEW_PATH='Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:/opt/go/bin:/etc/opt/go/bin'
-sed -i "s|$OLD_PATH|$NEW_PATH|" /etc/sudoers

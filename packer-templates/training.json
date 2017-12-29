@@ -53,7 +53,7 @@
       ],
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
-        "provisioning-scripts/install-python3.sh",
+        "provisioning-scripts/install-go.sh",
         "provisioning-scripts/install-pip.sh",
         "provisioning-scripts/install-aws-cli.sh",
         "provisioning-scripts/install-google-cloud-sdk.sh",
