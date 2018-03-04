@@ -3,7 +3,7 @@
     "box_basename": "devops",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
-    "build_timestamp": "{{isotime \"20060102150405\"}}"
+    "build_timestamp": "{{isotime \"20060102-1504\"}}"
   },
   "builders": [
     {
@@ -72,6 +72,9 @@
         "provisioning-scripts/install-docker-ce.sh",
         "provisioning-scripts/install-nodejs.sh",
         "provisioning-scripts/install-xml2json-cli.sh",
+        "provisioning-scripts/install-docker-ce.sh",
+        "provisioning-scripts/install-chefdk.sh",
+        "provisioning-scripts/install-terragrunt.sh",        
         "provisioning-scripts/clean-up.sh"
       ]
     }

@@ -3,7 +3,7 @@
     "box_basename": "consul-server",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
-    "build_timestamp": "{{isotime \"20060102150405\"}}"
+    "build_timestamp": "{{isotime \"20060102-1504\"}}"
   },
   "builders": [
     {

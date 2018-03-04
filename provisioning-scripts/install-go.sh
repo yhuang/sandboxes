@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 APPLICATION=go
-VERSION=1.9.3
+VERSION=1.10
 ARCHIVE=${APPLICATION}${VERSION}.linux-amd64.tar.gz
 
-wget https://storage.googleapis.com/golang/$ARCHIVE
+wget https://dl.google.com/${APPLICATION}/$ARCHIVE
 
 tar xzf $ARCHIVE -C /opt
 

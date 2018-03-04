@@ -1,30 +1,22 @@
 {
   "variables": {
-    "box_basename": "base",
+    "box_basename": "salt-master",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
-    "build_timestamp": "{{isotime \"20060102-1504\"}}",
-    "iso_checksum": "ec7500d4b006702af6af023b1f8f1b890b6c7ee54400bb98cef968b883cd6546",
-    "iso_checksum_type": "sha256",
-    "iso_name": "CentOS-7-x86_64-DVD-1708.iso",
-    "ks_path": "http/ks.cfg"
+    "build_timestamp": "{{isotime \"20060102-1504\"}}"
   },
   "builders": [
     {
-      "type": "vmware-iso",
+      "type": "vmware-vmx",
       "vm_name": "{{ user `box_basename` }}",
       "boot_command": [
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 8000,
-      "guest_os_type": "centos-64",
       "headless": true,
       "http_directory": ".",
-      "iso_checksum": "{{user `iso_checksum`}}",
-      "iso_checksum_type": "{{user `iso_checksum_type`}}",
-      "iso_url": "iso/{{user `iso_name`}}",
-      "output_directory": "builds/{{ user `box_basename` }}",
+      "source_path": "builds/base/base.vmx",
+      "output_directory": "builds/{{ user `box_basename` }}-{{user `build_timestamp`}}-vmware",
       "shutdown_command": "echo {{user `ssh_password`}} | sudo -S /sbin/halt -h -p",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
@@ -55,30 +47,15 @@
       "inline": [ "sleep 60" ]
     },
     {
-      "type": "file",
-      "source": "files/vmware-tools-linux.gz",
-      "destination": "/tmp/vmware-tools-linux.gz"
-    },
-    {
-      "type": "file",
-      "source": "files/vagrant.pub",
-      "destination": "/tmp/authorized_keys"
-    },
-    {
       "type": "shell",
       "environment_vars": [
         "HOME_DIR=/home/vagrant"
       ],
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
-        "provisioning-scripts/install-extra-packages-for-enterprise-linux.sh",
-        "provisioning-scripts/install-linux-tools.sh",
-        "provisioning-scripts/install-vagrant-user-bash-profile.sh",
-        "provisioning-scripts/configure-vagrant-user.sh",
-        "provisioning-scripts/configure-sshd-options.sh",
-        "provisioning-scripts/configure-boot-grub2-directory.sh",
-        "provisioning-scripts/install-vmtools.sh",
-        "provisioning-scripts/install-asciinema.sh",
+        "provisioning-scripts/enable-firewalld.sh",
+        "provisioning-scripts/install-salt.sh",
+        "provisioning-scripts/enable-salt-master.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }
@@ -86,7 +63,6 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "keep_input_artifact": true,
       "output": "builds/{{user `box_basename`}}.{{.Provider}}.box"
     }
   ]

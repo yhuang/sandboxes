@@ -3,7 +3,7 @@
     "box_basename": "centos6",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
-    "build_timestamp": "{{isotime \"20060102150405\"}}",
+    "build_timestamp": "{{isotime \"20060102-1504\"}}",
     "iso_checksum": "d27cf37a40509c17ad70f37bc743f038c1feba00476fe6b69682aa424c399ea6",
     "iso_checksum_type": "sha256",
     "iso_name": "CentOS-6.9-x86_64-bin-DVD1.iso",

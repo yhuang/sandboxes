@@ -1,9 +1,9 @@
 {
   "variables": {
-    "box_basename": "maven-wave",
+    "box_basename": "salt-master",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
-    "build_timestamp": "{{isotime \"20060102150405\"}}"
+    "build_timestamp": "{{isotime \"20060102-1504\"}}"
   },
   "builders": [
     {
@@ -42,21 +42,20 @@
     },
     {
       "type": "shell",
+      "expect_disconnect": true,
+      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "inline": [ "sleep 60" ]
+    },
+    {
+      "type": "shell",
       "environment_vars": [
         "HOME_DIR=/home/vagrant"
       ],
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
-        "provisioning-scripts/install-parallel.sh",
-        "provisioning-scripts/install-python3.sh",
-        "provisioning-scripts/install-pip.sh",
-        "provisioning-scripts/install-google-cloud-sdk.sh",
-        "provisioning-scripts/create-hashicorp-directory.sh",
-        "provisioning-scripts/install-packer.sh",
-        "provisioning-scripts/install-terraform.sh",
-        "provisioning-scripts/install-docker-ce.sh",
-        "provisioning-scripts/install-chefdk.sh",
-        "provisioning-scripts/install-terragrunt.sh",
+        "provisioning-scripts/enable-firewalld.sh",
+        "provisioning-scripts/install-salt.sh",
+        "provisioning-scripts/enable-salt-minion.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }
