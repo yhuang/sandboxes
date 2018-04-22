@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 APPLICATION=packer
-VERSION=1.2.1
+VERSION=1.2.2
 ARCHIVE=${APPLICATION}_${VERSION}_linux_amd64.zip
 
 wget https://releases.hashicorp.com/$APPLICATION/$VERSION/$ARCHIVE

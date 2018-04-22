@@ -74,7 +74,8 @@
         "provisioning-scripts/install-xml2json-cli.sh",
         "provisioning-scripts/install-docker-ce.sh",
         "provisioning-scripts/install-chefdk.sh",
-        "provisioning-scripts/install-terragrunt.sh",        
+        "provisioning-scripts/install-terragrunt.sh",
+        "provisioning-scripts/install-bats.sh",        
         "provisioning-scripts/clean-up.sh"
       ]
     }
