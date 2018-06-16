@@ -61,6 +61,7 @@
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
         "provisioning-scripts/install-parallel.sh",
+        "provisioning-scripts/install-go.sh",
         "provisioning-scripts/install-python3.sh",
         "provisioning-scripts/install-pip.sh",
         "provisioning-scripts/install-aws-cli.sh",
@@ -75,7 +76,7 @@
         "provisioning-scripts/install-docker-ce.sh",
         "provisioning-scripts/install-chefdk.sh",
         "provisioning-scripts/install-terragrunt.sh",
-        "provisioning-scripts/install-bats.sh",        
+        "provisioning-scripts/install-bats.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }
