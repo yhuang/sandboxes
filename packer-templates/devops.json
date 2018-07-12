@@ -77,6 +77,8 @@
         "provisioning-scripts/install-chefdk.sh",
         "provisioning-scripts/install-terragrunt.sh",
         "provisioning-scripts/install-bats.sh",
+        "provisioning-scripts/install-kubernetes-tools.sh",
+        "provisioning-scripts/install-cfssl-tools.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }
