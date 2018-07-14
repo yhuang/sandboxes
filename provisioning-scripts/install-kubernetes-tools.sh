@@ -1,4 +1,4 @@
-#!/usr/bin/env #!/usr/bin/env bash
+#!/usr/bin/env bash
 
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
@@ -12,10 +12,7 @@ EOF
 
 yum install -y kubectl
 
-curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > /tmp/get-helm.sh
-chmod a+x /tmp/get-helm.sh
-/tmp/get-helm.sh
-rm -f /tmp/get-helm.sh
+https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
 
 curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
 chmod a+x skaffold
