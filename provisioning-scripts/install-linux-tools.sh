@@ -12,10 +12,13 @@ lsof \
 nmap \
 nmap-ncat \
 patch \
+perl-CPAN \
+perl-devel \
 python-requests \
 python-setuptools \
 sysstat \
 tcpdump \
+texinfo \
 telnet \
 traceroute
 

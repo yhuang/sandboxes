@@ -60,7 +60,9 @@
       ],
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
+        "provisioning-scripts/install-cpanm.sh",
         "provisioning-scripts/install-parallel.sh",
+        "provisioning-scripts/install-openjdk.sh",
         "provisioning-scripts/install-go.sh",
         "provisioning-scripts/install-python3.sh",
         "provisioning-scripts/install-pip.sh",
@@ -69,6 +71,7 @@
         "provisioning-scripts/create-hashicorp-directory.sh",
         "provisioning-scripts/install-packer.sh",
         "provisioning-scripts/install-terraform.sh",
+        "provisioning-scripts/install-terraform-tools.sh",
         "provisioning-scripts/install-vault.sh",
         "provisioning-scripts/install-docker-ce.sh",
         "provisioning-scripts/install-nodejs.sh",
@@ -78,6 +81,7 @@
         "provisioning-scripts/install-bats.sh",
         "provisioning-scripts/install-kubernetes-tools.sh",
         "provisioning-scripts/install-cfssl-tools.sh",
+
         "provisioning-scripts/clean-up.sh"
       ]
     }
