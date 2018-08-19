@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 APPLICATION=google-cloud-sdk
-VERSION=210.0.0
+VERSION=212.0.0
 ARCHIVE=${APPLICATION}-${VERSION}-linux-x86_64.tar.gz
 
 wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/$ARCHIVE
