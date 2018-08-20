@@ -11,3 +11,4 @@ packer_cache/*
 packer-*-vmware/*
 personal-credentials.shi
 *.log
+backup
