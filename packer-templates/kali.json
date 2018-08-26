@@ -54,8 +54,8 @@
       "ssh_wait_timeout": "1800s",
       "vmx_data": {
         "cpuid.coresPerSocket": 1,
-        "memsize": 1024,
-        "numvcpus": 1
+        "memsize": 2048,
+        "numvcpus": 2
       }
     }
   ],
