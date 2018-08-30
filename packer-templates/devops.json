@@ -60,7 +60,6 @@
       ],
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
-        "provisioning-scripts/install-cpanm.sh",
         "provisioning-scripts/install-parallel.sh",
         "provisioning-scripts/install-openjdk.sh",
         "provisioning-scripts/install-go.sh",
@@ -81,7 +80,7 @@
         "provisioning-scripts/install-bats.sh",
         "provisioning-scripts/install-kubernetes-tools.sh",
         "provisioning-scripts/install-cfssl-tools.sh",
-
+        "provisioning-scripts/install-pre-commit.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }

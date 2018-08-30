@@ -20,7 +20,8 @@ sysstat \
 tcpdump \
 texinfo \
 telnet \
-traceroute
+traceroute \
+zlib-devel
 
 yum --disablerepo="*" --enablerepo="epel" install -y \
 htop \
