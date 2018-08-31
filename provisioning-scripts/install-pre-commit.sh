@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-curl https://bootstrap.pypa.io/get-pip.py | sudo python - pre-commit
+curl https://bootstrap.pypa.io/get-pip.py | python - pre-commit
