@@ -2,7 +2,7 @@
 
 VERSION=2.4
 
-yum install -y libffi-devel openssl-devel python-devel python-sphinx PyYAML
+yum install -y libffi-devel python-sphinx PyYAML
 
 ANSIBLE_DIR=/etc/ansible
 

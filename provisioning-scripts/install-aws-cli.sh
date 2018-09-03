@@ -5,8 +5,6 @@ VAGRANT_USER_HOME=/home/vagrant
 AWS_CLI_BUNDLE=awscli-bundle
 AWS_CLI_BUNDLE_ARCHIVE=$AWS_CLI_BUNDLE.zip
 
-yum install -y python-devel
-
 curl "https://s3.amazonaws.com/aws-cli/$AWS_CLI_BUNDLE_ARCHIVE" -o "$AWS_CLI_BUNDLE_ARCHIVE"
 unzip $AWS_CLI_BUNDLE_ARCHIVE
 ./$AWS_CLI_BUNDLE/install -i /usr/local/aws -b /usr/local/bin/aws

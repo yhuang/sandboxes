@@ -15,8 +15,8 @@ echo "gem: --no-rdoc --no-ri" > $HOME/.gemrc
 rvm install $RUBY_VERSION
 rvm use $RUBY_VERSION --default
 
-rvm gemset create devops
-rvm use ${RUBY_VERSION}@devops --default
+rvm gemset create system
+rvm use ${RUBY_VERSION}@system --default
 
 gem install \
 aws-sdk \

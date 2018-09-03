@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 APPLICATION=git
-VERSION=2.9.5
-ARCHIVE=${APPLICATION}-${VERSION}.tar.gz
+VERSION=2.18.0
+ARCHIVE=${APPLICATION}.tar.gz
 
-wget https://mirrors.edge.kernel.org/pub/software/scm/${APPLICATION}/${ARCHIVE}
+curl https://codeload.github.com/git/git/tar.gz/v${VERSION} -o $ARCHIVE
 tar xzvf $ARCHIVE
 
 CURRENT_DIR=$(pwd)

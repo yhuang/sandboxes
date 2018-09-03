@@ -48,13 +48,6 @@
     },
     {
       "type": "shell",
-      "scripts": [
-        "provisioning-scripts/install-vagrant-user-bash-profile.sh",
-        "provisioning-scripts/install-devops-rvm.sh"
-      ]
-    },
-    {
-      "type": "shell",
       "environment_vars": [
         "HOME_DIR=/home/vagrant"
       ],
@@ -62,9 +55,6 @@
       "scripts": [
         "provisioning-scripts/install-parallel.sh",
         "provisioning-scripts/install-openjdk.sh",
-        "provisioning-scripts/install-go.sh",
-        "provisioning-scripts/install-python3.sh",
-        "provisioning-scripts/install-pip.sh",
         "provisioning-scripts/install-aws-cli.sh",
         "provisioning-scripts/install-google-cloud-sdk.sh",
         "provisioning-scripts/create-hashicorp-directory.sh",
@@ -73,8 +63,7 @@
         "provisioning-scripts/install-terraform-tools.sh",
         "provisioning-scripts/install-vault.sh",
         "provisioning-scripts/install-docker-ce.sh",
-        "provisioning-scripts/install-nodejs.sh",
-        "provisioning-scripts/install-xml2json-cli.sh",
+        "provisioning-scripts/install-devops-rvm.sh",
         "provisioning-scripts/install-chefdk.sh",
         "provisioning-scripts/install-terragrunt.sh",
         "provisioning-scripts/install-bats.sh",

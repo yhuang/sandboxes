@@ -1,19 +1,22 @@
 #!/usr/bin/env bash
 
-# For parity between aws and vagrant
-# https://github.com/chef/bento/blob/master/http/centos-7.2/ks.cfg
 yum install -y \
 bind-utils \
+cmake \
 dstat \
+gettext-devel \
+http-parser \
 iftop \
 iotop \
 iptraf \
 lsof \
 nmap \
 nmap-ncat \
+openssl-devel \
 patch \
 perl-CPAN \
 perl-devel \
+python-devel \
 python-requests \
 python-setuptools \
 sysstat \
@@ -21,8 +24,16 @@ tcpdump \
 texinfo \
 telnet \
 traceroute \
-zlib-devel
+yum-utils \
+zlib-devel \
+zsh
+
+yum install -y epel-release
+yum-config-manager --disable epel
 
 yum --disablerepo="*" --enablerepo="epel" install -y \
+asciinema \
 htop \
-jq
+jq \
+nodejs \
+python36

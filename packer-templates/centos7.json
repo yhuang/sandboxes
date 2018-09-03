@@ -1,51 +1,30 @@
 {
   "variables": {
-    "box_basename": "kali",
+    "box_basename": "centos7",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "build_timestamp": "{{isotime \"20060102-1504\"}}",
-    "iso_checksum": "56f677e2edfb2efcd0b08662ddde824e254c3d53567ebbbcdbbf5c03efd9bc0f",
+    "iso_checksum": "506e4e06abf778c3435b4e5745df13e79ebfc86565d7ea1e128067ef6b5a6345",
     "iso_checksum_type": "sha256",
-    "iso_name": "kali-linux-2018.2-amd64.iso",
-    "preseed_path": "http/kali-preseed.cfg"
+    "iso_name": "CentOS-7-x86_64-DVD-1804.iso",
+    "ks_path": "http/ks.cfg"
   },
   "builders": [
     {
       "type": "vmware-iso",
       "vm_name": "{{ user `box_basename` }}",
       "boot_command": [
-        "<esc><wait>",
-        "/install/vmlinuz<wait>",
-        " auto<wait>",
-        " console-setup/ask_detect=false<wait>",
-        " console-setup/layoutcode=us<wait>",
-        " console-setup/modelcode=pc105<wait>",
-        " debconf/frontend=noninteractive<wait>",
-        " debian-installer=en_US<wait>",
-        " fb=false<wait>",
-        " initrd=/install/initrd.gz<wait>",
-        " kbd-chooser/method=us<wait>",
-        " netcfg/choose_interface=eth0<wait>",
-        " console-keymaps-at/keymap=us<wait>",
-        " keyboard-configuration/xkb-keymap=us<wait>",
-        " keyboard-configuration/layout=USA<wait>",
-        " keyboard-configuration/variant=USA<wait>",
-        " locale=en_US<wait>",
-        " netcfg/get_domain=vm<wait>",
-        " netcfg/get_hostname={{ user `box_basename` }}<wait>",
-        " grub-installer/bootdev=/dev/sda<wait>",
-        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `preseed_path`}}",
-        " -- <wait>",
-        "<enter><wait>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": 16000,
+      "guest_os_type": "centos-64",
       "headless": true,
       "http_directory": ".",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_url": "iso/{{user `iso_name`}}",
-      "output_directory": "builds/{{ user `box_basename` }}-{{user `build_timestamp`}}-vmware",
+      "output_directory": "builds/{{ user `box_basename` }}",
       "shutdown_command": "echo {{user `ssh_password`}} | sudo -S /sbin/halt -h -p",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
@@ -53,8 +32,8 @@
       "ssh_wait_timeout": "1800s",
       "vmx_data": {
         "cpuid.coresPerSocket": 1,
-        "memsize": 4196,
-        "numvcpus": 2
+        "memsize": 512,
+        "numvcpus": 1
       }
     }
   ],
@@ -65,7 +44,7 @@
       "pause_before": "10s",
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "inline": [
-        "apt-get -y update",
+        "yum -y update",
         "reboot"
       ]
     },
@@ -87,22 +66,26 @@
     },
     {
       "type": "shell",
-      "expect_disconnect": true,
       "environment_vars": [
         "HOME_DIR=/home/vagrant"
       ],
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
+        "provisioning-scripts/configure-boot-grub2-directory.sh",
+        "provisioning-scripts/install-linux-tools.sh",
+        "provisioning-scripts/install-git.sh",
         "provisioning-scripts/install-vagrant-user-bash-profile.sh",
+        "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
         "provisioning-scripts/install-vmtools.sh",
-        "provisioning-scripts/configure-kali.sh"
+        "provisioning-scripts/clean-up.sh"
       ]
     }
   ],
   "post-processors": [
     {
       "type": "vagrant",
+      "keep_input_artifact": true,
       "output": "builds/{{user `box_basename`}}.{{.Provider}}.box"
     }
   ]
