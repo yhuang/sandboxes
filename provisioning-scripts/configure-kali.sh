@@ -15,7 +15,6 @@ EOL
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get -yq update
-apt-get -yq upgrade
 
 VAGRANT_USER_HOME=/home/vagrant
 
@@ -46,7 +45,20 @@ EOF
 update-grub
 
 # Delete unneeded files.
+rm -f /root/*.sh
 rm -f /home/vagrant/*.sh
+
+apt-get -y autoremove --purge
+apt-get -y clean
+apt-get -y autoclean
+
+# the history isn't needed
+unset HISTFILE
+rm -f /root/.bash_history
+rm -f /home/vagrant/.bash_history
+
+# log files
+DEBIAN_FRONTEND=noninteractive find /var/log -type f | while read f; do echo -ne '' > $f; done;
 
 # Zero out the rest of the free space using dd, then delete the written file.
 dd if=/dev/zero of=/EMPTY bs=1M || echo "dd exit code $? is suppressed"

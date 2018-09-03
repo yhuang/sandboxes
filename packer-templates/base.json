@@ -47,35 +47,29 @@
       "inline": [ "sleep 60" ]
     },
     {
-      "type": "file",
-      "source": "files/install-oh-my-zsh.sh",
-      "destination": "/tmp/install-oh-my-zsh.sh"
-    },
-    {
-      "type": "shell",
-      "environment_vars": [
-        "HOME_DIR=/home/vagrant"
-      ],
-      "scripts": [
-        "provisioning-scripts/install-oh-my-zsh.sh"
-      ]
-    },
-    {
       "type": "shell",
       "environment_vars": [
         "HOME_DIR=/home/vagrant"
       ],
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
-        "provisioning-scripts/change-shell.sh",
-        "provisioning-scripts/install-cargo.sh",
-        "provisioning-scripts/install-bat.sh",
-        "provisioning-scripts/install-prettyping.sh",
-        "provisioning-scripts/install-pip.sh",
-        "provisioning-scripts/install-cpanm.sh",
-        "provisioning-scripts/install-xml2json-cli.sh",
-        "provisioning-scripts/install-csvkit.sh",
         "provisioning-scripts/install-go.sh",
+        "provisioning-scripts/install-pip.sh",
+        "provisioning-scripts/install-cargo.sh",
+        "provisioning-scripts/install-ack.sh",
+        "provisioning-scripts/install-ag.sh",
+        "provisioning-scripts/install-bat.sh",
+        "provisioning-scripts/install-fd.sh",
+        "provisioning-scripts/install-ncdu.sh",
+        "provisioning-scripts/install-prettyping.sh",
+        "provisioning-scripts/install-tldr.sh",
+        "provisioning-scripts/install-csvkit.sh",
+        "provisioning-scripts/install-json2csv.sh",
+        "provisioning-scripts/install-xml2json-cli.sh",
+        "provisioning-scripts/install-entr.sh",
+        "provisioning-scripts/install-cpanm.sh",
+        "provisioning-scripts/install-parallel.sh",
+        "provisioning-scripts/install-openjdk.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }

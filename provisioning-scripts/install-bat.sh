@@ -8,5 +8,5 @@ cd /tmp/bat
 cargo build --release
 cp /tmp/bat/target/release/bat /usr/bin
 
-cd /
+cd /root
 rm -fr /tmp/bat

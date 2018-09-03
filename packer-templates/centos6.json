@@ -32,7 +32,7 @@
       "ssh_wait_timeout": "1800s",
       "vmx_data": {
         "cpuid.coresPerSocket": 1,
-        "memsize": 512,
+        "memsize": 1024,
         "numvcpus": 1
       }
     }
@@ -71,12 +71,36 @@
       ],
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
-        "provisioning-scripts/install-linux-tools.sh",
+        "provisioning-scripts/install-essential-linux-packages.sh",
         "provisioning-scripts/install-git.sh",
         "provisioning-scripts/install-vagrant-user-bash-profile.sh",
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
-        "provisioning-scripts/install-vmtools.sh",
+        "provisioning-scripts/install-vmtools.sh"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "files/install-oh-my-zsh.sh",
+      "destination": "/tmp/install-oh-my-zsh.sh"
+    },
+    {
+      "type": "shell",
+      "environment_vars": [
+        "HOME_DIR=/home/vagrant"
+      ],
+      "scripts": [
+        "provisioning-scripts/install-oh-my-zsh.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "environment_vars": [
+        "HOME_DIR=/home/vagrant"
+      ],
+      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "scripts": [
+        "provisioning-scripts/change-shell.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }

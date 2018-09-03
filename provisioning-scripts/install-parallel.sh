@@ -5,8 +5,6 @@ VAGRANT_USER_HOME=/home/vagrant
 # (wget -O - pi.dk/3 || curl pi.dk/3/) | bash
 # rm -fr .gnupg parallel-*
 
-export PATH="$PATH:/usr/local/bin"
-
 APPLICATION=parallel
 VERSION=20180722
 LATEST=${APPLICATION}-${VERSION}
