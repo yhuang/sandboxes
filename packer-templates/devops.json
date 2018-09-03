@@ -61,7 +61,6 @@
         "provisioning-scripts/install-terraform-tools.sh",
         "provisioning-scripts/install-vault.sh",
         "provisioning-scripts/install-docker-ce.sh",
-        "provisioning-scripts/install-rvm.sh",
         "provisioning-scripts/install-chefdk.sh",
         "provisioning-scripts/install-terragrunt.sh",
         "provisioning-scripts/install-bats.sh",

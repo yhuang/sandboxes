@@ -48,6 +48,12 @@
     },
     {
       "type": "shell",
+      "scripts": [
+        "provisioning-scripts/install-rvm.sh"
+      ]
+    },
+    {
+      "type": "shell",
       "environment_vars": [
         "HOME_DIR=/home/vagrant"
       ],
