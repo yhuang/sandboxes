@@ -54,6 +54,11 @@ rm -rf /tmp
 
 apt-get -y autoremove --purge
 apt-get -y clean
+
+# https://askubuntu.com/questions/131601/gpg-error-release-the-following-signatures-were-invalid-badsig
+mv /var/lib/apt/lists /tmp
+mkdir -p /var/lib/apt/lists/partial
+
 apt-get -y autoclean
 
 # the history isn't needed

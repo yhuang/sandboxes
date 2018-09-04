@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-VAGRANT_USER_HOME=/home/vagrant
-
 # (wget -O - pi.dk/3 || curl pi.dk/3/) | bash
 # rm -fr .gnupg parallel-*
 
@@ -16,7 +14,7 @@ CURRENT_DIR=$(pwd)
 cd $LATEST || exit 2
 ./configure && make && make install
 
-for user_dir in $VAGRANT_USER_HOME /root; do
+for user_dir in $HOME_DIR /root; do
     mkdir -p $user_dir/.parallel
     touch $user_dir/.parallel/will-cite
 done
