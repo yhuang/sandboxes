@@ -71,6 +71,11 @@
       "destination": "/tmp/authorized_keys"
     },
     {
+      "type": "file",
+      "source": "files/install-oh-my-zsh.sh",
+      "destination": "/tmp/install-oh-my-zsh.sh"
+    },
+    {
       "type": "shell",
       "expect_disconnect": true,
       "environment_vars": [
@@ -85,11 +90,6 @@
         "provisioning-scripts/install-oh-my-zsh.sh",
         "provisioning-scripts/configure-current-user-zshrc.sh"
       ]
-    },
-    {
-      "type": "file",
-      "source": "files/install-oh-my-zsh.sh",
-      "destination": "/tmp/install-oh-my-zsh.sh"
     },
     {
       "type": "shell",
