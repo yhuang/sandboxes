@@ -85,7 +85,7 @@
         "provisioning-scripts/install-oh-my-zsh.sh",
         "provisioning-scripts/configure-current-user-zshrc.sh"
       ]
-    }
+    },
     {
       "type": "file",
       "source": "files/install-oh-my-zsh.sh",
