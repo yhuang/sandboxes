@@ -18,12 +18,10 @@ apt-get -yq update
 
 apt-get install -y zsh
 
-VAGRANT_USER_HOME=/home/vagrant
-
-mkdir $VAGRANT_USER_HOME/.ssh && chmod 700 $VAGRANT_USER_HOME/.ssh
-mv /tmp/authorized_keys $VAGRANT_USER_HOME/.ssh/authorized_keys
-chmod 600 $VAGRANT_USER_HOME/.ssh/authorized_keys
-chown -R vagrant:vagrant $VAGRANT_USER_HOME
+mkdir $HOME_DIR/.ssh && chmod 700 $HOME_DIR/.ssh
+mv /tmp/authorized_keys $HOME_DIR/.ssh/authorized_keys
+chmod 600 $HOME_DIR/.ssh/authorized_keys
+chown -R vagrant:vagrant $HOME_DIR
 
 cp /etc/sudoers /etc/sudoers.orig
 grep -q 'secure_path' /etc/sudoers \
@@ -51,7 +49,7 @@ chsh -s /bin/zsh vagrant
 
 # Delete unneeded files.
 rm -f /root/*.sh
-rm -f /home/vagrant/*.sh
+rm -f $HOME_DIR/*.sh
 
 apt-get -y autoremove --purge
 apt-get -y clean
@@ -60,7 +58,7 @@ apt-get -y autoclean
 # the history isn't needed
 unset HISTFILE
 rm -f /root/.bash_history
-rm -f /home/vagrant/.bash_history
+rm -f $HOME_DIR/.bash_history
 
 # log files
 DEBIAN_FRONTEND=noninteractive find /var/log -type f | while read f; do echo -ne '' > $f; done;

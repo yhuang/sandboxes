@@ -79,7 +79,10 @@
       "scripts": [
         "provisioning-scripts/install-vagrant-user-bash-profile.sh",
         "provisioning-scripts/configure-sshd-options.sh",
-        "provisioning-scripts/install-vmtools.sh"
+        "provisioning-scripts/install-vmtools.sh",
+        "provisioning-scripts/install-dircolors-solarized.sh",
+        "provisioning-scripts/install-oh-my-zsh.sh",
+        "provisioning-scripts/configure-current-user-zshrc.sh"
       ]
     }
     {
@@ -89,12 +92,9 @@
     },
     {
       "type": "shell",
-      "environment_vars": [
-        "HOME_DIR=/home/vagrant"
-      ],
       "scripts": [
         "provisioning-scripts/install-oh-my-zsh.sh",
-        "provisioning-scripts/install-dircolors-solarized.sh"
+        "provisioning-scripts/configure-current-user-zshrc.sh"
       ]
     },
     {
