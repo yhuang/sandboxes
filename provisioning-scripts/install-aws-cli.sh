@@ -12,12 +12,6 @@ unzip $AWS_CLI_BUNDLE_ARCHIVE
 rm -fr $AWS_CLI_BUNDLE
 rm -f $AWS_CLI_BUNDLE_ARCHIVE
 
-cat > $VAGRANT_USER_HOME/.bashrc << BASHRC
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-
-alias rm='rm -i'
-
+cat >> $VAGRANT_USER_HOME/.bashrc << BASHRC
 complete -C '/usr/local/aws/bin/aws_completer' aws
 BASHRC

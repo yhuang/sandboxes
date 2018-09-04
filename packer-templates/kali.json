@@ -53,7 +53,7 @@
       "ssh_wait_timeout": "1800s",
       "vmx_data": {
         "cpuid.coresPerSocket": 1,
-        "memsize": 4196,
+        "memsize": 2048,
         "numvcpus": 2
       }
     }
@@ -79,7 +79,33 @@
       "scripts": [
         "provisioning-scripts/install-vagrant-user-bash-profile.sh",
         "provisioning-scripts/configure-sshd-options.sh",
-        "provisioning-scripts/install-vmtools.sh",
+        "provisioning-scripts/install-vmtools.sh"
+      ]
+    }
+    {
+      "type": "file",
+      "source": "files/install-oh-my-zsh.sh",
+      "destination": "/tmp/install-oh-my-zsh.sh"
+    },
+    {
+      "type": "shell",
+      "environment_vars": [
+        "HOME_DIR=/home/vagrant"
+      ],
+      "scripts": [
+        "provisioning-scripts/install-oh-my-zsh.sh",
+        "provisioning-scripts/install-dircolors-solarized.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "expect_disconnect": true,
+      "environment_vars": [
+        "HOME_DIR=/home/vagrant"
+      ],
+      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "scripts": [
+        "provisioning-scripts/change-shell.sh",
         "provisioning-scripts/configure-kali.sh"
       ]
     }

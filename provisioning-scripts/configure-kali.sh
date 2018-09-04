@@ -4,7 +4,7 @@ set -e
 
 # Edit listchanges 'frontend=text' so it doesn't freeze our non-interactive
 # script when there's an imoportant changelog.
-cat >/etc/apt/listchanges.conf <<EOL
+cat > /etc/apt/listchanges.conf << EOL
 [apt]
 frontend=text
 email_address=root
@@ -15,6 +15,8 @@ EOL
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get -yq update
+
+apt-get install -y zsh
 
 VAGRANT_USER_HOME=/home/vagrant
 
@@ -43,6 +45,9 @@ GRUB_CMDLINE_LINUX="debian-installer=en_US"
 EOF
 
 update-grub
+
+# Change shell
+chsh -s /bin/zsh vagrant
 
 # Delete unneeded files.
 rm -f /root/*.sh
