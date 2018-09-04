@@ -50,6 +50,7 @@ chsh -s /bin/zsh vagrant
 # Delete unneeded files.
 rm -f /root/*.sh
 rm -f $HOME_DIR/*.sh
+rm -rf /tmp
 
 apt-get -y autoremove --purge
 apt-get -y clean
