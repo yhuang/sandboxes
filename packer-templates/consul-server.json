@@ -3,7 +3,8 @@
     "box_basename": "consul-server",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
-    "build_timestamp": "{{isotime \"20060102-1504\"}}"
+    "build_timestamp": "{{isotime \"20060102-1504\"}}",
+    "user_home_dir": "/home/vagrant"
   },
   "builders": [
     {
@@ -59,7 +60,7 @@
     {
       "type": "shell",
       "environment_vars": [
-        "HOME_DIR=/home/vagrant"
+        "HOME_DIR={{user `user_home_dir`}}"
       ],
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
