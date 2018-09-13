@@ -4,14 +4,14 @@ set -e
 
 # Edit listchanges 'frontend=text' so it doesn't freeze our non-interactive
 # script when there's an imoportant changelog.
-cat > /etc/apt/listchanges.conf << EOL
+cat > /etc/apt/listchanges.conf << EOF
 [apt]
 frontend=text
 email_address=root
 confirm=0
 save_seen=/var/lib/apt/listchanges.db
 which=news
-EOL
+EOF
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get -yq update
@@ -32,7 +32,7 @@ echo 'vagrant ALL=(ALL) NOPASSWD:ALL' >/etc/sudoers.d/99_vagrant;
 chmod 440 /etc/sudoers.d/99_vagrant;
 
 # Remove 5s grub timeout to speed up booting
-cat <<EOF > /etc/default/grub
+cat << EOF > /etc/default/grub
 # If you change this file, run 'update-grub' afterwards to update
 # /boot/grub/grub.cfg.
 GRUB_DEFAULT=0
