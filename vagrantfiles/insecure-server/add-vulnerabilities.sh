@@ -37,7 +37,7 @@ systemctl enable tftp
 # Install bad tftp.service
 tftp_service=/usr/lib/systemd/system/tftp.service
 cat /dev/null > $tftp_service
-cat <<EOF | cat >> $tftp_service
+cat << EOF | cat >> $tftp_service
 [Unit]
 Description=Tftp Server
 Requires=tftp.socket
@@ -57,7 +57,7 @@ yum install -y net-snmp net-snmp-utils
 # Install bad yum.conf
 yum_conf=/etc/yum.conf
 cat /dev/null > $yum_conf
-cat <<EOF | cat >> $yum_conf
+cat << EOF | cat >> $yum_conf
 [main]
 cachedir=/var/cache/yum/$basearch/$releasever
 keepcache=0
@@ -75,7 +75,7 @@ EOF
 # Install bad CentOS-Base.repo
 centos_base_repo=/etc/yum.repos.d/CentOS-Base.repo
 cat /dev/null > $centos_base_repo
-cat <<EOF | cat >> $yum_conf
+cat << EOF | cat >> $yum_conf
 [base]
 name=CentOS-$releasever - Base
 mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra

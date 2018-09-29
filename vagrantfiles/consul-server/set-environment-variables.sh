@@ -28,7 +28,7 @@ do
     esac
 done
 
-cat <<EOF > /etc/profile.d/consul.sh
+cat << EOF > /etc/profile.d/consul.sh
 ATLAS_ENVIRONMENT=$ATLAS_ENVIRONMENT
 ATLAS_TOKEN=$ATLAS_TOKEN
 CONSUL_SERVERS=$CONSUL_SERVERS

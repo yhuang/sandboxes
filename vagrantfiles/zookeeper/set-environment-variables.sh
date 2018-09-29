@@ -33,7 +33,7 @@ do
 done
 
 
-cat <<EOF | cat >> /etc/profile.d/consul.sh
+cat << EOF | cat >> /etc/profile.d/consul.sh
 ATLAS_ENVIRONMENT=$ATLAS_ENVIRONMENT
 ATLAS_TOKEN=$ATLAS_TOKEN
 MYID=$MYID
