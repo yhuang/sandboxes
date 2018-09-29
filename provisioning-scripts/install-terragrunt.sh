@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 APPLICATION=terragrunt
-VERSION=0.16.10
+VERSION=0.16.11
 BINARY=${APPLICATION}_linux_amd64
 
 wget https://github.com/gruntwork-io/$APPLICATION/releases/download/v$VERSION/$BINARY
