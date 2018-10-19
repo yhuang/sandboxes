@@ -33,7 +33,7 @@ echo 'Defaults    env_keep += "GOPATH"' >> /etc/sudoers.d/go
 mkdir -p $GOPATH/{src,bin,pkg}
 
 go get -u golang.org/x/tools/cmd/...
-go get -u github.com/golang/lint/golint
+go get -u golang.org/x/lint/golint
 
 chown -R root:wheel $GOPATH
 chmod -R 775 $GOPATH/{src,bin,pkg}
