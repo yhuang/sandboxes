@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 cat >> $HOME/.zshrc << ZSHRC
+HISTSIZE=5000
+SAVEHIST=\$HISTSIZE
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'

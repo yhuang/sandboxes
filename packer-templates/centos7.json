@@ -84,9 +84,7 @@
         "provisioning-scripts/configure-vagrant-user.sh",
         "provisioning-scripts/configure-sshd-options.sh",
         "provisioning-scripts/install-vmtools.sh",
-        "provisioning-scripts/install-dircolors-solarized.sh",
-        "provisioning-scripts/install-oh-my-zsh.sh",
-        "provisioning-scripts/configure-current-user-zshrc.sh"
+        "provisioning-scripts/install-dircolors-solarized.sh"
       ]
     },
     {
@@ -103,6 +101,8 @@
       ],
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
+        "provisioning-scripts/install-oh-my-zsh.sh",
+        "provisioning-scripts/configure-current-user-zshrc.sh",
         "provisioning-scripts/change-shell.sh",
         "provisioning-scripts/clean-up.sh"
       ]

@@ -4,8 +4,11 @@
 # https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 
 main() {
-  # yhuang's fork is set to use agnoster theme by default
+  # yhuang's fork is set to use agnoster theme by default and
+  # enables DISABLE_UNTRACKED_FILES_DIRTY="true"
+  #
   # https://github.com/yhuang/oh-my-zsh/blob/master/templates/zshrc.zsh-template#L11
+  # https://github.com/yhuang/oh-my-zsh/blob/master/templates/zshrc.zsh-template#L47
   OH_MY_ZSH_REPO=https://github.com/yhuang/oh-my-zsh.git
 
   # Use colors, but only if connected to a terminal, and that terminal
