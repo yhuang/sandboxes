@@ -62,9 +62,9 @@
       "scripts": [
         "provisioning-scripts/install-go.sh",
         "provisioning-scripts/install-pip.sh",
-        "provisioning-scripts/install-cargo.sh",
         "provisioning-scripts/install-cpanm.sh",
         "provisioning-scripts/install-ag.sh",
+        "provisioning-scripts/install-cargo.sh",
         "provisioning-scripts/install-bat.sh",
         "provisioning-scripts/install-fd.sh",
         "provisioning-scripts/install-ncdu.sh",

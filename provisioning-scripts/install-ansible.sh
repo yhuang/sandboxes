@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION=2.4
+VERSION=2.7
 
 yum install -y libffi-devel python-sphinx PyYAML
 
