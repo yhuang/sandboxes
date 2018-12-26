@@ -69,6 +69,7 @@
         "provisioning-scripts/install-cfssl-tools.sh",
         "provisioning-scripts/install-pre-commit.sh",
         "provisioning-scripts/install-exercism.sh",
+        "provisioning-scripts/install-protobuf.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }

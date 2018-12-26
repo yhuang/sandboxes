@@ -6,7 +6,7 @@
 APPLICATION=parallel
 VERSION=20181222
 LATEST=${APPLICATION}-${VERSION}
-ARCHIVE=$LATEST.tar.gz
+ARCHIVE=${LATEST}.tar.gz
 
 wget http://git.savannah.gnu.org/cgit/parallel.git/snapshot/$ARCHIVE
 tar xzf	$ARCHIVE

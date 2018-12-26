@@ -4,7 +4,7 @@ APPLICATION=go
 VERSION=1.11.4
 ARCHIVE=${APPLICATION}${VERSION}.linux-amd64.tar.gz
 
-wget https://dl.google.com/${APPLICATION}/$ARCHIVE
+wget https://dl.google.com/$APPLICATION/$ARCHIVE
 
 tar xzf $ARCHIVE -C /opt
 

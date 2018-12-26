@@ -6,7 +6,7 @@ VERSION=4.1
 APPLICATION_DIR=eradman-entr-f4e2cbe57708
 ARCHIVE=${APPLICATION}-${VERSION}.tar.gz
 
-wget https://bitbucket.org/eradman/entr/get/entr-4.1.tar.gz
+wget https://bitbucket.org/eradman/$APPLICATION/get/$ARCHIVE
 tar xzvf $ARCHIVE
 
 CURRENT_DIR=$(pwd)
