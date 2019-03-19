@@ -32,8 +32,9 @@ yum install -y epel-release
 yum-config-manager --disable epel
 
 yum --disablerepo="*" --enablerepo="epel" install -y \
-asciinema \
 htop \
 jq \
 nodejs \
 python36
+
+ln -s /usr/bin/python36 /usr/bin/python3
