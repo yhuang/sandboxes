@@ -18,6 +18,9 @@
         "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
+      "cpus": 1,
+      "cores": 1,
+      "memory": 1024,
       "disk_size": 16000,
       "guest_os_type": "centos-64",
       "headless": true,
@@ -30,12 +33,7 @@
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
       "ssh_port": 22,
-      "ssh_wait_timeout": "1800s",
-      "vmx_data": {
-        "cpuid.coresPerSocket": 1,
-        "memsize": 1024,
-        "numvcpus": 1
-      }
+      "ssh_wait_timeout": "1800s"
     }
   ],
   "provisioners": [
