@@ -2,8 +2,7 @@
 
 APPLICATION=terragrunt
 
-# 0.17.4 is available, but the executable has not been compiled.
-VERSION=0.17.3
+VERSION=0.18.2
 BINARY=${APPLICATION}_linux_amd64
 
 wget https://github.com/gruntwork-io/$APPLICATION/releases/download/v$VERSION/$BINARY
