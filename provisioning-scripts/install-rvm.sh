@@ -9,7 +9,7 @@ gpg2 \
 
 curl -sSL https://get.rvm.io | bash -s stable
 
-RUBY_VERSION=2.6.2
+RUBY_VERSION=2.6.3
 RVM_SCRIPT=$HOME/.rvm/scripts/rvm
 
 source $RVM_SCRIPT

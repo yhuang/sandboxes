@@ -31,10 +31,21 @@ zsh
 yum install -y epel-release
 yum-config-manager --disable epel
 
+CENTOS_VERSION=$(rpm --query centos-release | cut -d"-" -f3)
+
+if [[ $CENTOS_VERSION -eq 6 ]]; then
+    PYTHON_PACKAGE=python34
+    PYTHON=python3.4
+else
+    PYTHON_PACKAGE=python36
+    PYTHON=python3.6
+fi
+
 yum --disablerepo="*" --enablerepo="epel" install -y \
 htop \
 jq \
-nodejs \
-python36
+node \
+js \
+$PYTHON_PACKAGE
 
-ln -s /usr/bin/python36 /usr/bin/python3
+ln -s /usr/bin/$PYTHON /usr/bin/python3
