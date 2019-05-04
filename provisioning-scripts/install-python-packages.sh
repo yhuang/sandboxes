@@ -13,3 +13,4 @@ pip install --upgrade oauth2client
 pip install requests
 pip install google-cloud-storage
 pip install google-auth
+pip install bzr
