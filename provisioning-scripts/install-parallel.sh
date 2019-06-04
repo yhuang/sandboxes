@@ -4,7 +4,8 @@
 # rm -fr .gnupg parallel-*
 
 APPLICATION=parallel
-VERSION=20181222
+# Last viable version
+VERSION=20190222
 LATEST=${APPLICATION}-${VERSION}
 ARCHIVE=${LATEST}.tar.gz
 

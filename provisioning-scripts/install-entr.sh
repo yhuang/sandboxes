@@ -2,14 +2,16 @@
 
 # https://bitbucket.org/eradman/entr/downloads/?tab=tags
 APPLICATION=entr
-VERSION=4.1
-APPLICATION_DIR=eradman-entr-f4e2cbe57708
+VERSION=4.2
 ARCHIVE=${APPLICATION}-${VERSION}.tar.gz
 
 wget https://bitbucket.org/eradman/$APPLICATION/get/$ARCHIVE
 tar xzvf $ARCHIVE
 
 CURRENT_DIR=$(pwd)
+
+APPLICATION_DIR=$(ls -d eradman-entr-*/)
+APPLICATION_DIR=${APPLICATION_DIR%/}
 
 cd $APPLICATION_DIR
 ./configure

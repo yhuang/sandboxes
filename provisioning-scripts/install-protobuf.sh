@@ -2,7 +2,7 @@
 
 # https://github.com/google/protobuf/releases
 APPLICATION=protoc
-VERSION=3.5.1
+VERSION=3.8.0
 ARCHIVE=${APPLICATION}-${VERSION}-linux-x86_64.zip
 
 # Make sure you grab the latest version
