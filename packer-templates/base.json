@@ -37,6 +37,8 @@
       "pause_before": "10s",
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "inline": [
+        "rm -rf /var/cache/yum",
+        "yum clean all",
         "yum -y update",
         "reboot"
       ]

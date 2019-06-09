@@ -2,6 +2,7 @@
 
 echo "==> Install guest tools"
 
+# 10.3.10
 VMTOOLS_ARCHIVE=/tmp/vmware-tools-linux.gz
 
 gunzip -c $VMTOOLS_ARCHIVE > $HOME_DIR/linux.iso

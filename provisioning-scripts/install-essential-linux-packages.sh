@@ -44,8 +44,9 @@ fi
 yum --disablerepo="*" --enablerepo="epel" install -y \
 htop \
 jq \
-node \
 js \
+nodejs \
 $PYTHON_PACKAGE
 
+rm -f /usr/bin/python3
 ln -s /usr/bin/$PYTHON /usr/bin/python3
