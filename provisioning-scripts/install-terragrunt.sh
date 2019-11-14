@@ -2,7 +2,7 @@
 
 APPLICATION=terragrunt
 
-VERSION=0.18.6
+VERSION=0.21.4
 BINARY=${APPLICATION}_linux_amd64
 
 wget https://github.com/gruntwork-io/$APPLICATION/releases/download/v$VERSION/$BINARY

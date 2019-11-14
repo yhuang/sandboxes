@@ -18,11 +18,15 @@ curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffo
 chmod a+x skaffold
 mv skaffold /usr/local/bin
 
-curl -s https://api.github.com/repos/kubernetes-sigs/kustomize/releases/latest |\
+VERSION=3.3.0
+
+curl -s https://api.github.com/repos/kubernetes-sigs/kustomize/releases |\
   grep browser_download |\
   grep linux |\
+  grep $VERSION |\
   cut -d '"' -f 4 |\
   xargs curl -O -L
+tar xzvf kustomize_*_linux_amd64.tar.gz
 mv kustomize_*_linux_amd64 /usr/local/bin/kustomize
 chmod a+x /usr/local/bin/kustomize
 
