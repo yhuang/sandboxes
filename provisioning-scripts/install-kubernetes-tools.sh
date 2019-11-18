@@ -12,7 +12,7 @@ EOF
 
 yum install -y kubectl
 
-https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
+curl -s https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
 
 curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
 chmod a+x skaffold
@@ -27,7 +27,7 @@ curl -s https://api.github.com/repos/kubernetes-sigs/kustomize/releases |\
   cut -d '"' -f 4 |\
   xargs curl -O -L
 tar xzvf kustomize_*_linux_amd64.tar.gz
-mv kustomize_*_linux_amd64 /usr/local/bin/kustomize
+mv kustomize /usr/local/bin/kustomize
 chmod a+x /usr/local/bin/kustomize
 
 git clone https://github.com/ahmetb/kubectx /opt/kubectx

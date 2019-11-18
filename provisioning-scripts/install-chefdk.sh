@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 APPLICATION=chefdk
-VERSION=4.0.60
+VERSION=4.5.0
 ARCHIVE=${APPLICATION}-${VERSION}-1.el7.x86_64.rpm
 
 rpm -Uvh https://packages.chef.io/files/stable/$APPLICATION/$VERSION/el/7/$ARCHIVE
