@@ -27,6 +27,7 @@ curl -s https://api.github.com/repos/kubernetes-sigs/kustomize/releases |\
   cut -d '"' -f 4 |\
   xargs curl -O -L
 tar xzvf kustomize_*_linux_amd64.tar.gz
+rm -f kustomize_*_linux_amd64.tar.gz
 mv kustomize /usr/local/bin/kustomize
 chmod a+x /usr/local/bin/kustomize
 

@@ -60,7 +60,7 @@
         "provisioning-scripts/install-google-cloud-sdk.sh",
         "provisioning-scripts/create-hashicorp-directory.sh",
         "provisioning-scripts/install-packer.sh",
-        "provisioning-scripts/install-terraform-0.11.sh",
+        "provisioning-scripts/install-terraform-11.sh",
         "provisioning-scripts/install-terraform-tools.sh",
         "provisioning-scripts/install-vault.sh",
         "provisioning-scripts/install-docker-ce.sh",

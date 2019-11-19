@@ -1,6 +1,6 @@
 {
   "variables": {
-    "box_basename": "terraform-012",
+    "box_basename": "terraform-12",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "build_timestamp": "{{isotime \"20060102-1504\"}}",
@@ -56,11 +56,13 @@
       ],
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
+        "provisioning-scripts/install-gvim.sh",
+        "provisioning-scripts/install-xauth.sh",
         "provisioning-scripts/install-aws-cli.sh",
         "provisioning-scripts/install-google-cloud-sdk.sh",
         "provisioning-scripts/create-hashicorp-directory.sh",
         "provisioning-scripts/install-packer.sh",
-        "provisioning-scripts/install-terraform-0.12.sh",
+        "provisioning-scripts/install-terraform-12.sh",
         "provisioning-scripts/install-terraform-tools.sh",
         "provisioning-scripts/install-vault.sh",
         "provisioning-scripts/install-docker-ce.sh",
