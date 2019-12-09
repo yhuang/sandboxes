@@ -6,7 +6,6 @@ cmake \
 dstat \
 gettext-devel \
 http-parser \
-iftop \
 iotop \
 iptraf \
 lsof \
@@ -16,12 +15,8 @@ openssl-devel \
 patch \
 perl-CPAN \
 perl-devel \
-python-devel \
-python-requests \
-python-setuptools \
 sysstat \
 tcpdump \
-texinfo \
 telnet \
 traceroute \
 yum-utils \
@@ -31,22 +26,47 @@ zsh
 yum install -y epel-release
 yum-config-manager --disable epel
 
-CENTOS_VERSION=$(rpm --query centos-release | cut -d"-" -f3)
+CENTOS_VERSION=$(rpm -E %{rhel})
 
-if [[ $CENTOS_VERSION -eq 6 ]]; then
-    PYTHON_PACKAGE=python34
-    PYTHON=python3.4
+if [[ $CENTOS_VERSION -eq 8 ]]; then
+    yum install -y \
+    python2 \
+    python2-pip \
+    python3 \
+    python3-pip
+
+    yum --disablerepo="*" --enablerepo="epel" install -y \
+    iftop
+
+    yum config-manager --set-enabled PowerTools
+    dnf --enablerepo=PowerTools install -y \
+    jq \
+    nodejs \
+    texinfo
+    yum config-manager --set-disabled PowerTools
 else
-    PYTHON_PACKAGE=python36
-    PYTHON=python3.6
+    if [[ $CENTOS_VERSION -eq 6 ]]; then
+        PYTHON_PACKAGE=python34
+        PYTHON=python3.4
+    elif [[ $CENTOS_VERSION -eq 7 ]]; then
+        PYTHON_PACKAGE=python36
+        PYTHON=python3.6
+    fi
+
+    yum install -y \
+    iftop \
+    python-devel \
+    python-requests \
+    python-setuptools \
+    texinfo
+
+    yum --disablerepo="*" --enablerepo="epel" install -y \
+    htop \
+    jq \
+    js \
+    nodejs \
+    $PYTHON_PACKAGE
+
+    rm -f /usr/bin/python3
+    ln -s /usr/bin/$PYTHON /usr/bin/python3
 fi
-
-yum --disablerepo="*" --enablerepo="epel" install -y \
-htop \
-jq \
-js \
-nodejs \
-$PYTHON_PACKAGE
-
-rm -f /usr/bin/python3
-ln -s /usr/bin/$PYTHON /usr/bin/python3

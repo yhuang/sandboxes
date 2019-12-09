@@ -1,0 +1,118 @@
+{
+  "variables": {
+    "box_basename": "centos8",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "build_timestamp": "{{isotime \"20060102-1504\"}}",
+    "iso_checksum": "ea17ef71e0df3f6bf1d4bf1fc25bec1a76d1f211c115d39618fe688be34503e8",
+    "iso_checksum_type": "sha256",
+    "iso_name": "CentOS-8-x86_64-1905-dvd1.iso",
+    "ks_path": "http/ks8.cfg",
+    "user_home_dir": "/home/vagrant"
+  },
+  "builders": [
+    {
+      "type": "vmware-iso",
+      "vm_name": "{{ user `box_basename` }}",
+      "boot_command": [
+        "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "cpus": 1,
+      "cores": 1,
+      "memory": 1024,
+      "disk_size": 16000,
+      "guest_os_type": "centos-64",
+      "headless": true,
+      "http_directory": ".",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "iso_url": "iso/{{user `iso_name`}}",
+      "output_directory": "builds/{{ user `box_basename` }}",
+      "shutdown_command": "echo {{user `ssh_password`}} | sudo -S /sbin/halt -h -p",
+      "ssh_username": "{{user `ssh_username`}}",
+      "ssh_password": "{{user `ssh_password`}}",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "1800s"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "expect_disconnect": true,
+      "pause_before": "10s",
+      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "inline": [
+        "rm -rf /var/cache/yum",
+        "yum clean all",
+        "yum -y update",
+        "reboot"
+      ]
+    },
+    {
+      "type": "shell",
+      "expect_disconnect": true,
+      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "inline": [ "sleep 60" ]
+    },
+    {
+      "type": "file",
+      "source": "files/vmware-tools-linux.gz",
+      "destination": "/tmp/vmware-tools-linux.gz"
+    },
+    {
+      "type": "file",
+      "source": "files/vagrant.pub",
+      "destination": "/tmp/authorized_keys"
+    },
+    {
+      "type": "file",
+      "source": "files/install-oh-my-zsh.sh",
+      "destination": "/tmp/install-oh-my-zsh.sh"
+    },
+    {
+      "type": "shell",
+      "environment_vars": [
+        "HOME_DIR={{user `user_home_dir`}}"
+      ],
+      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "scripts": [
+        "provisioning-scripts/configure-boot-grub2-directory.sh",
+        "provisioning-scripts/install-essential-linux-packages.sh",
+        "provisioning-scripts/install-git.sh",
+        "provisioning-scripts/install-vagrant-user-bash-profile.sh",
+        "provisioning-scripts/configure-vagrant-user.sh",
+        "provisioning-scripts/configure-sshd-options.sh",
+        "provisioning-scripts/install-vmtools.sh",
+        "provisioning-scripts/install-dircolors-solarized.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "provisioning-scripts/install-oh-my-zsh.sh",
+        "provisioning-scripts/configure-current-user-zshrc.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "environment_vars": [
+        "HOME_DIR={{user `user_home_dir`}}"
+      ],
+      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "scripts": [
+        "provisioning-scripts/install-oh-my-zsh.sh",
+        "provisioning-scripts/configure-current-user-zshrc.sh",
+        "provisioning-scripts/change-shell.sh",
+        "provisioning-scripts/clean-up.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "keep_input_artifact": true,
+      "output": "builds/{{user `box_basename`}}.{{.Provider}}.box"
+    }
+  ]
+}
