@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+yum install -y clang
+
 # https://github.com/sharkdp/bat
 cd /tmp
 git clone https://github.com/sharkdp/bat.git

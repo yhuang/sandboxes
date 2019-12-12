@@ -7,7 +7,7 @@
     "iso_checksum": "a68e46970678d4d297d46086ae2efdd3e994322d6d862ff51dcce25a0759e41c",
     "iso_checksum_type": "sha256",
     "iso_name": "CentOS-6.10-x86_64-bin-DVD1.iso",
-    "ks_path": "http/ks.cfg",
+    "ks_path": "http/ks6.cfg",
     "user_home_dir": "/home/vagrant"
   },
   "builders": [

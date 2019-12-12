@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+CPANM=/usr/local/bin/cpanm
+
 curl -L http://cpanmin.us | perl - --sudo App::cpanminus
 
-/usr/local/bin/cpanm App::pod2pdf
+$CPANM App::pod2pdf
+$CPANM IO::Pty 
 
 # https://beyondgrep.com/install
-/usr/local/bin/cpanm App::Ack
+$CPANM App::Ack --force

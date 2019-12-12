@@ -16,7 +16,7 @@
       "boot_wait": "10s",
       "headless": true,
       "http_directory": ".",
-      "source_path": "builds/centos7/centos7.vmx",
+      "source_path": "builds/centos8/centos8.vmx",
       "output_directory": "builds/{{ user `box_basename` }}",
       "shutdown_command": "echo {{user `ssh_password`}} | sudo -S /sbin/halt -h -p",
       "ssh_username": "{{user `ssh_username`}}",
@@ -63,7 +63,6 @@
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
         "provisioning-scripts/install-go.sh",
-        "provisioning-scripts/install-pip.sh",
         "provisioning-scripts/install-cpanm.sh",
         "provisioning-scripts/install-ag.sh",
         "provisioning-scripts/install-cargo.sh",
