@@ -3,7 +3,7 @@
 CENTOS_VERSION=$(rpm -E %{rhel})
 
 if [[ $CENTOS_VERSION -eq 8 ]]; then
-    yum install -y \ 
+    yum install -y \
     automake \
     pcre-devel \
     xz-devel
