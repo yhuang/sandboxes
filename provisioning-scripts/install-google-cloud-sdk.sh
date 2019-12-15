@@ -2,7 +2,7 @@
 
 # http://jhurani.com/linux/2018/07/30/GCSDK-on-centos6.html
 
-CENTOS_VERSION=$(rpm --query centos-release | cut -d"-" -f3)
+CENTOS_VERSION=$(rpm -E %{rhel})
 
 if [[ $CENTOS_VERSION -eq 6 ]]; then
     . /opt/rh/python27/enable

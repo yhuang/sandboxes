@@ -44,15 +44,7 @@ if [[ $CENTOS_VERSION -eq 8 ]]; then
     nodejs \
     texinfo
     yum config-manager --set-disabled PowerTools
-else
-    if [[ $CENTOS_VERSION -eq 6 ]]; then
-        PYTHON_PACKAGE=python34
-        PYTHON=python3.4
-    elif [[ $CENTOS_VERSION -eq 7 ]]; then
-        PYTHON_PACKAGE=python36
-        PYTHON=python3.6
-    fi
-
+elif [[ $CENTOS_VERSION -eq 7 ]]; then
     yum install -y \
     iftop \
     python-devel \
@@ -65,20 +57,40 @@ else
     jq \
     js \
     nodejs \
+    python-pip
+
+    yum install -y https://centos7.iuscommunity.org/ius-release.rpm
+    yum install -y \
+    python36u \
+    python36u-libs \
+    python36u-devel \
+    python36u-pip
+else
+    yum install -y \
+    iftop \
+    python-devel \
+    python-requests \
+    python-setuptools \
+    texinfo
+
+    PYTHON_PACKAGE=python34
+    PYTHON=python3.4
+
+    yum --disablerepo="*" --enablerepo="epel" install -y \
+    htop \
+    jq \
+    js \
+    nodejs \
+    python-pip \
     $PYTHON_PACKAGE
 
     rm -f /usr/bin/python3
     ln -s /usr/bin/$PYTHON /usr/bin/python3
 
-    GET_PIP=/root/get-pip.py
-
-    wget -O $GET_PIP https://bootstrap.pypa.io/get-pip.py
-
     if hash python3 2>/dev/null; then
+        GET_PIP=/root/get-pip.py
+        wget -O $GET_PIP https://bootstrap.pypa.io/get-pip.py
         python3 $GET_PIP
+        rm -f $GET_PIP
     fi
-
-    python $GET_PIP
-
-    rm -f $GET_PIP
 fi

@@ -18,7 +18,7 @@
       "headless": true,
       "http_directory": ".",
       "source_path": "builds/centos{{ user `version` }}/centos{{ user `version` }}.vmx",
-      "output_directory": "builds/{{ user `box_basename` }}",
+      "output_directory": "builds/{{ user `box_basename` }}{{ user `version` }}",
       "shutdown_command": "echo {{user `ssh_password`}} | sudo -S /sbin/halt -h -p",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
@@ -86,7 +86,7 @@
     {
       "type": "vagrant",
       "keep_input_artifact": true,
-      "output": "builds/{{user `box_basename`}}.{{.Provider}}.box"
+      "output": "builds/{{user `box_basename`}}{{ user `version` }}.{{.Provider}}.box"
     }
   ]
 }
