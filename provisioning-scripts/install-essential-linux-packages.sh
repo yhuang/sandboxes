@@ -44,6 +44,9 @@ if [[ $CENTOS_VERSION -eq 8 ]]; then
     nodejs \
     texinfo
     yum config-manager --set-disabled PowerTools
+
+    ln -s /usr/bin/python3 /usr/bin/python
+    ln -s /usr/bin/pip3 /usr/bin/pip
 elif [[ $CENTOS_VERSION -eq 7 ]]; then
     yum install -y \
     iftop \

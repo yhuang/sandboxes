@@ -4,7 +4,8 @@
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "build_timestamp": "{{isotime \"20060102-1504\"}}",
-    "user_home_dir": "/home/vagrant"
+    "user_home_dir": "/home/vagrant",
+    "version": "8"
   },
   "builders": [
     {
@@ -16,7 +17,7 @@
       "boot_wait": "10s",
       "headless": true,
       "http_directory": ".",
-      "source_path": "builds/base/base.vmx",
+      "source_path": "builds/base{{ user `version` }}/base.vmx",
       "output_directory": "builds/{{ user `box_basename` }}-{{user `build_timestamp`}}-vmware",
       "shutdown_command": "echo {{user `ssh_password`}} | sudo -S /sbin/halt -h -p",
       "ssh_username": "{{user `ssh_username`}}",

@@ -1,17 +1,24 @@
 #!/usr/bin/env bash
 
-yum install -y clang
+CENTOS_VERSION=$(rpm -E %{rhel})
 
-# https://github.com/sharkdp/bat
-cd /tmp
-git clone https://github.com/sharkdp/bat.git
-cd /tmp/bat
+if [[ $CENTOS_VERSION -gt 6 ]]; then
+    yum install -y clang
 
-# Need to reload PATH for the current shell to access cargo
-source $HOME/.profile
+    # https://github.com/sharkdp/bat
+    cd /tmp
+    git clone https://github.com/sharkdp/bat.git
+    cd /tmp/bat
 
-cargo build --release
-cp /tmp/bat/target/release/bat /usr/bin
+    # Need to reload PATH for the current shell to access cargo
+    source $HOME/.profile
 
-cd /root
-rm -fr /tmp/bat
+    cargo build --release
+    cp /tmp/bat/target/release/bat /usr/bin
+
+    cd /root
+    rm -fr /tmp/bat
+else
+    echo "\n[WARN] bat requires Centos 7 or higher.\n"
+fi
+
