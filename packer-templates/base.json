@@ -69,6 +69,7 @@
         "provisioning-scripts/install-cargo.sh",
         "provisioning-scripts/install-bat.sh",
         "provisioning-scripts/install-fd.sh",
+        "provisioning-scripts/install-openfusion-release.sh",
         "provisioning-scripts/install-ncdu.sh",
         "provisioning-scripts/install-prettyping.sh",
         "provisioning-scripts/install-tldr.sh",
