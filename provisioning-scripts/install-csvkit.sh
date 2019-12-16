@@ -4,15 +4,15 @@
 CENTOS_VERSION=$(rpm -E %{rhel})
 
 if [[ $CENTOS_VERSION -eq 6 ]]; then
-    wget -q http://repo.openfusion.net/centos6-x86_64/openfusion-release-0.7-1.o.el6.noarch.rpm
+    # https://centos.pkgs.org/6/openfusion-x86_64/csvkit-0.6.1-1.of.el6.noarch.rpm.html
+    wget http://repo.openfusion.net/centos6-x86_64/openfusion-release-0.7-1.o.el6.noarch.rpm
     rpm -Uvh openfusion-release*rpm
     yum install -y csvkit
-elif [[ $CENTOS_VERSION -eq 7 ]]; then
+    rm -f openfusion-release*rpm
+else
+    python3 -m pip install --upgrade pip
     pip2 install --upgrade pip
 
-    pip3 install csvkit
-    pip2 install csvkit
-elif [[ $CENTOS_VERSION -eq 8 ]]; then
-    pip3 install csvkit
+    python3 -m pip install csvkit
     pip2 install csvkit
 fi
