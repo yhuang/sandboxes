@@ -6,10 +6,10 @@ touch /etc/machine-id
 
 echo "==> Cleaning up temporary network addresses"
 # Make sure udev doesn't block our network
-if grep -q -i "release 6" /etc/redhat-release ; then
-    rm -f /etc/udev/rules.d/70-persistent-net.rules
-    mkdir /etc/udev/rules.d/70-persistent-net.rules
-    rm /lib/udev/rules.d/75-persistent-net-generator.rules
+CENTOS_VERSION=$(rpm -E %{rhel})
+if [[ $CENTOS_VERSION -eq 6 ]]; then
+    rm -f /etc/udev/rules.d/70-persistent-net.rules/*
+    rm -f /lib/udev/rules.d/75-persistent-net-generator.rules
 fi
 rm -rf /dev/.udev/
 if [ -f /etc/sysconfig/network-scripts/ifcfg-eth0 ] ; then
