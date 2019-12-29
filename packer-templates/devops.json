@@ -71,7 +71,6 @@
         "provisioning-scripts/install-kubernetes-tools.sh",
         "provisioning-scripts/install-cfssl-tools.sh",
         "provisioning-scripts/install-pre-commit.sh",
-        "provisioning-scripts/install-exercism.sh",
         "provisioning-scripts/install-protobuf.sh",
         "provisioning-scripts/install-python-packages.sh",
         "provisioning-scripts/clean-up.sh"
