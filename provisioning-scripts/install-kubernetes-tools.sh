@@ -1,14 +1,22 @@
 #!/usr/bin/env bash
 
-cat << EOF > /etc/yum.repos.d/kubernetes.repo
+# Bug 1792506 - Unattended installation of repo GPG keys is failing
+# https://bugzilla.redhat.com/show_bug.cgi?id=1792506
+#
+# Fix: https://access.redhat.com/errata/RHBA-2020:1823
+cat > /etc/yum.repos.d/kubernetes.repo << EOF
 [kubernetes]
 name=Kubernetes
 baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
 enabled=1
-gpgcheck=1
-repo_gpgcheck=1
-gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+# gpgcheck=1
+# repo_gpgcheck=1
+# gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
+#        https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOF
+
+rpm --import https://packages.cloud.google.com/yum/doc/yum-key.gpg
+rpm --import https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 
 yum install -y kubectl
 

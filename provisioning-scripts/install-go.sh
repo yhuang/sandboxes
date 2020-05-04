@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 APPLICATION=go
-VERSION=1.13.5
+VERSION=1.14.2
 ARCHIVE=${APPLICATION}${VERSION}.linux-amd64.tar.gz
 
 wget https://dl.google.com/$APPLICATION/$ARCHIVE

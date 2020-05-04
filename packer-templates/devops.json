@@ -57,8 +57,8 @@
       ],
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
-        "provisioning-scripts/install-aws-cli.sh",
         "provisioning-scripts/install-google-cloud-sdk.sh",
+        "provisioning-scripts/install-aws-cli.sh",
         "provisioning-scripts/create-hashicorp-directory.sh",
         "provisioning-scripts/install-packer.sh",
         "provisioning-scripts/install-tfswitch.sh",
@@ -73,6 +73,7 @@
         "provisioning-scripts/install-pre-commit.sh",
         "provisioning-scripts/install-protobuf.sh",
         "provisioning-scripts/install-python-packages.sh",
+        "provisioning-scripts/change-repo-settings.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }

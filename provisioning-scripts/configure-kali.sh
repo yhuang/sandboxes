@@ -32,7 +32,7 @@ echo 'vagrant ALL=(ALL) NOPASSWD:ALL' >/etc/sudoers.d/99_vagrant;
 chmod 440 /etc/sudoers.d/99_vagrant;
 
 # Remove 5s grub timeout to speed up booting
-cat << EOF > /etc/default/grub
+cat > /etc/default/grub << EOF
 # If you change this file, run 'update-grub' afterwards to update
 # /boot/grub/grub.cfg.
 GRUB_DEFAULT=0
