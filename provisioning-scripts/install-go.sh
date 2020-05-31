@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 APPLICATION=go
-VERSION=1.14.2
+VERSION=1.14.3
 ARCHIVE=${APPLICATION}${VERSION}.linux-amd64.tar.gz
 
 wget https://dl.google.com/$APPLICATION/$ARCHIVE
@@ -16,7 +16,7 @@ export GOPATH=/etc/opt/go
 export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin
 GOENV_SH
 
-chmod a+x /etc/profile.d/goenv.sh
+chmod 644 /etc/profile.d/goenv.sh
 
 source /etc/profile.d/goenv.sh
 
@@ -36,4 +36,4 @@ go get -u golang.org/x/tools/cmd/...
 go get -u golang.org/x/lint/golint
 
 chown -R root:wheel $GOPATH
-chmod -R 775 $GOPATH/{src,bin,pkg}
+chmod -R 775 $GOPATH
