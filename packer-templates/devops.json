@@ -48,7 +48,9 @@
       "type": "shell",
       "expect_disconnect": true,
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
-      "inline": [ "sleep 60" ]
+      "inline": [
+        "sleep 60"
+      ]
     },
     {
       "type": "shell",
@@ -69,6 +71,7 @@
         "provisioning-scripts/install-chefdk.sh",
         "provisioning-scripts/install-bats.sh",
         "provisioning-scripts/install-kubernetes-tools.sh",
+        "provisioning-scripts/install-cobra.sh",
         "provisioning-scripts/install-cfssl-tools.sh",
         "provisioning-scripts/install-pre-commit.sh",
         "provisioning-scripts/install-protobuf.sh",

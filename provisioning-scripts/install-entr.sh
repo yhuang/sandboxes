@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# https://bitbucket.org/eradman/entr/downloads/?tab=tags
+# http://eradman.com/entrproject/code/
 APPLICATION=entr
 VERSION=4.2
 ARCHIVE=${APPLICATION}-${VERSION}.tar.gz
 
-wget https://bitbucket.org/eradman/$APPLICATION/get/$ARCHIVE
+wget http://eradman.com/entrproject/code/$ARCHIVE
 tar xzvf $ARCHIVE
 
 CURRENT_DIR=$(pwd)
