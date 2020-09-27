@@ -3,7 +3,7 @@
 DOCKER_CE_REPO=https://download.docker.com/linux/centos/docker-ce.repo
 
 yum-config-manager --add-repo $DOCKER_CE_REPO
-yum-config-manager --disable docker-ce-edge
+yum-config-manager --disable docker-ce-nightly
 
 CENTOS_VERSION=$(rpm -E %{rhel})
 
