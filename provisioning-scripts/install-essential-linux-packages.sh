@@ -38,12 +38,12 @@ if [[ $CENTOS_VERSION -eq 8 ]]; then
     yum --disablerepo="*" --enablerepo="epel" install -y \
     iftop
 
-    yum config-manager --set-enabled PowerTools
-    dnf --enablerepo=PowerTools install -y \
+    yum config-manager --set-enabled powertools
+    dnf --enablerepo=powertools install -y \
     jq \
     nodejs \
     texinfo
-    yum config-manager --set-disabled PowerTools
+    yum config-manager --set-disabled powertools
 
     ln -s /usr/bin/python3 /usr/bin/python
     ln -s /usr/bin/pip3 /usr/bin/pip

@@ -26,8 +26,7 @@ curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffo
 chmod a+x skaffold
 mv skaffold /usr/local/bin
 
-VERSION=3.8.4
-
+VERSION=3.9.1
 curl -s https://api.github.com/repos/kubernetes-sigs/kustomize/releases |\
   grep browser_download |\
   grep linux |\

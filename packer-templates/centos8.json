@@ -4,9 +4,8 @@
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "build_timestamp": "{{isotime \"20060102-1504\"}}",
-    "iso_checksum": "3ee3f4ea1538e026fff763e2b284a6f20b259d91d1ad5688f5783a67d279423b",
-    "iso_checksum_type": "sha256",
-    "iso_name": "CentOS-8.1.1911-x86_64-dvd1.iso",
+    "iso_checksum": "aaf9d4b3071c16dbbda01dfe06085e5d0fdac76df323e3bbe87cce4318052247",
+    "iso_name": "CentOS-8.3.2011-x86_64-dvd1.iso",
     "ks_path": "http/ks8.cfg",
     "user_home_dir": "/home/vagrant"
   },
@@ -26,7 +25,6 @@
       "headless": true,
       "http_directory": ".",
       "iso_checksum": "{{user `iso_checksum`}}",
-      "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_url": "iso/{{user `iso_name`}}",
       "output_directory": "builds/{{ user `box_basename` }}",
       "shutdown_command": "echo {{user `ssh_password`}} | sudo -S /sbin/halt -h -p",
@@ -53,7 +51,9 @@
       "type": "shell",
       "expect_disconnect": true,
       "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
-      "inline": [ "sleep 60" ]
+      "inline": [
+        "sleep 60"
+      ]
     },
     {
       "type": "file",
